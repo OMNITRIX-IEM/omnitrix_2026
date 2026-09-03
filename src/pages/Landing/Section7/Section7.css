@@ -1,0 +1,316 @@
+/* ==========================================================================
+   ROBOWARS SECTION 7 — TACTICAL SYSTEM DATABASE (FAQ) STYLESHEET
+   ========================================================================== */
+
+.robowars-faq-section {
+  --faq-bg: #000000;
+  --faq-green-primary: #B6FF00;
+  --faq-green-secondary: #8CFF00;
+  --faq-green-dim: rgba(182, 255, 0, 0.18);
+  --faq-green-bright: rgba(182, 255, 0, 0.40);
+  --faq-green-glow: rgba(182, 255, 0, 0.25);
+  --faq-card-bg: rgba(6, 14, 4, 0.78);
+  --faq-card-bg-active: rgba(10, 22, 6, 0.90);
+  --faq-border: rgba(182, 255, 0, 0.22);
+  --faq-border-active: rgba(182, 255, 0, 0.65);
+  
+  --font-heading: 'Rajdhani', sans-serif;
+  --font-body: 'Inter', sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  background-color: var(--faq-bg);
+  color: #ffffff;
+  padding: 7rem 1.5rem;
+  overflow: hidden;
+}
+
+.robowars-faq-section,
+.robowars-faq-section *,
+.robowars-faq-section *::before,
+.robowars-faq-section *::after {
+  box-sizing: border-box;
+}
+
+/* --------------------------------------------------------------------------
+   1. BACKGROUND IMAGE & ATMOSPHERIC OVERLAYS
+   -------------------------------------------------------------------------- */
+.robowars-faq-section .faq-background {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.robowars-faq-section .faq-bg-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  opacity: 0.38;
+  filter: contrast(1.15) brightness(0.85);
+}
+
+.robowars-faq-section .faq-overlay-dark {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  pointer-events: none;
+  background: 
+    radial-gradient(circle at center, rgba(0, 0, 0, 0.65) 0%, rgba(2, 8, 2, 0.88) 65%, rgba(0, 0, 0, 0.98) 100%),
+    linear-gradient(to bottom, #000000 0%, transparent 18%, transparent 82%, #000000 100%);
+}
+
+/* --------------------------------------------------------------------------
+   2. CONTENT CONTAINER & HEADER
+   -------------------------------------------------------------------------- */
+.robowars-faq-section .faq-container {
+  position: relative;
+  z-index: 3;
+  width: 100%;
+  max-width: 1080px;
+  margin: 0 auto;
+}
+
+.robowars-faq-section .faq-header {
+  text-align: center;
+  margin-bottom: 4rem;
+}
+
+.robowars-faq-section .faq-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-family: var(--font-heading);
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  color: var(--faq-green-primary);
+  text-transform: uppercase;
+  background: rgba(182, 255, 0, 0.08);
+  border: 1px solid var(--faq-green-dim);
+  padding: 0.35rem 1rem;
+  margin-bottom: 1.25rem;
+  box-shadow: 0 0 15px rgba(182, 255, 0, 0.12);
+}
+
+.robowars-faq-section .faq-eyebrow-icon {
+  font-size: 0.65rem;
+}
+
+.robowars-faq-section .faq-title {
+  font-family: var(--font-heading);
+  font-size: 3.5rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #ffffff;
+  line-height: 1.05;
+  text-shadow: 0 0 25px rgba(182, 255, 0, 0.2);
+}
+
+.robowars-faq-section .faq-title .text-green {
+  color: var(--faq-green-primary);
+  text-shadow: 0 0 20px rgba(182, 255, 0, 0.4);
+}
+
+/* --------------------------------------------------------------------------
+   3. ACCORDION FAQ CARDS
+   -------------------------------------------------------------------------- */
+.robowars-faq-section .faq-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1.15rem;
+}
+
+.robowars-faq-section .faq-card {
+  position: relative;
+  background: var(--faq-card-bg);
+  border: 1px solid var(--faq-border);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  transition: all 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
+  overflow: hidden;
+}
+
+.robowars-faq-section .faq-card:hover {
+  border-color: var(--faq-green-bright);
+  box-shadow: 0 0 20px rgba(182, 255, 0, 0.15);
+  background: rgba(8, 18, 5, 0.85);
+}
+
+.robowars-faq-section .faq-card.open {
+  border-color: var(--faq-border-active);
+  background: var(--faq-card-bg-active);
+  box-shadow: 0 0 25px rgba(182, 255, 0, 0.22), inset 0 0 15px rgba(182, 255, 0, 0.08);
+}
+
+/* Tactical Corner Brackets */
+.robowars-faq-section .corner-bracket {
+  position: absolute;
+  width: 12px;
+  height: 12px;
+  border: 2px solid var(--faq-green-primary);
+  pointer-events: none;
+  opacity: 0.6;
+  transition: opacity 0.3s ease;
+}
+
+.robowars-faq-section .faq-card:hover .corner-bracket,
+.robowars-faq-section .faq-card.open .corner-bracket {
+  opacity: 1;
+}
+
+.robowars-faq-section .corner-bracket.top-left {
+  top: 0;
+  left: 0;
+  border-right: none;
+  border-bottom: none;
+}
+
+.robowars-faq-section .corner-bracket.bottom-right {
+  bottom: 0;
+  right: 0;
+  border-left: none;
+  border-top: none;
+}
+
+/* Card Header (Button) */
+.robowars-faq-section .faq-card-header {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.4rem 1.75rem;
+  background: transparent;
+  border: none;
+  color: #ffffff;
+  text-align: left;
+  cursor: pointer;
+  outline: none;
+  gap: 1.25rem;
+}
+
+.robowars-faq-section .faq-question-group {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+}
+
+.robowars-faq-section .faq-number {
+  font-family: var(--font-heading);
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: var(--faq-green-primary);
+  letter-spacing: 0.1em;
+  text-shadow: 0 0 10px rgba(182, 255, 0, 0.3);
+  min-width: 2.2rem;
+}
+
+.robowars-faq-section .faq-question {
+  font-family: var(--font-heading);
+  font-size: 1.35rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #ffffff;
+  transition: color 0.25s ease;
+}
+
+.robowars-faq-section .faq-card:hover .faq-question,
+.robowars-faq-section .faq-card.open .faq-question {
+  color: var(--faq-green-primary);
+}
+
+/* Plus/Minus Indicator */
+.robowars-faq-section .faq-toggle-icon {
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--faq-border);
+  color: var(--faq-green-primary);
+  font-family: var(--font-heading);
+  font-size: 1.2rem;
+  font-weight: 700;
+  background: rgba(182, 255, 0, 0.05);
+  transition: all 0.3s ease;
+  flex-shrink: 0;
+}
+
+.robowars-faq-section .faq-card.open .faq-toggle-icon {
+  background: var(--faq-green-primary);
+  color: #000000;
+  border-color: var(--faq-green-primary);
+  transform: rotate(180deg);
+}
+
+/* Accordion Answer Content */
+.robowars-faq-section .faq-answer-wrapper {
+  max-height: 0;
+  opacity: 0;
+  overflow: hidden;
+  transition: max-height 0.4s cubic-bezier(0.2, 0.8, 0.2, 1), opacity 0.35s ease, padding 0.3s ease;
+  padding: 0 1.75rem;
+}
+
+.robowars-faq-section .faq-card.open .faq-answer-wrapper {
+  max-height: 250px;
+  opacity: 1;
+  padding: 0 1.75rem 1.6rem 5.2rem;
+}
+
+.robowars-faq-section .faq-answer-line {
+  height: 1px;
+  width: 100%;
+  background: linear-gradient(90deg, var(--faq-green-primary), transparent);
+  opacity: 0.3;
+  margin-bottom: 1rem;
+}
+
+.robowars-faq-section .faq-answer {
+  font-family: var(--font-body);
+  font-size: 1.02rem;
+  line-height: 1.65;
+  color: rgba(255, 255, 255, 0.82);
+  letter-spacing: 0.01em;
+}
+
+/* --------------------------------------------------------------------------
+   4. RESPONSIVE BREAKPOINTS
+   -------------------------------------------------------------------------- */
+@media (max-width: 768px) {
+  .robowars-faq-section {
+    padding: 5rem 1rem;
+  }
+
+  .robowars-faq-section .faq-title {
+    font-size: 2.4rem;
+  }
+
+  .robowars-faq-section .faq-card-header {
+    padding: 1.15rem 1.25rem;
+  }
+
+  .robowars-faq-section .faq-question-group {
+    gap: 0.85rem;
+  }
+
+  .robowars-faq-section .faq-number {
+    font-size: 1.15rem;
+    min-width: 1.8rem;
+  }
+
+  .robowars-faq-section .faq-question {
+    font-size: 1.1rem;
+  }
+
+  .robowars-faq-section .faq-card.open .faq-answer-wrapper {
+    padding: 0 1.25rem 1.25rem 1.25rem;
+  }
+}

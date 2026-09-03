@@ -1,0 +1,139 @@
+/* Tablet Sizing Adjustments */
+@media (max-width: 1024px) {
+  .hero-title-area {
+    width: 510px;
+  }
+
+  .hero-logos-row {
+    gap: 90px;
+  }
+
+  .hero-institution-logo {
+    height: 64px;
+  }
+
+
+}
+
+/* Mobile Layout Overrides */
+@media (max-width: 768px) {
+  body {
+    overflow-y: auto !important;
+    height: auto !important;
+    min-height: 100vh;
+  }
+
+  main,
+  #hero-section {
+    flex-direction: column !important;
+    height: auto !important;
+    padding-top: 64px;
+    padding-bottom: 60px;
+  }
+
+  /* Hero left column */
+  .hero-left-section {
+    width: 100% !important;
+    height: auto !important;
+    padding-left: 24px !important;
+    padding-right: 24px !important;
+    padding-top: 40px !important;
+    padding-bottom: 24px !important;
+    align-items: center !important;
+    text-align: center !important;
+  }
+
+  .hero-left-section p {
+    max-width: 100% !important;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .hero-left-section .flex.gap-4 {
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .hero-title-area {
+    width: 90vw !important;
+    max-width: 430px !important;
+    margin: 0 auto;
+  }
+
+  .hero-logos-row {
+    gap: 60px;
+    margin-bottom: 20px;
+  }
+
+  .hero-institution-logo {
+    height: 48px;
+  }
+
+  .hero-date {
+    font-size: 16px;
+    letter-spacing: 0.15em;
+    margin-top: 18px;
+  }
+
+  .hero-deco-line {
+    width: 90px;
+  }
+
+  .hero-left-section .relative.w-fit {
+    margin: 0 auto;
+  }
+
+  /* Hero right column */
+  .hero-right-section {
+    width: 100% !important;
+    height: auto !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    position: relative !important;
+    padding-bottom: 40px !important;
+    margin-top: 20px;
+  }
+
+  /* Stacked Video Container */
+  .hero-media-container {
+    position: relative !important;
+    inset: auto !important;
+    width: 100% !important;
+    aspect-ratio: 16/9 !important;
+    height: auto !important;
+    margin: 0 auto !important;
+    display: block !important;
+    z-index: 10;
+    margin-bottom: 40px !important;
+
+    /* Remove horizontal mask on mobile stack */
+    mask-image: none !important;
+    -webkit-mask-image: none !important;
+  }
+
+  .hero-media-video {
+    position: relative !important;
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+    animation: floatIdleMobile 8s ease-in-out infinite;
+  }
+
+  /* Stacked Status Badge */
+  .status-badge-container {
+    position: relative !important;
+    bottom: auto !important;
+    right: auto !important;
+    margin: 20px auto 0 auto !important;
+    display: flex !important;
+    justify-content: center !important;
+    z-index: 20;
+  }
+
+  .status-badge-container .text-right {
+    text-align: center !important;
+  }
+
+
+}

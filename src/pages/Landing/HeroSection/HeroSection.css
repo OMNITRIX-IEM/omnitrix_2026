@@ -1,0 +1,460 @@
+.hero-section {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  min-height: 700px;
+
+  overflow: visible;
+
+  background: #000;
+  z-index: 1;
+}
+
+.pin-spacer {
+  z-index: 1 !important;
+}
+
+/* Full-screen Omnitrix artwork */
+.hero-artwork {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.hero-artwork-image {
+  width: 100%;
+  height: 100%;
+  display: block;
+
+  object-fit: cover;
+  object-position: center center;
+
+  user-select: none;
+  pointer-events: none;
+}
+
+/* =========================================
+   INSTITUTIONAL LOGOS
+   ========================================= */
+
+.hero-logos {
+  position: absolute;
+
+  /* Position over the black area above OMNITRIX */
+  top: 105px;
+  left: 100px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  gap: 30px;
+
+  z-index: 10;
+
+  pointer-events: none;
+}
+
+.hero-institution-logo {
+  width: auto;
+  height: 72px;
+
+  object-fit: contain;
+
+  filter:
+    drop-shadow(0 0 6px rgba(255, 255, 255, 0.12));
+
+  user-select: none;
+}
+
+.hero-logo-divider {
+  width: 2px;
+  height: 72px;
+
+  background: rgba(255, 255, 255, 0.75);
+
+  opacity: 0.8;
+}
+
+
+/* =========================================
+   HERO COPY
+   ========================================= */
+
+.hero-copy {
+  position: absolute;
+
+  left: 100px;
+  bottom: 70px;
+
+  width: 560px;
+
+  z-index: 60;
+
+  pointer-events: none;
+}
+
+.hero-tagline {
+  margin: 0 0 22px 0;
+
+  font-family: 'Rajdhani', sans-serif;
+  font-weight: 700;
+  font-size: clamp(26px, 2.2vw, 38px);
+  line-height: 1;
+
+  letter-spacing: 0.28em;
+
+  color: #ffffff;
+  text-transform: uppercase;
+
+  text-shadow:
+    0 0 10px rgba(255, 255, 255, 0.12);
+}
+
+.hero-description {
+  margin: 0;
+
+  max-width: 520px;
+
+  font-family: 'Inter', sans-serif;
+  font-size: 17px;
+  font-weight: 400;
+  line-height: 1.65;
+
+  letter-spacing: 0.01em;
+
+  color: rgba(255, 255, 255, 0.82);
+
+  text-shadow:
+    0 2px 8px rgba(0, 0, 0, 0.8);
+}
+
+
+/* =========================================
+   ATMOSPHERIC FALLING PARTICLES
+   ========================================= */
+
+.hero-particles {
+  position: absolute;
+  inset: 0;
+  z-index: 12;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.hero-particle {
+  position: absolute;
+  display: block;
+
+  background: rgba(190, 255, 0, 0.72);
+
+  border-radius: 1px;
+
+  box-shadow:
+    0 0 6px rgba(170, 255, 0, 0.38);
+
+  opacity: 0;
+
+  animation:
+    particleFall var(--particle-duration) linear infinite;
+
+  animation-delay: var(--particle-delay);
+}
+
+
+/* =========================================
+   LEFT SIDE — MORE ACTIVE
+   ========================================= */
+
+/* Tiny frequent debris */
+.particle-1 {
+  left: 8%;
+  top: -20px;
+  width: 2px;
+  height: 5px;
+
+  --particle-duration: 4.2s;
+  --particle-delay: 0s;
+  --particle-rotation: 20deg;
+}
+
+.particle-2 {
+  left: 14%;
+  top: -30px;
+  width: 3px;
+  height: 7px;
+
+  --particle-duration: 5.5s;
+  --particle-delay: 1.2s;
+  --particle-rotation: -35deg;
+}
+
+.particle-3 {
+  left: 21%;
+  top: -20px;
+  width: 2px;
+  height: 4px;
+
+  --particle-duration: 3.8s;
+  --particle-delay: 0.5s;
+  --particle-rotation: 55deg;
+}
+
+.particle-4 {
+  left: 28%;
+  top: -40px;
+  width: 4px;
+  height: 9px;
+
+  --particle-duration: 6.8s;
+  --particle-delay: 2.8s;
+  --particle-rotation: -20deg;
+}
+
+
+/* Medium fragments */
+.particle-5 {
+  left: 11%;
+  top: -40px;
+  width: 5px;
+  height: 13px;
+
+  --particle-duration: 7.5s;
+  --particle-delay: 3.5s;
+  --particle-rotation: 35deg;
+}
+
+.particle-6 {
+  left: 25%;
+  top: -60px;
+  width: 6px;
+  height: 16px;
+
+  --particle-duration: 8.5s;
+  --particle-delay: 5.2s;
+  --particle-rotation: -45deg;
+}
+
+.particle-7 {
+  left: 34%;
+  top: -30px;
+  width: 3px;
+  height: 10px;
+
+  --particle-duration: 6.2s;
+  --particle-delay: 4s;
+  --particle-rotation: 70deg;
+}
+
+
+/* Larger rare debris */
+.particle-8 {
+  left: 18%;
+  top: -80px;
+  width: 8px;
+  height: 20px;
+
+  --particle-duration: 10s;
+  --particle-delay: 7s;
+  --particle-rotation: -30deg;
+
+  box-shadow:
+    0 0 10px rgba(170, 255, 0, 0.42);
+}
+
+.particle-9 {
+  left: 39%;
+  top: -50px;
+  width: 7px;
+  height: 17px;
+
+  --particle-duration: 11s;
+  --particle-delay: 8.5s;
+  --particle-rotation: 45deg;
+}
+
+
+/* =========================================
+   CENTER — MODERATE ACTIVITY
+   ========================================= */
+
+.particle-10 {
+  left: 44%;
+  top: -25px;
+  width: 3px;
+  height: 7px;
+
+  --particle-duration: 6s;
+  --particle-delay: 1.8s;
+  --particle-rotation: 25deg;
+}
+
+.particle-11 {
+  left: 51%;
+  top: -40px;
+  width: 4px;
+  height: 10px;
+
+  --particle-duration: 7.5s;
+  --particle-delay: 4.5s;
+  --particle-rotation: -50deg;
+}
+
+.particle-12 {
+  left: 57%;
+  top: -30px;
+  width: 2px;
+  height: 5px;
+
+  --particle-duration: 4.8s;
+  --particle-delay: 2.2s;
+  --particle-rotation: 65deg;
+}
+
+
+/* =========================================
+   RIGHT SIDE — LESS FREQUENT
+   ========================================= */
+
+.particle-13 {
+  left: 66%;
+  top: -30px;
+  width: 4px;
+  height: 9px;
+
+  --particle-duration: 8s;
+  --particle-delay: 5s;
+  --particle-rotation: 35deg;
+}
+
+.particle-14 {
+  left: 74%;
+  top: -50px;
+  width: 3px;
+  height: 7px;
+
+  --particle-duration: 9.5s;
+  --particle-delay: 2.8s;
+  --particle-rotation: -40deg;
+}
+
+.particle-15 {
+  left: 83%;
+  top: -40px;
+  width: 5px;
+  height: 12px;
+
+  --particle-duration: 10s;
+  --particle-delay: 7s;
+  --particle-rotation: 55deg;
+}
+
+.particle-16 {
+  left: 91%;
+  top: -60px;
+  width: 3px;
+  height: 8px;
+
+  --particle-duration: 11s;
+  --particle-delay: 9s;
+  --particle-rotation: -25deg;
+}
+
+
+/* =========================================
+   NATURAL FALL MOTION
+   ========================================= */
+
+@keyframes particleFall {
+
+  0% {
+    transform:
+      translate3d(0, -40px, 0) rotate(var(--particle-rotation));
+
+    opacity: 0;
+  }
+
+  8% {
+    opacity: 0.7;
+  }
+
+  35% {
+    opacity: 0.55;
+  }
+
+  65% {
+    opacity: 0.35;
+  }
+
+  85% {
+    opacity: 0.15;
+  }
+
+  100% {
+    transform:
+      translate3d(-45px, 110vh, 0) rotate(calc(var(--particle-rotation) + 220deg));
+
+    opacity: 0;
+  }
+}
+
+/* =========================================
+   HERO TEXT — OMNITRIX GREEN + WHITE
+   ========================================= */
+
+.hero-subtitle {
+  font-family: 'Rajdhani', sans-serif;
+  font-weight: 700;
+  font-size: 30px;
+  line-height: 1.15;
+
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+
+  color: #ffffff;
+
+  margin-top: 0;
+  margin-bottom: 22px;
+
+  text-shadow:
+    0 0 10px rgba(255, 255, 255, 0.12);
+
+  position: relative;
+  z-index: 20;
+}
+
+.hero-subtitle span {
+  color: #b6ff00;
+
+  text-shadow:
+    0 0 6px rgba(182, 255, 0, 0.45),
+    0 0 18px rgba(140, 255, 0, 0.18);
+}
+
+/* =========================================
+   HERO → NEXT SECTION BLENDING
+   ========================================= */
+
+.hero-bottom-fade {
+  position: absolute;
+
+  left: 0;
+  right: 0;
+  bottom: -90px;
+
+  height: 180px;
+
+  pointer-events: none;
+
+  z-index: 100;
+
+  background: linear-gradient(to bottom,
+      rgba(0, 0, 0, 0) 0%,
+      rgba(0, 0, 0, 0.08) 18%,
+      rgba(0, 0, 0, 0.22) 38%,
+      rgba(0, 0, 0, 0.42) 58%,
+      rgba(0, 0, 0, 0.68) 78%,
+      #000 100%);
+}

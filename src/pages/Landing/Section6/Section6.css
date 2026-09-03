@@ -1,0 +1,528 @@
+/* ==========================================================================
+   ROBOWARS EVENT COMMAND CENTER - DESIGN SYSTEM & STYLESHEET (SECTION 6)
+   Theme: Omnitrix Green Tactical HUD Event Command Console
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   1. CSS CUSTOM PROPERTIES (DESIGN TOKENS) & SECTION SCOPING
+   -------------------------------------------------------------------------- */
+.mission-control-section {
+  --bg-black: #000000;
+  --omnitrix-green: #B6FF00;
+  --bright-green: #8CFF00;
+  --dark-green: #071000;
+  
+  /* Aliased to green tokens to ensure any variable references map to green */
+  --combat-red: #B6FF00;
+  --plasma-red: #8CFF00;
+  
+  --text-white: #FFFFFF;
+  --text-dim: rgba(255, 255, 255, 0.72);
+  --text-muted: rgba(255, 255, 255, 0.55);
+  --text-green-accent: rgba(182, 255, 0, 0.75);
+  
+  --border-green: rgba(182, 255, 0, 0.35);
+  --border-green-bright: rgba(182, 255, 0, 0.65);
+  --glow-green: rgba(182, 255, 0, 0.12);
+  --glow-green-strong: rgba(182, 255, 0, 0.28);
+  
+  --border-red: rgba(182, 255, 0, 0.35);
+  --border-red-bright: rgba(182, 255, 0, 0.65);
+  --glow-red: rgba(182, 255, 0, 0.12);
+  --glow-red-strong: rgba(182, 255, 0, 0.28);
+  
+  --glass-bg: rgba(0, 12, 0, 0.82);
+  --card-bg: rgba(0, 8, 0, 0.88);
+  
+  --font-heading: 'Rajdhani', sans-serif;
+  --font-body: 'Inter', sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: transparent;
+  padding: 3rem 2rem;
+  overflow: hidden;
+}
+
+.mission-control-section,
+.mission-control-section *,
+.mission-control-section *::before,
+.mission-control-section *::after {
+  box-sizing: border-box;
+}
+
+/* Full-Screen Atmospheric Hazy Matrix Grid Overlay */
+.mission-control-section::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
+  opacity: 0.12;
+  background-image: 
+    linear-gradient(rgba(182, 255, 0, 0.25) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(182, 255, 0, 0.25) 1px, transparent 1px);
+  background-size: 24px 24px;
+  filter: blur(0.5px);
+  mask-image: radial-gradient(circle at center, transparent 20%, rgba(0, 0, 0, 1) 90%);
+  -webkit-mask-image: radial-gradient(circle at center, transparent 20%, rgba(0, 0, 0, 1) 90%);
+}
+
+/* Moving HUD Background Grid */
+.mission-control-section .hud-bg-grid {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.04;
+  z-index: 1;
+  background-image: 
+    linear-gradient(var(--omnitrix-green) 1px, transparent 1px),
+    linear-gradient(90deg, var(--omnitrix-green) 1px, transparent 1px);
+  background-size: 32px 32px;
+  animation: missionControlGridShift 25s linear infinite;
+}
+
+@keyframes missionControlGridShift {
+  0% { background-position: 0 0; }
+  100% { background-position: 32px 32px; }
+}
+
+/* --------------------------------------------------------------------------
+   2. SECTION CONTAINER & BORDERLESS VIEWPORT FRAME
+   -------------------------------------------------------------------------- */
+.mission-control-section .mission-control-container {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  max-width: 1480px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+}
+
+.mission-control-section .viewport-frame {
+  position: relative;
+  width: 100%;
+  max-width: 1400px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1.5rem;
+  padding: 0;
+  background: transparent;
+  border: none;
+  box-shadow: none;
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+  overflow: visible;
+}
+
+/* --------------------------------------------------------------------------
+   3. VIEWPORT HEADER TELEMETRY BAR
+   -------------------------------------------------------------------------- */
+.mission-control-section .viewport-header {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid var(--border-green);
+  z-index: 5;
+}
+
+.mission-control-section .viewport-title-group {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+}
+
+.mission-control-section .hud-badge {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  padding: 0.3rem 0.75rem;
+  background: var(--omnitrix-green);
+  color: var(--bg-black);
+  box-shadow: 0 0 10px rgba(182, 255, 0, 0.3);
+}
+
+.mission-control-section .viewport-title {
+  font-family: var(--font-heading);
+  font-size: 1.65rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text-white);
+  text-shadow: 0 0 12px rgba(182, 255, 0, 0.2);
+}
+
+.mission-control-section .viewport-meta {
+  display: flex;
+  gap: 1rem;
+}
+
+.mission-control-section .meta-tag {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  letter-spacing: 0.1em;
+}
+
+/* --------------------------------------------------------------------------
+   4. 3D CARD CANVAS & EXPANSIVE EVENT CARDS
+   -------------------------------------------------------------------------- */
+.mission-control-section .card-stack-container {
+  position: relative;
+  width: 100%;
+  min-height: 520px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  perspective: 1200px;
+  z-index: 4;
+  margin: 1.25rem 0;
+  border: 1px solid rgba(182, 255, 0, 0.15);
+  box-shadow: inset 0 0 35px rgba(182, 255, 0, 0.03);
+  border-radius: 6px;
+}
+
+/* Corner HUD frame markers for hollow outer frame */
+.mission-control-section .card-stack-container::before,
+.mission-control-section .card-stack-container::after {
+  content: "";
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  pointer-events: none;
+  z-index: 2;
+}
+
+.mission-control-section .card-stack-container::before {
+  top: -1px;
+  left: -1px;
+  border-top: 2px solid var(--omnitrix-green);
+  border-left: 2px solid var(--omnitrix-green);
+}
+
+.mission-control-section .card-stack-container::after {
+  bottom: -1px;
+  right: -1px;
+  border-bottom: 2px solid var(--omnitrix-green);
+  border-right: 2px solid var(--omnitrix-green);
+}
+
+.mission-control-section .card-canvas {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transform-style: preserve-3d;
+  will-change: transform;
+}
+
+.mission-control-section .hud-card {
+  position: absolute;
+  width: 100%;
+  max-width: 1240px;
+  background: var(--card-bg);
+  border: 1px solid var(--border-green);
+  padding: 2.5rem 3.25rem;
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  will-change: transform, opacity, filter;
+  transform-origin: center center;
+}
+
+.mission-control-section .hud-card.active {
+  border-color: rgba(182, 255, 0, 0.45);
+  box-shadow: 0 0 35px rgba(182, 255, 0, 0.18), inset 0 0 15px rgba(182, 255, 0, 0.08);
+}
+
+.mission-control-section .card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.85rem;
+}
+
+.mission-control-section .seq-tag {
+  font-family: var(--font-mono);
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--omnitrix-green);
+  letter-spacing: 0.15em;
+  text-shadow: 0 0 8px rgba(182, 255, 0, 0.4);
+}
+
+.mission-control-section .card-id {
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  letter-spacing: 0.1em;
+}
+
+.mission-control-section .card-main {
+  margin-bottom: 1.5rem;
+}
+
+.mission-control-section .card-title {
+  font-family: var(--font-heading);
+  font-size: 3.1rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-white);
+  line-height: 1.1;
+  text-shadow: 0 0 12px rgba(255, 255, 255, 0.25);
+}
+
+.mission-control-section .card-line {
+  height: 1px;
+  width: 100%;
+  background: linear-gradient(90deg, var(--omnitrix-green), var(--bright-green), transparent);
+  margin: 0.85rem 0 1.1rem 0;
+  opacity: 0.5;
+}
+
+.mission-control-section .card-subtitle {
+  font-family: var(--font-body);
+  font-size: 1.1rem;
+  line-height: 1.65;
+  color: var(--text-dim);
+  letter-spacing: 0.01em;
+  max-width: 960px;
+}
+
+/* Card Footer Group (Chips & CTA) */
+.mission-control-section .card-footer-group {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+}
+
+.mission-control-section .card-meta-chips {
+  display: flex;
+  gap: 0.6rem;
+  flex-wrap: wrap;
+}
+
+.mission-control-section .hud-tag {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  padding: 0.4rem 0.9rem;
+  border: 1px solid var(--border-green);
+  color: var(--text-white);
+  background: rgba(182, 255, 0, 0.03);
+}
+
+/* Primary CTA Button */
+.mission-control-section .event-cta-btn {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  color: var(--text-white);
+  background: rgba(0, 15, 0, 0.85);
+  border: 1px solid var(--border-green-bright);
+  padding: 0.65rem 1.6rem;
+  cursor: pointer;
+  box-shadow: 0 0 12px rgba(182, 255, 0, 0.12);
+  transition: all 0.25s ease;
+  white-space: nowrap;
+}
+
+.mission-control-section .event-cta-btn:hover {
+  background: var(--omnitrix-green);
+  color: var(--bg-black);
+  box-shadow: 0 0 20px rgba(182, 255, 0, 0.4);
+  transform: translateY(-2px);
+}
+
+.mission-control-section .event-cta-btn:active {
+  transform: translateY(0);
+}
+
+/* --------------------------------------------------------------------------
+   5. VIEWPORT FOOTER & STEP PROGRESS TRACKER
+   -------------------------------------------------------------------------- */
+.mission-control-section .viewport-footer {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 1rem;
+  border-top: 1px solid var(--border-green);
+  z-index: 5;
+}
+
+.mission-control-section .nav-hint {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.mission-control-section .hint-icon {
+  font-size: 0.65rem;
+  color: var(--omnitrix-green);
+}
+
+.mission-control-section .hint-text {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  color: var(--text-muted);
+  letter-spacing: 0.1em;
+}
+
+/* Progress Tracker Bar */
+.mission-control-section .card-pagination {
+  width: 220px;
+  display: flex;
+  align-items: center;
+}
+
+.mission-control-section .progress-bar-bg {
+  width: 100%;
+  height: 4px;
+  background: rgba(255, 255, 255, 0.1);
+  position: relative;
+  overflow: hidden;
+}
+
+.mission-control-section .progress-bar-fill {
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 0%;
+  background: linear-gradient(90deg, var(--omnitrix-green), var(--bright-green));
+  box-shadow: 0 0 8px var(--omnitrix-green);
+  transition: width 0.1s linear;
+}
+
+/* Prev/Next HUD Buttons */
+.mission-control-section .hud-nav-controls {
+  display: flex;
+  gap: 0.6rem;
+}
+
+.mission-control-section .hud-btn {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  background: rgba(0, 15, 0, 0.6);
+  border: 1px solid var(--border-green-bright);
+  color: var(--text-white);
+  padding: 0.4rem 1.1rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  transition: all 0.2s ease;
+}
+
+.mission-control-section .hud-btn:hover {
+  background: var(--omnitrix-green);
+  color: var(--bg-black);
+  border-color: var(--omnitrix-green);
+  box-shadow: 0 0 14px rgba(182, 255, 0, 0.35);
+}
+
+.mission-control-section .hud-btn:active {
+  transform: scale(0.96);
+}
+
+/* Utility Classes & Red Text Overrides */
+.mission-control-section .text-red {
+  color: var(--omnitrix-green) !important;
+  text-shadow: 0 0 8px rgba(182, 255, 0, 0.35);
+}
+
+.mission-control-section .mono-clock {
+  font-family: var(--font-mono) !important;
+  font-size: 1rem !important;
+}
+
+/* --------------------------------------------------------------------------
+   6. RESPONSIVE BREAKPOINTS
+   -------------------------------------------------------------------------- */
+@media (max-width: 1200px) {
+  .mission-control-section .hud-card {
+    max-width: 1000px;
+    padding: 2.2rem 2.5rem;
+  }
+
+  .mission-control-section .card-title {
+    font-size: 2.6rem;
+  }
+}
+
+@media (max-width: 992px) {
+  .mission-control-section {
+    padding: 2rem 1rem;
+  }
+
+  .mission-control-section .hud-card {
+    max-width: 100%;
+    padding: 2rem 1.75rem;
+  }
+
+  .mission-control-section .card-title {
+    font-size: 2.2rem;
+  }
+
+  .mission-control-section .card-subtitle {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 640px) {
+  .mission-control-section {
+    padding: 1.5rem 0.75rem;
+  }
+
+  .mission-control-section .viewport-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+  }
+  
+  .mission-control-section .hud-card {
+    padding: 1.5rem 1.25rem;
+  }
+  
+  .mission-control-section .card-title {
+    font-size: 1.85rem;
+  }
+  
+  .mission-control-section .card-subtitle {
+    font-size: 0.9rem;
+  }
+  
+  .mission-control-section .card-footer-group {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+  
+  .mission-control-section .nav-hint {
+    display: none;
+  }
+}
+

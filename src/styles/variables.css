@@ -1,0 +1,10 @@
+:root {
+  --primary: #e8192c;
+  --primary-rgb: 232, 25, 44;
+  --background: #000000;
+  --on-surface: #e5e2e1;
+  --on-surface-variant: #e9bcba;
+  --electric: #00c8ff;
+  --red: #c0392b;
+  --gold: #e8a020;
+}

@@ -1,0 +1,49 @@
+/* Float Up (Particles) */
+@keyframes floatUp {
+  0% {
+    transform: translateY(100vh) scale(0);
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+    scale: 1;
+  }
+  90% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-10vh) scale(0.5);
+    opacity: 0;
+  }
+}
+
+.particle {
+  position: absolute;
+  background-color: #ff4500;
+  border-radius: 50%;
+  pointer-events: none;
+  opacity: 0;
+  animation: floatUp linear infinite;
+  box-shadow: 0 0 8px #ff4500, 0 0 4px #e8192c;
+}
+
+/* Float Idle (Background Video) */
+@keyframes floatIdle {
+  0%, 100% {
+    transform: translateY(0) translateZ(0);
+  }
+  50% {
+    transform: translateY(-8px) translateZ(0);
+  }
+}
+
+/* Float Idle Mobile */
+@keyframes floatIdleMobile {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-6px);
+  }
+}
+

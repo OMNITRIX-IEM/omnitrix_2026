@@ -1,0 +1,51 @@
+/* Load Rajdhani and Inter globally */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400&family=Rajdhani:wght@400;500;600;700&family=Sora:wght@400;600;700;800&family=Archivo+Narrow:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap');
+
+@import './variables.css';
+@import './animations.css';
+@import './responsive.css';
+
+/* Lenis Smooth Scroll Stabilization */
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overflow: clip;
+}
+
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+/* Original Stitch-generated Styles */
+.clip-parallelogram {
+  clip-path: polygon(10% 0, 100% 0, 90% 100%, 0 100%);
+}
+
+.text-glow-red {
+  text-shadow: 0 0 30px #e8192c, 0 0 10px #e8192c;
+  -webkit-text-stroke: 2px #e8192c;
+  color: #111;
+}
+
+.text-glow-neon {
+  text-shadow: 0 0 15px #e8192c;
+}
+
+/* Page Vignette */
+body::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  box-shadow: inset 0 0 150px rgba(0,0,0,0.9);
+  pointer-events: none;
+  z-index: 40;
+}
+
+

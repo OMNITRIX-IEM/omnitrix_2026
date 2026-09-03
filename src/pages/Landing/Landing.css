@@ -1,0 +1,163 @@
+.phase-section {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  background: transparent !important;
+  background-color: transparent !important;
+  overflow: hidden;
+  z-index: 10;
+}
+
+#phase-01 {
+  z-index: 20 !important;
+}
+
+#phase-01,
+#phase-02,
+#phase-03 {
+  background: transparent !important;
+  background-color: transparent !important;
+}
+
+.phase-bg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  will-change: opacity;
+  background: transparent !important;
+  background-color: transparent !important;
+}
+
+.phase-bg-overlay {
+  position: absolute;
+  inset: 0;
+  background: transparent !important;
+}
+
+.phase-panel-wrapper {
+  animation: panelFloat 8s ease-in-out infinite;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+.phase-panel {
+  position: relative;
+  z-index: 2;
+  will-change: transform, opacity;
+  
+  width: 100% !important;
+  max-width: 480px !important;
+  height: auto !important;
+  min-height: auto !important;
+  padding: 28px 32px !important;
+  border-radius: 0 !important;
+  clip-path: none !important;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden !important;
+
+  /* Black + Dark Green + Neon Green tactical HUD panel */
+  background: rgba(0, 15, 0, 0.78) !important;
+  backdrop-filter: blur(20px) !important;
+  -webkit-backdrop-filter: blur(20px) !important;
+  border: 1px solid rgba(182, 255, 0, 0.35) !important;
+  box-shadow: 0 0 30px rgba(182, 255, 0, 0.12),
+              inset 0 0 30px rgba(182, 255, 0, 0.06) !important;
+
+  transform: translateZ(0);
+  backface-visibility: hidden;
+
+  transition: border-color 0.4s cubic-bezier(0.25, 1, 0.5, 1),
+              background-color 0.4s cubic-bezier(0.25, 1, 0.5, 1),
+              box-shadow 0.4s cubic-bezier(0.25, 1, 0.5, 1) !important;
+}
+
+.phase-panel:hover {
+  border-color: rgba(182, 255, 0, 0.65) !important;
+  background-color: rgba(0, 20, 0, 0.85) !important;
+  box-shadow: 0 0 45px rgba(182, 255, 0, 0.22),
+              inset 0 0 40px rgba(182, 255, 0, 0.10) !important;
+  transform: translateY(-2px) scale(1.005);
+}
+
+.phase-content {
+  width: 100% !important;
+  height: auto !important;
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: center !important;
+  align-items: center !important;
+  text-align: center !important;
+  position: relative !important;
+  pointer-events: auto !important;
+}
+
+.phase-heading {
+  font-family: 'Rajdhani', sans-serif !important;
+  font-weight: 800 !important;
+  font-size: 56px !important;
+  line-height: 0.95 !important;
+  letter-spacing: 0.02em !important;
+  text-transform: uppercase !important;
+  text-shadow: 0 0 12px rgba(182, 255, 0, 0.35),
+               0 0 30px rgba(182, 255, 0, 0.15) !important;
+  margin-top: 0 !important;
+  margin-bottom: 16px !important;
+  color: #ffffff !important;
+  transform: translateZ(0);
+  will-change: transform, opacity;
+  backface-visibility: hidden;
+}
+
+.phase-heading.glitching {
+  animation: hudGlitchStep 0.2s ease-in-out !important;
+}
+
+.phase-content p {
+  font-family: 'Inter', sans-serif !important;
+  font-size: 15px !important;
+  line-height: 1.75 !important;
+  color: rgba(255, 255, 255, 0.75) !important;
+  max-width: 100% !important;
+  margin: 0 !important;
+  opacity: 0.88 !important;
+}
+
+/* Drone Sizing & Structure */
+.drone-sequence-container {
+  width: min(50vw, 900px);
+  height: min(80vh, 900px);
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 10;
+}
+
+.drone-frame {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 0;
+  will-change: opacity;
+  transition: opacity 0.05s ease-out;
+}
+
+.drone-frame.active {
+  opacity: 1;
+}

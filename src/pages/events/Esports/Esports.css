@@ -1,0 +1,597 @@
+.esports-page {
+    --bg-color: #000000;
+    --dark-blood: #0a0000;
+    --combat-red: #e8192c;
+    --glow-red: #ff2200;
+    --fire-ember: #ff4500;
+    --white: #ffffff;
+    --muted: #aaaaaa;
+    --font-heading: 'Rajdhani', sans-serif;
+    --font-body: 'Inter', sans-serif;
+
+    background-color: #000000;
+    color: var(--white);
+    font-family: var(--font-body);
+    min-height: 100vh;
+    width: 100vw;
+    max-width: 100%;
+    overflow-x: hidden;
+    scroll-behavior: smooth;
+}
+
+/* HERO SECTION & CINEMATIC VIEWPORT */
+.esports-page .hero-section {
+    position: relative;
+    height: 100vh;
+    width: 100vw;
+    max-width: 100%;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #000000;
+}
+
+.esports-page .carousel-viewport {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+.esports-page .carousel {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.esports-page .carousel-image {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    z-index: 1;
+}
+
+.esports-page .hero-vignette {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: 5;
+    background:
+        linear-gradient(90deg,
+            rgba(0, 0, 0, 0.95) 0%,
+            rgba(0, 0, 0, 0.45) 8%,
+            transparent 18%,
+            transparent 82%,
+            rgba(0, 0, 0, 0.45) 92%,
+            rgba(0, 0, 0, 0.95) 100%),
+        linear-gradient(180deg,
+            rgba(0, 0, 0, 0.6) 0%,
+            transparent 15%,
+            transparent 75%,
+            rgba(0, 0, 0, 0.95) 100%);
+}
+
+.esports-page .hero-scanlines {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: 7;
+    background: repeating-linear-gradient(0deg,
+            transparent,
+            transparent 2px,
+            rgba(0, 0, 0, 0.12) 2px,
+            rgba(0, 0, 0, 0.12) 4px);
+    opacity: 0.4;
+}
+
+.esports-page .hud-frame {
+    position: absolute;
+    inset: 24px;
+    pointer-events: none;
+    z-index: 8;
+}
+
+.esports-page .hud-corner {
+    position: absolute;
+    width: 16px;
+    height: 16px;
+    border-color: rgba(232, 25, 44, 0.5);
+    border-style: solid;
+}
+
+.esports-page .hud-corner.top-left {
+    top: 0;
+    left: 0;
+    border-width: 2px 0 0 2px;
+}
+
+.esports-page .hud-corner.top-right {
+    top: 0;
+    right: 0;
+    border-width: 2px 2px 0 0;
+}
+
+.esports-page .hud-corner.bottom-left {
+    bottom: 0;
+    left: 0;
+    border-width: 0 0 2px 2px;
+}
+
+.esports-page .hud-corner.bottom-right {
+    bottom: 0;
+    right: 0;
+    border-width: 0 2px 2px 0;
+}
+
+.esports-page .hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.15) 0%, rgba(0, 0, 0, 0.6) 100%);
+    z-index: 10;
+    pointer-events: none;
+}
+
+.esports-page .hero-title-wrapper {
+    position: absolute;
+    top: 72%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 20;
+    text-align: center;
+    width: 100%;
+    pointer-events: none;
+}
+
+.esports-page .esports-title-img {
+    width: 60vw;
+    max-width: 90%;
+    height: auto;
+    filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.8));
+    display: block;
+    margin: 0 auto;
+}
+
+.esports-page .hero-subtitle {
+    margin-top: 32px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    align-items: center;
+    text-shadow: 0 4px 10px rgba(0, 0, 0, 0.8);
+}
+
+.esports-page .subtitle-primary {
+    font-family: var(--font-heading);
+    font-size: 42px;
+    font-weight: 800;
+    color: #eee8fa;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    transform: scaleY(1.1);
+}
+
+.esports-page .subtitle-secondary {
+    font-family: var(--font-heading);
+    font-size: 24px;
+    font-weight: 600;
+    color: #B30000;
+    text-transform: uppercase;
+    letter-spacing: 4px;
+}
+
+/* SECOND SECTION: E-SPORTS (SCROLL 2) */
+.esports-page .section-two {
+    position: relative;
+    width: 100%;
+    max-width: 100%;
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    overflow: hidden;
+    background-color: #000000;
+}
+
+.esports-page .esports-background {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('@/assets/events/esports/main_bg.png');
+    background-size: cover;
+    background-position: center top;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    z-index: 0;
+}
+
+.esports-page .esports-background::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: url('data:image/svg+xml,%3Csvg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg"%3E%3Cfilter id="noiseFilter"%3E%3CfeTurbulence type="fractalNoise" baseFrequency="0.65" numOctaves="3" stitchTiles="stitch"/%3E%3C/filter%3E%3Crect width="100%25" height="100%25" filter="url(%23noiseFilter)"/%3E%3C/svg%3E');
+    opacity: 0.03;
+    pointer-events: none;
+    z-index: 1;
+}
+
+.esports-page .esports-background::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 140px;
+    background: linear-gradient(to bottom, #000000 0%, transparent 100%);
+    pointer-events: none;
+    z-index: 2;
+}
+
+.esports-page .esports-container {
+    position: relative;
+    z-index: 10;
+    max-width: 1440px;
+    margin: 0 auto;
+    padding: 100px 40px;
+}
+
+.esports-page .esports-header-section {
+    position: relative;
+    z-index: 10;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    width: 100%;
+}
+
+.esports-page .esports-heading-wrapper {
+    position: relative;
+    margin-bottom: 32px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    max-width: 1200px;
+    padding: 36px 0;
+    background-color: rgba(8, 5, 15, 0.4);
+    box-shadow: inset 30px 0 40px -20px rgba(109, 59, 255, 0.2), inset -30px 0 40px -20px rgba(109, 59, 255, 0.2);
+    overflow: hidden;
+}
+
+.esports-page .esports-heading-shadow {
+    position: absolute;
+    font-family: 'Rajdhani', sans-serif;
+    font-weight: 800;
+    font-size: 100px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: #111111;
+    opacity: 0.08;
+    transform: scale(1.08) translate(-10px, 10px);
+    z-index: 1;
+    pointer-events: none;
+    white-space: nowrap;
+}
+
+.esports-page .esports-heading-main {
+    font-family: 'Rajdhani', sans-serif;
+    font-weight: 800;
+    font-size: 100px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    background: linear-gradient(160deg, #ffffff 0%, #f3f3f3 30%, #e4e4e4 60%, #d5d5d5 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    z-index: 2;
+    position: relative;
+    white-space: nowrap;
+    filter: url(#distress) drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3));
+    -webkit-text-stroke: 1px rgba(255, 255, 255, 0.05);
+}
+
+.esports-page .esports-tagline {
+    font-family: 'Orbitron', sans-serif;
+    font-weight: 700;
+    font-size: 15px;
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    max-width: 600px;
+    margin: 0 auto 64px auto;
+    position: relative;
+    z-index: 10;
+    background:
+        repeating-linear-gradient(0deg,
+            transparent,
+            transparent 2px,
+            rgba(0, 0, 0, 0.08) 2px,
+            rgba(0, 0, 0, 0.08) 3px),
+        linear-gradient(180deg,
+            #ffffff 0%,
+            #ffffff 15%,
+            rgba(200, 220, 255, 0.6) 15%,
+            #ffffff 25%,
+            #f2f2f2 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    -webkit-text-stroke: 1px rgba(255, 255, 255, 0.15);
+    text-shadow:
+        0 0 8px rgba(255, 255, 255, 0.7),
+        0 0 18px rgba(255, 255, 255, 0.45),
+        0 0 35px rgba(255, 255, 255, 0.2);
+}
+
+.esports-page .heading-edge-glow {
+    position: absolute;
+    top: 0;
+    height: 100%;
+    width: 8px;
+    background: #1fc010;
+    box-shadow: 0 0 20px #1fc010, 0 0 40px #1fc010;
+    z-index: 5;
+}
+
+.esports-page .heading-edge-glow.left { left: 0; }
+.esports-page .heading-edge-glow.right { right: 0; }
+
+.esports-page .particle-debris {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: 4;
+}
+
+.esports-page .particle {
+    position: absolute;
+    background: #fff;
+    border-radius: 50%;
+}
+
+.esports-page .particle-1 { width: 3px; height: 3px; top: 10%; left: 15%; opacity: 0.6; }
+.esports-page .particle-2 { width: 2px; height: 2px; top: 80%; left: 30%; opacity: 0.3; }
+.esports-page .particle-3 { width: 4px; height: 4px; top: 20%; right: 20%; opacity: 0.5; }
+.esports-page .particle-4 { width: 2px; height: 2px; top: 60%; right: 10%; opacity: 0.7; }
+.esports-page .particle-5 { width: 3px; height: 3px; bottom: 10%; right: 35%; opacity: 0.4; }
+.esports-page .particle-6 { width: 1.5px; height: 1.5px; top: 40%; left: 45%; opacity: 0.8; }
+
+.esports-page .esports-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 48px;
+    max-width: 1250px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 10;
+}
+
+.esports-page .esports-card {
+    position: relative;
+    width: 340px;
+    height: 476px;
+    flex-shrink: 0;
+    transition: transform 0.3s ease;
+    cursor: pointer;
+    overflow: visible;
+}
+
+.esports-page .card-energy-glow {
+    position: absolute;
+    left: 4%;
+    width: 92%;
+    bottom: -45px;
+    height: 90px;
+    pointer-events: none;
+    z-index: 1;
+    background:
+        radial-gradient(ellipse 75% 60% at 50% 12%,
+            rgba(50, 255, 40, 0.55) 0%,
+            rgba(40, 220, 30, 0.35) 30%,
+            rgba(30, 180, 20, 0.15) 55%,
+            rgba(20, 140, 15, 0.04) 75%,
+            transparent 90%),
+        radial-gradient(ellipse 95% 80% at 50% 0%,
+            rgba(40, 230, 30, 0.38) 0%,
+            rgba(25, 160, 20, 0.18) 45%,
+            transparent 85%);
+    filter: blur(16px);
+    opacity: 0.85;
+    animation: cardEnergyPulse 5s ease-in-out infinite;
+    transform-origin: top center;
+}
+
+.esports-page .esports-card:hover {
+    transform: translateY(-6px);
+}
+
+.esports-page .esports-card:hover .card-energy-glow {
+    opacity: 1;
+    filter: blur(18px);
+}
+
+@keyframes cardEnergyPulse {
+    0%, 100% {
+        opacity: 0.75;
+        transform: scaleX(0.96) translateY(0);
+    }
+    50% {
+        opacity: 0.95;
+        transform: scaleX(1.03) translateY(2px);
+    }
+}
+
+.esports-page .esports-card-border {
+    position: absolute;
+    inset: 0;
+    z-index: 10;
+    pointer-events: none;
+}
+
+.esports-page .esports-card-border svg {
+    width: 100%;
+    height: 100%;
+    display: block;
+}
+
+.esports-page .esports-card-border svg path {
+    stroke: #ffffff;
+    stroke-width: 2;
+    transition: stroke 0.3s ease, stroke-width 0.3s ease, filter 0.3s ease;
+}
+
+.esports-page .esports-card:hover .esports-card-border svg path {
+    stroke: rgba(255, 34, 0, 0.9);
+    stroke-width: 3;
+    filter: drop-shadow(0 0 5px rgba(255, 34, 0, 0.8));
+}
+
+.esports-page .esports-card-mask {
+    clip-path: url(#workshop-mask-svg);
+    position: relative;
+    width: 100%;
+    height: 100%;
+    background-color: #08050F;
+    overflow: hidden;
+    z-index: 5;
+}
+
+.esports-page .esports-card-tag {
+    position: absolute;
+    left: 24px;
+    top: 204px;
+    transform: translateX(-50%) rotate(-90deg);
+    z-index: 30;
+    color: #ffffff;
+    font-family: 'Roboto Mono', monospace, sans-serif;
+    font-size: 10px;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    opacity: 0.7;
+}
+
+.esports-page .esports-card-image-wrap {
+    height: 65%;
+    width: 100%;
+    position: relative;
+    overflow: hidden;
+}
+
+.esports-page .esports-card-image-wrap img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: grayscale(100%);
+    transition: filter 0.5s ease, transform 0.5s ease;
+}
+
+.esports-page .esports-card:hover .esports-card-image-wrap img {
+    filter: grayscale(0%);
+    transform: scale(1.05);
+}
+
+.esports-page .esports-card-gradient {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, #08050F, transparent);
+}
+
+.esports-page .esports-card-content {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 24px;
+    padding-top: 0;
+}
+
+.esports-page .esports-card-content h3 {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 22px;
+    color: #ffffff;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    line-height: 1.1;
+    margin-bottom: 24px;
+}
+
+.esports-page .esports-card-actions {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 80px;
+    position: relative;
+    z-index: 20;
+}
+
+.esports-page .esports-card-actions button {
+    flex: 1;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: #ffffff;
+    font-family: 'Roboto Mono', monospace, sans-serif;
+    font-size: 10px;
+    padding: 8px 0;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.esports-page .esports-card-actions button:hover {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.esports-page .esports-card-footer {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 80px;
+    background: rgba(31, 193, 16, 0.497);
+    display: flex;
+    align-items: center;
+    padding: 0 32px 16px 32px;
+}
+
+.esports-page .esports-card-price {
+    display: flex;
+    flex-direction: column;
+}
+
+.esports-page .price-current {
+    color: #ffffff;
+    font-family: 'Roboto Mono', monospace, sans-serif;
+    font-weight: bold;
+    font-size: 18px;
+    line-height: 1.2;
+}
+
+.esports-page .esports-card-icon {
+    margin-left: auto;
+    font-size: 24px;
+    color: rgba(255, 255, 255, 0.5);
+}
+
+@media (max-width: 1024px) {
+    .esports-page .esports-title-img {
+        width: 90vw;
+        max-width: 100%;
+    }
+}
+
+@media (max-width: 768px) {
+    .esports-page .esports-container {
+        padding: 60px 20px;
+    }
+    .esports-page .subtitle-primary {
+        font-size: 24px;
+    }
+    .esports-page .subtitle-secondary {
+        font-size: 14px;
+    }
+}

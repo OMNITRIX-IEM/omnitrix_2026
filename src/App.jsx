@@ -1,0 +1,23 @@
+import React from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import Landing from '@/pages/Landing';
+import Events from '@/pages/events/Events/Events';
+import Robotics from '@/pages/events/Robotics/Robotics';
+import Esports from '@/pages/events/Esports/Esports';
+import IndoorGames from '@/pages/events/IndoorGames/IndoorGames';
+import Sponsor from '@/pages/sponsor/Sponsor';
+
+export default function App() {
+  return (
+    <Router>
+      <Routes>
+        <Route path="/" element={<Landing />} />
+        <Route path="/events" element={<Events />} />
+        <Route path="/events/robotics" element={<Robotics />} />
+        <Route path="/events/esports" element={<Esports />} />
+        <Route path="/events/indoor-games" element={<IndoorGames />} />
+        <Route path="/sponsors" element={<Sponsor />} />
+      </Routes>
+    </Router>
+  );
+}

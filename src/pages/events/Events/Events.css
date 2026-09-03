@@ -1,0 +1,295 @@
+.events-main-page {
+    --bg-color: #000000;
+    --dark-blood: #0a0000;
+    --combat-red: #e8192c;
+    --glow-red: #ff2200;
+    --fire-ember: #ff4500;
+    --white: #ffffff;
+    --gray: #aaaaaa;
+    --muted: #666666;
+
+    --font-heading: 'Rajdhani', sans-serif;
+    --font-body: 'Inter', sans-serif;
+
+    background: url('@/assets/events/main/bgpic.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    color: var(--white);
+    font-family: var(--font-body);
+    min-height: 100vh;
+    width: 100vw;
+    max-width: 100%;
+    display: flex;
+    flex-direction: column;
+    overflow-x: hidden;
+}
+
+/* MAIN CONTAINER */
+.events-main-page .container {
+    flex: 1;
+    position: relative;
+    display: grid;
+    grid-template-columns: 1fr 1.5fr 2.2fr;
+    align-items: center;
+    overflow: visible;
+}
+
+.events-main-page .bg-glow {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 800px;
+    height: 800px;
+    background: radial-gradient(circle, rgba(232, 25, 44, 0.05) 0%, rgba(0, 0, 0, 0) 70%);
+    transform: translate(-50%, -50%);
+    z-index: 0;
+    pointer-events: none;
+}
+
+/* LEFT COLUMN - WHEEL */
+.events-main-page .column-left {
+    position: relative;
+    height: 100%;
+    z-index: 10;
+}
+
+.events-main-page .wheel-container {
+    position: fixed;
+    top: 50%;
+    left: 0;
+    transform: translate(-50%, -50%);
+    width: 120vh;
+    height: 120vh;
+    z-index: 10;
+}
+
+.events-main-page .gaming-wheel {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    transition: transform 0.8s ease-in-out;
+    filter: drop-shadow(0 0 30px rgba(232, 25, 44, 0.4));
+    transform-style: preserve-3d;
+}
+
+.events-main-page .column-center {
+    position: relative;
+    z-index: 20;
+    padding-left: 320px;
+}
+
+.events-main-page .event-list {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+}
+
+.events-main-page .event-item {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    opacity: 0.3;
+    transition: opacity 400ms ease, transform 400ms ease;
+    cursor: pointer;
+    transform: translateX(0);
+    white-space: nowrap;
+}
+
+.events-main-page .event-item:hover {
+    opacity: 0.6;
+}
+
+.events-main-page .event-item.active {
+    opacity: 1;
+    transform: translateX(20px);
+}
+
+.events-main-page .event-num {
+    font-family: var(--font-heading);
+    font-weight: 300;
+    font-size: 32px;
+    color: var(--combat-red);
+    letter-spacing: 2px;
+}
+
+.events-main-page .event-item.active .event-num {
+    color: var(--glow-red);
+    text-shadow: 0 0 10px rgba(255, 34, 0, 0.5);
+    font-weight: 500;
+}
+
+.events-main-page .event-name {
+    font-family: var(--font-heading);
+    font-weight: 800;
+    font-size: 48px;
+    letter-spacing: 4px;
+    color: var(--gray);
+    text-transform: uppercase;
+    transition: color 400ms ease, text-shadow 400ms ease;
+    white-space: nowrap;
+}
+
+.events-main-page .event-item.active .event-name {
+    color: var(--white);
+    text-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
+}
+
+/* RIGHT COLUMN - FEATURE CARD */
+.events-main-page .column-right {
+    position: relative;
+    z-index: 20;
+    padding-right: 0px;
+    display: flex;
+    justify-content: flex-end;
+    transform: translateX(280px);
+}
+
+.events-main-page .feature-card {
+    width: 100%;
+    max-width: 430px;
+    height: 550px;
+    background: #111;
+    border-radius: 24px;
+    overflow: hidden;
+    position: relative;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.8), 0 0 30px rgba(232, 25, 44, 0.05);
+    transition: opacity 400ms ease, transform 400ms ease;
+}
+
+.events-main-page .feature-card.fading {
+    opacity: 0;
+    transform: scale(0.98);
+}
+
+.events-main-page .card-image {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.events-main-page .card-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.events-main-page .card-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 70%;
+    background: linear-gradient(to top, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0.8) 40%, rgba(0, 0, 0, 0) 100%);
+}
+
+.events-main-page .card-content {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 40px 40px;
+    z-index: 2;
+}
+
+.events-main-page .card-date {
+    font-family: var(--font-heading);
+    color: var(--combat-red);
+    font-weight: 600;
+    font-size: 14px;
+    letter-spacing: 2px;
+    margin-bottom: 8px;
+    text-transform: uppercase;
+}
+
+.events-main-page .card-title {
+    font-family: var(--font-heading);
+    color: var(--white);
+    font-weight: 700;
+    font-size: 36px;
+    letter-spacing: 1px;
+    margin-bottom: 12px;
+}
+
+.events-main-page .card-desc {
+    color: var(--gray);
+    font-size: 15px;
+    line-height: 1.6;
+    font-weight: 300;
+}
+
+/* RESPONSIVENESS */
+@media (max-width: 1400px) {
+    .events-main-page .container {
+        grid-template-columns: 0.5fr 2fr 1.5fr;
+    }
+
+    .events-main-page .wheel-container {
+        transform: translate(-41%, -50%);
+    }
+
+    .events-main-page .event-name {
+        font-size: 40px;
+    }
+}
+
+@media (max-width: 1024px) {
+    .events-main-page .container {
+        grid-template-columns: 1fr;
+        grid-template-rows: auto auto;
+        justify-content: center;
+        align-content: center;
+        padding: 40px;
+        gap: 40px;
+        overflow-y: auto;
+        height: auto;
+    }
+
+    .events-main-page .column-left {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        opacity: 0.1;
+        pointer-events: none;
+        z-index: 0;
+    }
+
+    .events-main-page .wheel-container {
+        position: absolute;
+        left: -300px;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 850px;
+        height: 850px;
+        aspect-ratio: auto;
+    }
+
+    .events-main-page .column-center {
+        padding-left: 0;
+        text-align: center;
+        z-index: 2;
+    }
+
+    .events-main-page .event-list {
+        align-items: center;
+    }
+
+    .events-main-page .column-right {
+        padding-right: 0;
+        z-index: 2;
+    }
+
+    .events-main-page .feature-card {
+        height: 500px;
+    }
+
+    .events-main-page .event-item.active {
+        transform: scale(1.05);
+    }
+}

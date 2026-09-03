@@ -1,0 +1,195 @@
+.galaxy-section {
+  position: relative;
+  width: 100%;
+  height: 200vh;
+  background: transparent;
+}
+
+.galaxy-canvas-container {
+  position: fixed;
+  inset: 0;
+
+  width: 100vw;
+  height: 100vh;
+
+  z-index: -11;
+
+  opacity: 0;
+
+  pointer-events: none;
+
+  will-change: opacity;
+}
+
+/* --------------------------------------------------------------------------
+   GALAXY CINEMATIC TEXT OVERLAY (UPPER LEFT & UPPER RIGHT)
+   -------------------------------------------------------------------------- */
+.galaxy-text-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 10;
+  pointer-events: none;
+  overflow: hidden;
+  font-family: var(--font-heading, 'Rajdhani', sans-serif);
+}
+
+.galaxy-text-block {
+  position: absolute;
+  top: 15vh;
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+  max-width: 440px;
+  pointer-events: none;
+}
+
+.galaxy-text-block-left {
+  left: 6vw;
+  text-align: left;
+}
+
+.galaxy-text-block-right {
+  right: 6vw;
+  text-align: right;
+}
+
+.galaxy-text-line {
+  margin: 0;
+  line-height: 1.25;
+  text-transform: uppercase;
+  white-space: pre-wrap;
+  pointer-events: none;
+}
+
+.galaxy-text-line.size-lg {
+  font-family: var(--font-heading, 'Rajdhani', sans-serif);
+  font-size: 1.5rem;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+}
+
+.galaxy-text-line.size-md {
+  font-family: var(--font-heading, 'Rajdhani', sans-serif);
+  font-size: 1.2rem;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+}
+
+.galaxy-text-line.size-sm {
+  font-family: var(--font-body, 'Inter', sans-serif);
+  font-size: 0.85rem;
+  font-weight: 400;
+  letter-spacing: 0.1em;
+  opacity: 0.9;
+}
+
+/* Character reveal animations */
+.galaxy-char {
+  display: inline-block;
+  opacity: 0;
+  filter: blur(4px);
+  transform: translateY(2px);
+  transition: opacity 0.22s cubic-bezier(0.16, 1, 0.3, 1),
+    filter 0.22s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 0.22s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity, filter, transform;
+}
+
+.galaxy-char.is-visible {
+  opacity: 1;
+  filter: blur(0px);
+  transform: translateY(0);
+}
+
+.galaxy-char.color-white {
+  color: #FFFFFF;
+  text-shadow: 0 0 12px rgba(0, 0, 0, 0.9), 0 0 4px rgba(0, 0, 0, 0.8);
+}
+
+.galaxy-char.color-green {
+  color: #B6FF00;
+  text-shadow: 0 0 10px rgba(182, 255, 0, 0.6), 0 0 15px rgba(182, 255, 0, 0.3);
+}
+
+/* Responsive breakpoints */
+@media (max-width: 1024px) {
+  .galaxy-text-block {
+    top: 8vh;
+    max-width: 360px;
+  }
+
+  .galaxy-text-block-left {
+    left: 5vw;
+  }
+
+  .galaxy-text-block-right {
+    right: 5vw;
+  }
+
+  .galaxy-text-line.size-lg {
+    font-size: 1.25rem;
+  }
+
+  .galaxy-text-line.size-md {
+    font-size: 1.05rem;
+  }
+
+  .galaxy-text-line.size-sm {
+    font-size: 0.8rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .galaxy-text-block {
+    top: 7vh;
+    max-width: 280px;
+    gap: 0.45rem;
+  }
+
+  .galaxy-text-block-left {
+    left: 4vw;
+  }
+
+  .galaxy-text-block-right {
+    right: 4vw;
+  }
+
+  .galaxy-text-line.size-lg {
+    font-size: 1.05rem;
+  }
+
+  .galaxy-text-line.size-md {
+    font-size: 0.9rem;
+  }
+
+  .galaxy-text-line.size-sm {
+    font-size: 0.72rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .galaxy-text-block {
+    top: 6vh;
+    max-width: 220px;
+  }
+
+  .galaxy-text-block-left {
+    left: 3vw;
+  }
+
+  .galaxy-text-block-right {
+    right: 3vw;
+  }
+
+  .galaxy-text-line.size-lg {
+    font-size: 0.9rem;
+  }
+
+  .galaxy-text-line.size-md {
+    font-size: 0.8rem;
+  }
+
+  .galaxy-text-line.size-sm {
+    font-size: 0.65rem;
+  }
+}
