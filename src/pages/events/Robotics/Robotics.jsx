@@ -16,13 +16,15 @@ export default function Robotics() {
   }, []);
 
   return (
-    <div className="robotics-page">
+    <>
       <Navbar />
-      <div className="scroll-overlay-container">
-        <HeroSection />
-        <WorkshopsSection />
+      <div className="robotics-page">
+        <div className="scroll-overlay-container">
+          <HeroSection />
+          <WorkshopsSection />
+        </div>
       </div>
-    </div>
+    </>
   );
 }
 
