@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
+import { Link } from 'react-router-dom';
 import './Section6.css';
 
 const EVENTS_DATA = [
@@ -9,8 +10,7 @@ const EVENTS_DATA = [
     title: 'ROBORACE',
     subtitle: 'High-speed autonomous and semi-autonomous robot racing on a custom tactical obstacle circuit. Engineers push mechanical speed, traction, and obstacle evasion to the absolute limit.',
     category: 'ADVANCED',
-    categoryRed: true,
-    participants: '48 TEAMS'
+    categoryRed: true
   },
   {
     id: 1,
@@ -19,8 +19,7 @@ const EVENTS_DATA = [
     title: 'ROBOCLASH',
     subtitle: 'Heavyweight mechanical combat where custom-built battlebots enter the arena for high-impact destruction. Features kinetic spinners, flippers, and armored chassis battling for arena dominance.',
     category: 'ADVANCED',
-    categoryRed: true,
-    participants: '32 COMBATANTS'
+    categoryRed: true
   },
   {
     id: 2,
@@ -29,8 +28,7 @@ const EVENTS_DATA = [
     title: 'LINE FOLLOWING ROBOT (LFR)',
     subtitle: 'Precision speed competition testing infrared sensor calibration and PID algorithms. Autonomous bots navigate sharp turns, intersections, and dynamic track speed traps.',
     category: 'INTERMEDIATE',
-    categoryRed: true,
-    participants: '85 COMPETITORS'
+    categoryRed: true
   },
   {
     id: 3,
@@ -39,8 +37,7 @@ const EVENTS_DATA = [
     title: 'UAV RACE',
     subtitle: 'First-Person View (FPV) drone racing through complex 3D aerial gate courses. Pilots maneuver high-speed quadcopters with extreme precision at speeds exceeding 100 km/h.',
     category: 'ADVANCED',
-    categoryRed: true,
-    participants: '40 PILOTS'
+    categoryRed: true
   },
   {
     id: 4,
@@ -49,8 +46,7 @@ const EVENTS_DATA = [
     title: 'ROBOSOCCER',
     subtitle: 'Tactical 3-on-3 robotic football tournament featuring customized wireless drive platforms. Teams coordinate offensive maneuvers, mechanical kicker mechanisms, and defensive blocking.',
     category: 'INTERMEDIATE',
-    categoryRed: true,
-    participants: '24 SQUADS'
+    categoryRed: true
   },
   {
     id: 5,
@@ -59,8 +55,7 @@ const EVENTS_DATA = [
     title: 'WORKSHOP: ML & DEEP LEARNING',
     subtitle: 'Hands-on masterclass covering neural network architectures, computer vision model training, and edge AI deployment on autonomous robotics hardware.',
     category: 'OPEN CATEGORY',
-    categoryRed: true,
-    participants: '250+ ATTENDEES'
+    categoryRed: true
   },
   {
     id: 6,
@@ -69,8 +64,7 @@ const EVENTS_DATA = [
     title: 'WORKSHOP: ROS 2',
     subtitle: 'Comprehensive technical session on Robot Operating System 2 core concepts, publisher-subscriber nodes, micro-ROS integration, and real-time robotic hardware control.',
     category: 'INTERMEDIATE',
-    categoryRed: true,
-    participants: '180+ ENGINEERS'
+    categoryRed: true
   },
   {
     id: 7,
@@ -79,8 +73,7 @@ const EVENTS_DATA = [
     title: 'WORKSHOP: EMBEDDED SYSTEMS',
     subtitle: 'Practical exploration of microcontrollers, RTOS firmware development, hardware sensor interfacing, and motor driver circuit design for combat robotics.',
     category: 'BEGINNER',
-    categoryRed: true,
-    participants: '200+ STUDENTS'
+    categoryRed: true
   },
   {
     id: 8,
@@ -89,8 +82,7 @@ const EVENTS_DATA = [
     title: 'WORKSHOP: DRONE PROGRESSION',
     subtitle: 'From flight dynamics to autonomous swarm navigation: build, program, and calibrate multi-rotor UAV systems with real-world flight testing.',
     category: 'OPEN CATEGORY',
-    categoryRed: true,
-    participants: '150+ PARTICIPANTS'
+    categoryRed: true
   },
   {
     id: 9,
@@ -99,8 +91,7 @@ const EVENTS_DATA = [
     title: 'CALL OF DUTY MOBILE (CODM)',
     subtitle: 'Action-packed tactical FPS esports tournament. Squads compete in intense Search & Destroy and Hardpoint matches for the RoboWars Championship trophy.',
     category: 'OPEN CATEGORY',
-    categoryRed: true,
-    participants: '64 SQUADS'
+    categoryRed: true
   },
   {
     id: 10,
@@ -109,8 +100,7 @@ const EVENTS_DATA = [
     title: 'BGMI LAN TOURNAMENT',
     subtitle: 'High-stakes battle royale LAN tournament bringing top esports rosters together in a fierce tactical showdown across custom room battlegrounds.',
     category: 'OPEN CATEGORY',
-    categoryRed: true,
-    participants: '100+ PLAYERS'
+    categoryRed: true
   },
   {
     id: 11,
@@ -119,8 +109,7 @@ const EVENTS_DATA = [
     title: 'EFOOTBALL PES',
     subtitle: 'Competitive digital football championship testing tactical formation management, skill moves, and clutch decision-making on high-refresh-rate gaming rigs.',
     category: 'OPEN CATEGORY',
-    categoryRed: true,
-    participants: '128 PLAYERS'
+    categoryRed: true
   },
   {
     id: 12,
@@ -129,8 +118,7 @@ const EVENTS_DATA = [
     title: 'FREE FIRE',
     subtitle: 'Fast-paced battle royale squad competition demanding quick reflexes, strategic positioning, and intense firefight coordination under pressure.',
     category: 'OPEN CATEGORY',
-    categoryRed: true,
-    participants: '48 SQUADS'
+    categoryRed: true
   },
   {
     id: 13,
@@ -139,8 +127,7 @@ const EVENTS_DATA = [
     title: 'AR / VR EXPERIENCE',
     subtitle: 'Immersive virtual reality showcase featuring cutting-edge spatial computing, full-body motion tracking, and interactive robotic simulation environments.',
     category: 'OPEN CATEGORY',
-    categoryRed: true,
-    participants: 'OPEN TO ALL'
+    categoryRed: true
   },
   {
     id: 14,
@@ -149,8 +136,7 @@ const EVENTS_DATA = [
     title: 'STONE PAPER SCISSORS',
     subtitle: 'High-energy quick-thinking tournament arena with sudden-death elimination rounds and surprising tactical psychological twists.',
     category: 'BEGINNER',
-    categoryRed: true,
-    participants: '300+ ENTRIES'
+    categoryRed: true
   },
   {
     id: 15,
@@ -159,8 +145,7 @@ const EVENTS_DATA = [
     title: 'HAND CRICKET',
     subtitle: 'Classic casual sports challenge converted into a fast-paced live gaming bracket where split-second hand signals decide match outcomes.',
     category: 'BEGINNER',
-    categoryRed: true,
-    participants: '200+ PLAYERS'
+    categoryRed: true
   },
   {
     id: 16,
@@ -169,8 +154,7 @@ const EVENTS_DATA = [
     title: 'BALL IN BASKET',
     subtitle: 'Precision arcade skill competition testing trajectory estimation, wrist control, and timed target scoring under tight clock pressure.',
     category: 'BEGINNER',
-    categoryRed: true,
-    participants: '150+ PARTICIPANTS'
+    categoryRed: true
   },
   {
     id: 17,
@@ -179,8 +163,7 @@ const EVENTS_DATA = [
     title: 'PENALTY SHOOT',
     subtitle: 'Intense 1-on-1 penalty shootout challenge combining physical skill, goalkeeper anticipation, and high-pressure goal scoring.',
     category: 'OPEN CATEGORY',
-    categoryRed: true,
-    participants: '100+ COMPETITORS'
+    categoryRed: true
   },
   {
     id: 18,
@@ -189,8 +172,7 @@ const EVENTS_DATA = [
     title: 'CHESS',
     subtitle: 'Classical and blitz chess tournament challenging grand strategy, tactical foresight, and deep analytical calculations in silent competition.',
     category: 'OPEN CATEGORY',
-    categoryRed: true,
-    participants: '64 PLAYERS'
+    categoryRed: true
   },
   {
     id: 19,
@@ -199,8 +181,7 @@ const EVENTS_DATA = [
     title: 'CARROM',
     subtitle: 'Traditional striker precision championship featuring singles and doubles tournament brackets on polished tournament-grade carrom boards.',
     category: 'OPEN CATEGORY',
-    categoryRed: true,
-    participants: '48 TEAMS'
+    categoryRed: true
   },
   {
     id: 20,
@@ -209,8 +190,7 @@ const EVENTS_DATA = [
     title: 'ARM WRESTLING',
     subtitle: 'Raw physical strength and technique competition organized into standard weight classes with certified referee officiating.',
     category: 'OPEN CATEGORY',
-    categoryRed: true,
-    participants: '80+ ATHLETES'
+    categoryRed: true
   },
   {
     id: 21,
@@ -219,8 +199,7 @@ const EVENTS_DATA = [
     title: 'BEYBLADE',
     subtitle: 'High-speed spinning top battle arena where custom Beyblades clash for spin velocity, stadium center control, and burst finishes.',
     category: 'OPEN CATEGORY',
-    categoryRed: true,
-    participants: '120+ BLADERS'
+    categoryRed: true
   },
   {
     id: 22,
@@ -229,8 +208,7 @@ const EVENTS_DATA = [
     title: 'CULTURAL INAUGURATION',
     subtitle: 'Grand ceremonial opening of RoboWars 2026 featuring keynote addresses, robotic lighting ceremonies, and live orchestral fanfare.',
     category: 'OPEN CATEGORY',
-    categoryRed: true,
-    participants: 'ALL ATTENDEES'
+    categoryRed: true
   },
   {
     id: 23,
@@ -239,8 +217,7 @@ const EVENTS_DATA = [
     title: 'TECH TALK',
     subtitle: 'Inspiring talks from industry leaders, defense robotics pioneers, and AI researchers breaking down the future of autonomous systems.',
     category: 'OPEN CATEGORY',
-    categoryRed: true,
-    participants: '500+ AUDIENCE'
+    categoryRed: true
   },
   {
     id: 24,
@@ -249,8 +226,7 @@ const EVENTS_DATA = [
     title: 'FLASH MOB',
     subtitle: 'High-octane synchronized dance performance popping up unannounced at the central concourse to energize festival participants.',
     category: 'OPEN CATEGORY',
-    categoryRed: true,
-    participants: 'FESTIVAL GROUND'
+    categoryRed: true
   },
   {
     id: 25,
@@ -259,8 +235,7 @@ const EVENTS_DATA = [
     title: 'CULTURAL EVENING',
     subtitle: 'Spectacular night of live music bands, DJ sets, theatrical performances, and light shows celebrating the intersection of tech & art.',
     category: 'OPEN CATEGORY',
-    categoryRed: true,
-    participants: 'OPEN TO ALL'
+    categoryRed: true
   },
   {
     id: 26,
@@ -269,8 +244,7 @@ const EVENTS_DATA = [
     title: 'PRIZE DISTRIBUTION',
     subtitle: 'Official victory ceremony honoring champion roboticists, workshop graduates, and tournament winners with trophies & prize cash pools.',
     category: 'OPEN CATEGORY',
-    categoryRed: true,
-    participants: 'ALL FINALISTS'
+    categoryRed: true
   },
   {
     id: 27,
@@ -279,8 +253,7 @@ const EVENTS_DATA = [
     title: 'IEEE MEMBERSHIP DRIVE',
     subtitle: 'Interactive networking hub to explore IEEE student branch benefits, technical paper publications, global conferences, and career mentorship.',
     category: 'BEGINNER',
-    categoryRed: true,
-    participants: 'ALL STUDENTS'
+    categoryRed: true
   },
   {
     id: 28,
@@ -289,8 +262,7 @@ const EVENTS_DATA = [
     title: 'SPECIAL SURPRISE EVENT',
     subtitle: 'Unannounced mystery challenge revealed live on the main stage. Expect unexpected obstacles, rapid prototyping, and high stakes!',
     category: 'OPEN CATEGORY',
-    categoryRed: true,
-    participants: 'MYSTERY ENTRY'
+    categoryRed: true
   }
 ];
 
@@ -673,11 +645,10 @@ export default function Section6() {
                       <span className={`hud-tag ${event.categoryRed ? 'text-red' : ''}`}>
                         {event.category}
                       </span>
-                      <span className="hud-tag">{event.participants}</span>
                     </div>
-                    <button className="event-cta-btn" type="button">
+                    <Link to="/events" className="event-cta-btn">
                       GO TO EVENT →
-                    </button>
+                    </Link>
                   </div>
                 </article>
               ))}

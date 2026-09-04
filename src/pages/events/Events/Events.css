@@ -293,3 +293,43 @@
         transform: scale(1.05);
     }
 }
+
+/* FEATURE TILE CTA BUTTON */
+.events-main-page .event-feature-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 18px;
+    padding: 10px 22px;
+    font-family: var(--font-heading);
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    color: #000000;
+    background: #B6FF00;
+    border: 1px solid #B6FF00;
+    border-radius: 9999px;
+    text-decoration: none;
+    text-transform: uppercase;
+    box-shadow: 0 0 16px rgba(182, 255, 0, 0.4);
+    transition: all 0.25s ease;
+    cursor: pointer;
+    width: fit-content;
+}
+
+.events-main-page .event-feature-cta:hover {
+    background: #96ff33a2;
+    border-color: #ffffff;
+    color: #000000;
+    box-shadow: 0 0 24px rgba(183, 255, 0, 0.518);
+    transform: translateY(-2px);
+}
+
+.events-main-page .event-feature-cta .cta-arrow {
+    font-size: 16px;
+    transition: transform 0.25s ease;
+}
+
+.events-main-page .event-feature-cta:hover .cta-arrow {
+    transform: translateX(4px);
+}

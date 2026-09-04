@@ -34,7 +34,9 @@ export default function EventFeature({ currentState }) {
           <div className="card-overlay"></div>
         </div>
         <div className="card-content">
-          <div className="card-date" id="card-date">{displayEvent.date}</div>
+          {displayEvent.date && (
+            <div className="card-date" id="card-date">{displayEvent.date}</div>
+          )}
           <h3 className="card-title" id="card-title">
             <Link
               to={eventPaths[displayEvent.id] || '#'}
@@ -44,6 +46,14 @@ export default function EventFeature({ currentState }) {
             </Link>
           </h3>
           <p className="card-desc" id="card-desc">{displayEvent.desc}</p>
+          <Link
+            to={eventPaths[displayEvent.id] || '/events'}
+            className="event-feature-cta"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <span>GO TO EVENT</span>
+            <span className="cta-arrow">→</span>
+          </Link>
         </div>
       </div>
     </div>

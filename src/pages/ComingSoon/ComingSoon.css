@@ -1,0 +1,146 @@
+/* ==========================================================================
+   COMING SOON PAGE - OMNITRIX / ROBOWARS THEMED PLACEHOLDER
+   Scoped strictly under .coming-soon-page
+   ========================================================================== */
+
+.coming-soon-page {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  background-color: #000000;
+  color: #ffffff;
+  font-family: 'Rajdhani', sans-serif;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.coming-soon-container {
+  position: relative;
+  flex: 1;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 6rem 1.5rem 2rem 1.5rem;
+  box-sizing: border-box;
+  z-index: 1;
+}
+
+/* Subtle Green Radial Glow Background */
+.coming-soon-page .coming-soon-glow-bg {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+  max-width: 800px;
+  height: 800px;
+  background: radial-gradient(
+    circle at center,
+    rgba(182, 255, 0, 0.08) 0%,
+    rgba(182, 255, 0, 0.03) 35%,
+    rgba(0, 0, 0, 0) 70%
+  );
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Tactical Ambient Scanlines Effect */
+.coming-soon-page .coming-soon-scanlines {
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(
+    0deg,
+    rgba(0, 0, 0, 0.15),
+    rgba(0, 0, 0, 0.15) 1px,
+    transparent 1px,
+    transparent 3px
+  );
+  pointer-events: none;
+  opacity: 0.6;
+  z-index: 1;
+}
+
+/* Main Content Wrapper */
+.coming-soon-page .coming-soon-content {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  z-index: 2;
+  gap: 1.5rem;
+}
+
+/* Omnitrix Hourglass Emblem Icon */
+.coming-soon-page .coming-soon-emblem-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.coming-soon-page .coming-soon-omnitrix-emblem {
+  width: 64px;
+  height: 64px;
+  filter: drop-shadow(0 0 12px rgba(182, 255, 0, 0.5));
+  animation: omnitrixGlowPulse 4s ease-in-out infinite alternate;
+}
+
+/* "COMING SOON" Main Title */
+.coming-soon-page .coming-soon-title {
+  font-family: 'Rajdhani', sans-serif;
+  font-size: clamp(2.75rem, 7vw, 5.5rem);
+  font-weight: 800;
+  line-height: 1.1;
+  letter-spacing: 0.28em;
+  color: #ffffff;
+  text-transform: uppercase;
+  margin: 0;
+  padding: 0;
+  padding-left: 0.28em; /* offset for letter-spacing alignment */
+  text-shadow: 
+    0 0 16px rgba(182, 255, 0, 0.5),
+    0 0 32px rgba(182, 255, 0, 0.25),
+    0 0 64px rgba(182, 255, 0, 0.1);
+  animation: titleGlowPulse 4s ease-in-out infinite alternate;
+}
+
+/* Scoped Animations */
+@keyframes omnitrixGlowPulse {
+  0% {
+    filter: drop-shadow(0 0 8px rgba(182, 255, 0, 0.35));
+    transform: scale(0.98);
+  }
+  100% {
+    filter: drop-shadow(0 0 18px rgba(182, 255, 0, 0.75));
+    transform: scale(1.02);
+  }
+}
+
+@keyframes titleGlowPulse {
+  0% {
+    text-shadow: 
+      0 0 14px rgba(182, 255, 0, 0.45),
+      0 0 28px rgba(182, 255, 0, 0.2);
+  }
+  100% {
+    text-shadow: 
+      0 0 24px rgba(182, 255, 0, 0.75),
+      0 0 48px rgba(182, 255, 0, 0.4),
+      0 0 80px rgba(182, 255, 0, 0.2);
+  }
+}
+
+/* Responsive tweaks */
+@media (max-width: 640px) {
+  .coming-soon-page .coming-soon-omnitrix-emblem {
+    width: 48px;
+    height: 48px;
+  }
+  .coming-soon-page .coming-soon-title {
+    letter-spacing: 0.18em;
+    padding-left: 0.18em;
+  }
+}

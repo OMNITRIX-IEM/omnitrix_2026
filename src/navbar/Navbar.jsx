@@ -1,22 +1,10 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
+import { Link, useLocation } from 'react-router-dom';
 import './Navbar.css';
 
 export default function Navbar() {
-  const [currentPath, setCurrentPath] = useState('/');
-
-  // Sync current path on mount & navigation
-  useEffect(() => {
-    if (typeof window !== 'undefined') {
-      setCurrentPath(window.location.pathname);
-
-      const handlePopState = () => {
-        setCurrentPath(window.location.pathname);
-      };
-
-      window.addEventListener('popstate', handlePopState);
-      return () => window.removeEventListener('popstate', handlePopState);
-    }
-  }, []);
+  const location = useLocation();
+  const currentPath = location.pathname;
 
   // Active state checkers
   const isHomeActive = currentPath === '/' || currentPath === '/home';
@@ -33,7 +21,7 @@ export default function Navbar() {
     <header className="robowars-navbar">
       <div className="robowars-navbar-inner">
         {/* LEFT: OMNITRIX LOGO */}
-        <a href="/" className="robowars-navbar-logo" aria-label="ROBOWARS Home">
+        <Link to="/" className="robowars-navbar-logo" aria-label="ROBOWARS Home">
           <svg
             className="robowars-omnitrix-icon"
             viewBox="0 0 40 40"
@@ -67,50 +55,50 @@ export default function Navbar() {
             {/* Core dot */}
             <circle cx="20" cy="20" r="2.5" fill="#FFFFFF" />
           </svg>
-        </a>
+        </Link>
 
         {/* CENTER: NAV LINKS */}
         <nav className="robowars-navbar-nav">
           <ul className="robowars-navbar-links">
             {/* 1. HOME */}
             <li className={`robowars-navbar-item ${isHomeActive ? 'is-active' : ''}`}>
-              <a href="/" className="robowars-navbar-link">
+              <Link to="/" className="robowars-navbar-link">
                 HOME
-              </a>
+              </Link>
             </li>
 
             {/* 2. EVENTS */}
             <li className={`robowars-navbar-item ${isEventsActive ? 'is-active' : ''}`}>
-              <a href="/events" className="robowars-navbar-link">
+              <Link to="/events" className="robowars-navbar-link">
                 EVENTS
-              </a>
+              </Link>
             </li>
 
             {/* 3. BROCHURE */}
             <li className={`robowars-navbar-item ${isBrochureActive ? 'is-active' : ''}`}>
-              <a href="/brochure" className="robowars-navbar-link">
+              <Link to="/brochure" className="robowars-navbar-link">
                 BROCHURE
-              </a>
+              </Link>
             </li>
 
             {/* 4. SPONSORS */}
             <li className={`robowars-navbar-item ${isSponsorsActive ? 'is-active' : ''}`}>
-              <a href="/sponsors" className="robowars-navbar-link">
+              <Link to="/sponsors" className="robowars-navbar-link">
                 SPONSORS
-              </a>
+              </Link>
             </li>
 
             {/* 5. ABOUT US */}
             <li className={`robowars-navbar-item ${isAboutActive ? 'is-active' : ''}`}>
-              <a href="/about" className="robowars-navbar-link">
+              <Link to="/about-us" className="robowars-navbar-link">
                 ABOUT US
-              </a>
+              </Link>
             </li>
           </ul>
         </nav>
 
         {/* RIGHT: REGISTER NOW CTA */}
-        <a href="/register" className="robowars-navbar-cta">
+        <Link to="/register" className="robowars-navbar-cta">
           <span>REGISTER NOW</span>
           <svg
             className="robowars-cta-arrow"
@@ -127,7 +115,7 @@ export default function Navbar() {
               strokeLinejoin="round"
             />
           </svg>
-        </a>
+        </Link>
       </div>
     </header>
   );

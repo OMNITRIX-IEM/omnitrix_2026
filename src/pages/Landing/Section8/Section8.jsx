@@ -60,10 +60,6 @@ export default function Section8() {
 
       <div className="cd-container">
         <header className="cd-header">
-          <div className="cd-eyebrow">
-            <span className="cd-eyebrow-icon">◆</span>
-            <span>NEXT DEPLOYMENT // T-MINUS</span>
-          </div>
           <h2 className="cd-title">
             THE BATTLE <span className="text-green">BEGINS IN.</span>
           </h2>
@@ -122,7 +118,7 @@ export default function Section8() {
             "WHEN THE SYSTEM ACTIVATES, THE BATTLEFIELD CHANGES."
           </p>
           <span className="cd-protocol-tag">
-            ROBOWARS // DEPLOYMENT PROTOCOL
+            IEM OMNITRIX 2026
           </span>
         </div>
       </div>
