@@ -1,5 +1,6 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import SEO from '@/components/SEO/SEO';
 import Landing from '@/pages/Landing';
 import Events from '@/pages/events/Events/Events';
 import Robotics from '@/pages/events/Robotics/Robotics';
@@ -11,6 +12,7 @@ import ComingSoon from '@/pages/ComingSoon/ComingSoon';
 export default function App() {
   return (
     <Router>
+      <SEO />
       <Routes>
         <Route path="/" element={<Landing />} />
         <Route path="/events" element={<Events />} />
