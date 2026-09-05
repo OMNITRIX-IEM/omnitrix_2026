@@ -7,47 +7,73 @@ gsap.registerPlugin(ScrollTrigger);
 
 export default function useDroneAnimations(setTargetFrame) {
   useEffect(() => {
-    console.log("useDroneAnimations mounted");
-    console.log("setTargetFrame:", setTargetFrame);
     if (!setTargetFrame) return;
 
-    const scrollTriggerInstance = ScrollTrigger.create({
-      trigger: '#phase-01',
-      start: 'top top',
-      endTrigger: '#phase-03',
-      end: 'bottom bottom',
-      scrub: true,
-      onUpdate: (self) => {
-        console.log("scroll progress", self.progress);
-        const progress = self.progress; // 0 to 1
-        let frameProgress = 0;
+    const mm = gsap.matchMedia();
 
-        if (progress < 1 / 3) {
-          // Section 2 (Phase 1): first 30% of frames
-          const localProgress = progress * 3;
-          frameProgress = localProgress * 0.30;
-        } else if (progress < 2 / 3) {
-          // Section 3 (Phase 2): middle 35% of frames (30% to 65%)
-          const localProgress = (progress - 1 / 3) * 3;
-          frameProgress = 0.30 + localProgress * 0.35;
-        } else {
-          // Section 4 (Phase 3): remaining frames (65% to 100%)
-          const localProgress = (progress - 2 / 3) * 3;
-          frameProgress = 0.65 + localProgress * 0.35;
-        }
+    // Desktop > 768px: Original desktop 3-phase frame mapping logic
+    mm.add('(min-width: 769px)', () => {
+      const scrollTriggerInstance = ScrollTrigger.create({
+        trigger: '#phase-01',
+        start: 'top top',
+        endTrigger: '#phase-03',
+        end: 'bottom bottom',
+        scrub: true,
+        onUpdate: (self) => {
+          const progress = self.progress; // 0 to 1
+          let frameProgress = 0;
 
-        // Calculate target frame index (0 to 77)
-        const frameIndex = Math.min(
-          TOTAL_DRONE_FRAMES - 1,
-          Math.max(0, Math.floor(frameProgress * (TOTAL_DRONE_FRAMES - 1)))
-        );
+          if (progress < 1 / 3) {
+            const localProgress = progress * 3;
+            frameProgress = localProgress * 0.30;
+          } else if (progress < 2 / 3) {
+            const localProgress = (progress - 1 / 3) * 3;
+            frameProgress = 0.30 + localProgress * 0.35;
+          } else {
+            const localProgress = (progress - 2 / 3) * 3;
+            frameProgress = 0.65 + localProgress * 0.35;
+          }
 
-        setTargetFrame(frameIndex);
-      },
+          const frameIndex = Math.min(
+            TOTAL_DRONE_FRAMES - 1,
+            Math.max(0, Math.floor(frameProgress * (TOTAL_DRONE_FRAMES - 1)))
+          );
+
+          setTargetFrame(frameIndex);
+        },
+      });
+
+      return () => {
+        scrollTriggerInstance.kill();
+      };
+    });
+
+    // Mobile <= 768px: Even linear frame scrubbing from #phase-01 top 80% to #phase-03 bottom bottom
+    mm.add('(max-width: 768px)', () => {
+      const mobileTrigger = ScrollTrigger.create({
+        trigger: '#phase-01',
+        start: 'top 80%',
+        endTrigger: '#phase-03',
+        end: 'bottom bottom',
+        scrub: true,
+        onUpdate: (self) => {
+          const frameIndex = Math.min(
+            TOTAL_DRONE_FRAMES - 1,
+            Math.max(0, Math.floor(self.progress * (TOTAL_DRONE_FRAMES - 1)))
+          );
+
+          setTargetFrame(frameIndex);
+        },
+      });
+
+      return () => {
+        mobileTrigger.kill();
+      };
     });
 
     return () => {
-      scrollTriggerInstance.kill();
+      mm.revert();
     };
   }, [setTargetFrame]);
 }
+

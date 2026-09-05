@@ -1,8 +1,9 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import './Navbar.css';
 
 export default function Navbar() {
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const location = useLocation();
   const currentPath = location.pathname;
 
@@ -17,11 +18,45 @@ export default function Navbar() {
   const isSponsorsActive = currentPath.startsWith('/sponsors');
   const isAboutActive = currentPath.startsWith('/about');
 
+  // Close mobile menu on route change
+  useEffect(() => {
+    setIsMobileMenuOpen(false);
+  }, [currentPath]);
+
+  // Handle Escape key and body scroll locking when mobile menu is open
+  useEffect(() => {
+    const handleKeyDown = (e) => {
+      if (e.key === 'Escape') {
+        setIsMobileMenuOpen(false);
+      }
+    };
+
+    if (isMobileMenuOpen) {
+      document.body.style.overflow = 'hidden';
+      window.addEventListener('keydown', handleKeyDown);
+    } else {
+      document.body.style.overflow = '';
+    }
+
+    return () => {
+      document.body.style.overflow = '';
+      window.removeEventListener('keydown', handleKeyDown);
+    };
+  }, [isMobileMenuOpen]);
+
+  const toggleMobileMenu = () => {
+    setIsMobileMenuOpen((prev) => !prev);
+  };
+
+  const closeMobileMenu = () => {
+    setIsMobileMenuOpen(false);
+  };
+
   return (
     <header className="robowars-navbar">
       <div className="robowars-navbar-inner">
         {/* LEFT: OMNITRIX LOGO */}
-        <Link to="/" className="robowars-navbar-logo" aria-label="ROBOWARS Home">
+        <Link to="/" className="robowars-navbar-logo" aria-label="ROBOWARS Home" onClick={closeMobileMenu}>
           <svg
             className="robowars-omnitrix-icon"
             viewBox="0 0 40 40"
@@ -57,38 +92,29 @@ export default function Navbar() {
           </svg>
         </Link>
 
-        {/* CENTER: NAV LINKS */}
+        {/* CENTER: DESKTOP NAV LINKS */}
         <nav className="robowars-navbar-nav">
           <ul className="robowars-navbar-links">
-            {/* 1. HOME */}
             <li className={`robowars-navbar-item ${isHomeActive ? 'is-active' : ''}`}>
               <Link to="/" className="robowars-navbar-link">
                 HOME
               </Link>
             </li>
-
-            {/* 2. EVENTS */}
             <li className={`robowars-navbar-item ${isEventsActive ? 'is-active' : ''}`}>
               <Link to="/events" className="robowars-navbar-link">
                 EVENTS
               </Link>
             </li>
-
-            {/* 3. BROCHURE */}
             <li className={`robowars-navbar-item ${isBrochureActive ? 'is-active' : ''}`}>
               <Link to="/brochure" className="robowars-navbar-link">
                 BROCHURE
               </Link>
             </li>
-
-            {/* 4. SPONSORS */}
             <li className={`robowars-navbar-item ${isSponsorsActive ? 'is-active' : ''}`}>
               <Link to="/sponsors" className="robowars-navbar-link">
                 SPONSORS
               </Link>
             </li>
-
-            {/* 5. ABOUT US */}
             <li className={`robowars-navbar-item ${isAboutActive ? 'is-active' : ''}`}>
               <Link to="/about-us" className="robowars-navbar-link">
                 ABOUT US
@@ -97,8 +123,8 @@ export default function Navbar() {
           </ul>
         </nav>
 
-        {/* RIGHT: REGISTER NOW CTA */}
-        <Link to="/register" className="robowars-navbar-cta">
+        {/* RIGHT: DESKTOP REGISTER NOW CTA */}
+        <Link to="/register" className="robowars-navbar-cta desktop-only-cta">
           <span>REGISTER NOW</span>
           <svg
             className="robowars-cta-arrow"
@@ -116,7 +142,76 @@ export default function Navbar() {
             />
           </svg>
         </Link>
+
+        {/* MOBILE HAMBURGER BUTTON (Visible <= 768px) */}
+        <button
+          type="button"
+          className={`robowars-navbar-hamburger ${isMobileMenuOpen ? 'is-open' : ''}`}
+          onClick={toggleMobileMenu}
+          aria-label={isMobileMenuOpen ? 'Close Navigation Menu' : 'Open Navigation Menu'}
+          aria-expanded={isMobileMenuOpen}
+        >
+          <span className="hamburger-line"></span>
+          <span className="hamburger-line"></span>
+          <span className="hamburger-line"></span>
+        </button>
       </div>
+
+      {/* MOBILE DRAWER & BACKDROP */}
+      {isMobileMenuOpen && (
+        <>
+          <div className="robowars-mobile-backdrop" onClick={closeMobileMenu} />
+          <nav className="robowars-mobile-menu">
+            <ul className="robowars-mobile-links">
+              <li className={`robowars-mobile-item ${isHomeActive ? 'is-active' : ''}`}>
+                <Link to="/" className="robowars-mobile-link" onClick={closeMobileMenu}>
+                  HOME
+                </Link>
+              </li>
+              <li className={`robowars-mobile-item ${isEventsActive ? 'is-active' : ''}`}>
+                <Link to="/events" className="robowars-mobile-link" onClick={closeMobileMenu}>
+                  EVENTS
+                </Link>
+              </li>
+              <li className={`robowars-mobile-item ${isBrochureActive ? 'is-active' : ''}`}>
+                <Link to="/brochure" className="robowars-mobile-link" onClick={closeMobileMenu}>
+                  BROCHURE
+                </Link>
+              </li>
+              <li className={`robowars-mobile-item ${isSponsorsActive ? 'is-active' : ''}`}>
+                <Link to="/sponsors" className="robowars-mobile-link" onClick={closeMobileMenu}>
+                  SPONSORS
+                </Link>
+              </li>
+              <li className={`robowars-mobile-item ${isAboutActive ? 'is-active' : ''}`}>
+                <Link to="/about-us" className="robowars-mobile-link" onClick={closeMobileMenu}>
+                  ABOUT US
+                </Link>
+              </li>
+            </ul>
+
+            <Link to="/register" className="robowars-mobile-cta" onClick={closeMobileMenu}>
+              <span>REGISTER NOW</span>
+              <svg
+                className="robowars-cta-arrow"
+                width="14"
+                height="12"
+                viewBox="0 0 14 12"
+                fill="none"
+              >
+                <path
+                  d="M8 1L13 6M13 6L8 11M13 6H1"
+                  stroke="currentColor"
+                  strokeWidth="1.8"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                />
+              </svg>
+            </Link>
+          </nav>
+        </>
+      )}
     </header>
   );
 }
+

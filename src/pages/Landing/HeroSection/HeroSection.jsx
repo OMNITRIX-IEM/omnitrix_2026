@@ -2,6 +2,7 @@ import React from 'react';
 import iemLogo from '@/assets/logos/iem.webp';
 import uemLogo from '@/assets/logos/uem.webp';
 import omnitrixHero from '@/assets/images/hero_section_2.png';
+import phoneHero from '@/assets/images/phone_hero.png';
 import './HeroSection.css';
 
 export default function HeroSection() {
@@ -10,11 +11,14 @@ export default function HeroSection() {
 
       {/* MAIN HERO ARTWORK */}
       <div className="hero-artwork">
-        <img
-          src={omnitrixHero}
-          alt="OMNITRIX"
-          className="hero-artwork-image"
-        />
+        <picture className="hero-artwork-picture">
+          <source media="(max-width: 768px)" srcSet={phoneHero} />
+          <img
+            src={omnitrixHero}
+            alt="OMNITRIX"
+            className="hero-artwork-image"
+          />
+        </picture>
       </div>
 
       {/* INSTITUTIONAL LOGOS */}

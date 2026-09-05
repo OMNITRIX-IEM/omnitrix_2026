@@ -258,3 +258,165 @@
 .robowars-navbar-cta:active {
   transform: translateY(0) scale(0.98);
 }
+
+/* --------------------------------------------------------------------------
+   HAMBURGER BUTTON & MOBILE DRAWER (Scoped <= 768px)
+   -------------------------------------------------------------------------- */
+.robowars-navbar-hamburger {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .robowars-navbar-nav,
+  .desktop-only-cta {
+    display: none !important;
+  }
+
+  .robowars-navbar {
+    width: calc(100% - 2rem);
+    top: 1rem;
+  }
+
+  .robowars-navbar-inner {
+    padding: 0 1rem;
+  }
+
+  .robowars-navbar-hamburger {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+    width: 40px;
+    height: 40px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    z-index: 120;
+    padding: 0;
+  }
+
+  .hamburger-line {
+    display: block;
+    width: 22px;
+    height: 2px;
+    background-color: #B6FF00;
+    border-radius: 2px;
+    transition: transform 0.25s ease, opacity 0.25s ease;
+    box-shadow: 0 0 4px rgba(182, 255, 0, 0.4);
+  }
+
+  .robowars-navbar-hamburger.is-open .hamburger-line:nth-child(1) {
+    transform: translateY(7px) rotate(45deg);
+  }
+
+  .robowars-navbar-hamburger.is-open .hamburger-line:nth-child(2) {
+    opacity: 0;
+  }
+
+  .robowars-navbar-hamburger.is-open .hamburger-line:nth-child(3) {
+    transform: translateY(-7px) rotate(-45deg);
+  }
+
+  .robowars-mobile-backdrop {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.75);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    z-index: 105;
+    animation: mobileFadeIn 0.2s ease-out;
+  }
+
+  .robowars-mobile-menu {
+    position: fixed;
+    top: 76px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: calc(100% - 2rem);
+    max-width: 380px;
+    background: rgba(5, 12, 2, 0.96);
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
+    border: 1px solid rgba(182, 255, 0, 0.35);
+    border-radius: 20px;
+    padding: 1.25rem;
+    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.9), inset 0 0 20px rgba(182, 255, 0, 0.08);
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    z-index: 110;
+    animation: mobileMenuSlideDown 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .robowars-mobile-links {
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .robowars-mobile-item {
+    width: 100%;
+  }
+
+  .robowars-mobile-link {
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 1.05rem;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    color: #E8E8E3;
+    text-decoration: none;
+    text-transform: uppercase;
+    padding: 0.7rem 1rem;
+    border-radius: 12px;
+    display: block;
+    transition: all 0.2s ease;
+  }
+
+  .robowars-mobile-link:hover,
+  .robowars-mobile-item.is-active .robowars-mobile-link {
+    color: #B6FF00;
+    background: rgba(182, 255, 0, 0.12);
+    text-shadow: 0 0 8px rgba(182, 255, 0, 0.5);
+  }
+
+  .robowars-mobile-cta {
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 0.92rem;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    color: #000000;
+    background: #B6FF00;
+    border: none;
+    padding: 0.8rem;
+    border-radius: 9999px;
+    text-decoration: none;
+    text-transform: uppercase;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    box-shadow: 0 0 20px rgba(182, 255, 0, 0.4);
+    margin-top: 0.25rem;
+  }
+}
+
+@keyframes mobileFadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes mobileMenuSlideDown {
+  from {
+    opacity: 0;
+    transform: translateX(-50%) translateY(-10px) scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0) scale(1);
+  }
+}
+

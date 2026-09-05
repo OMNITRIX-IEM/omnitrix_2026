@@ -3,7 +3,7 @@ import './Section3.css';
 
 export default function Section3() {
   return (
-    <section id="phase-02" className="phase-section relative w-full h-screen flex items-center overflow-hidden px-[80px]">
+    <section id="phase-02" className="phase-section relative w-full min-h-screen flex items-center overflow-hidden px-4 md:px-[80px]">
       {/* Background Layer */}
       <div className="phase-bg absolute inset-0 z-0 opacity-0">
         <div className="phase-bg-overlay"></div>
@@ -15,14 +15,14 @@ export default function Section3() {
           <div id="drone-sequence-phase2" className="drone-sequence-container"></div>
         </div>
         {/* Right Column: Content Card */}
-        <div className="col-span-1 flex flex-col justify-center translate-x-40 xl:translate-x-48 2xl:translate-x-56">
+        <div className="col-span-1 flex flex-col justify-center items-center md:items-start translate-x-0 md:translate-x-40 xl:translate-x-48 2xl:translate-x-56">
           <div className="phase-panel-wrapper">
             <div className="phase-panel relative opacity-0">
-              <div className="phase-content">
-                <h2 className="phase-heading font-rajdhani font-bold text-[72px] leading-[0.95] text-white uppercase phase-heading-glow mb-[24px]">
+              <div className="phase-content text-center md:text-left">
+                <h2 className="phase-heading font-rajdhani font-bold text-[72px] leading-[0.95] text-white uppercase phase-heading-glow mb-[24px] text-center md:text-left">
                   ONE of the LARGEST<br />STAGE
                 </h2>
-                <p className="font-inter font-normal text-[16px] leading-[1.8] text-white/80 mb-[36px]">
+                <p className="font-inter font-normal text-[16px] leading-[1.8] text-white/80 mb-[36px] text-center md:text-left">
                   This electrifying event transforms IEM into a high-octane battlefield, showcasing an exhilarating lineup of fierce robo-battles, drone competitions, and innovative engineering marvels. Prepare for intense clashes, strategic showdowns, and a display of technical brilliance as teams push the limits of design, durability, and combat strategy in a celebration of next-generation innovation.
                 </p>
               </div>

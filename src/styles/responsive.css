@@ -23,8 +23,7 @@
     min-height: 100vh;
   }
 
-  main,
-  #hero-section {
+  main {
     flex-direction: column !important;
     height: auto !important;
     padding-top: 64px;
