@@ -50,36 +50,34 @@ export default function Events() {
 
   useEffect(() => {
     const handleWheel = (e) => {
-      if (isDesktop) {
-        e.preventDefault();
+      e.preventDefault();
 
-        if (Math.abs(e.deltaY) < 10) return;
+      if (Math.abs(e.deltaY) < 10) return;
 
-        if (scrollConsumedRef.current) {
-          clearTimeout(scrollEndTimerRef.current);
-          scrollEndTimerRef.current = setTimeout(() => {
-            scrollConsumedRef.current = false;
-          }, 150);
-          return;
-        }
-
-        let nextState = currentState;
-        if (e.deltaY > 0) {
-          nextState = currentState + 1;
-        } else if (e.deltaY < 0) {
-          nextState = currentState - 1;
-        }
-
-        if (nextState >= 0 && nextState < 3) {
-          updateState(nextState);
-        }
-
-        scrollConsumedRef.current = true;
+      if (scrollConsumedRef.current) {
         clearTimeout(scrollEndTimerRef.current);
         scrollEndTimerRef.current = setTimeout(() => {
           scrollConsumedRef.current = false;
         }, 150);
+        return;
       }
+
+      let nextState = currentState;
+      if (e.deltaY > 0) {
+        nextState = currentState + 1;
+      } else if (e.deltaY < 0) {
+        nextState = currentState - 1;
+      }
+
+      if (nextState >= 0 && nextState < 3) {
+        updateState(nextState);
+      }
+
+      scrollConsumedRef.current = true;
+      clearTimeout(scrollEndTimerRef.current);
+      scrollEndTimerRef.current = setTimeout(() => {
+        scrollConsumedRef.current = false;
+      }, 150);
     };
 
     window.addEventListener('wheel', handleWheel, { passive: false });
@@ -95,32 +93,34 @@ export default function Events() {
     let touchStartY = 0;
 
     const handleTouchStart = (e) => {
-      if (isDesktop) {
+      if (e.touches && e.touches.length > 0) {
         touchStartY = e.touches[0].clientY;
       }
     };
 
     const handleTouchMove = (e) => {
-      if (isDesktop) {
-        e.preventDefault();
-        if (isAnimatingRef.current) return;
+      if (isAnimatingRef.current) return;
 
-        const touchEndY = e.touches[0].clientY;
-        const deltaY = touchStartY - touchEndY;
+      if (!e.touches || e.touches.length === 0) return;
+      const touchEndY = e.touches[0].clientY;
+      const deltaY = touchStartY - touchEndY;
 
-        if (Math.abs(deltaY) > 50) {
-          if (deltaY > 0) {
+      if (Math.abs(deltaY) > 35) {
+        if (deltaY > 0) {
+          if (currentState < 2) {
             updateState(currentState + 1);
-          } else {
+          }
+        } else {
+          if (currentState > 0) {
             updateState(currentState - 1);
           }
-          touchStartY = touchEndY;
         }
+        touchStartY = touchEndY;
       }
     };
 
-    window.addEventListener('touchstart', handleTouchStart, { passive: false });
-    window.addEventListener('touchmove', handleTouchMove, { passive: false });
+    window.addEventListener('touchstart', handleTouchStart, { passive: true });
+    window.addEventListener('touchmove', handleTouchMove, { passive: true });
 
     return () => {
       window.removeEventListener('touchstart', handleTouchStart);

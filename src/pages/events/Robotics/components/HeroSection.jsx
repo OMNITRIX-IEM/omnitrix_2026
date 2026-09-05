@@ -49,11 +49,6 @@ export default function HeroSection() {
 
       {/* Hero Content */}
       <div className="hero-content fade-up">
-        <div className="hero-label-wrap">
-          <span className="label-line"></span>
-          <span className="hero-label">Tactical Research Division</span>
-          <span className="label-line"></span>
-        </div>
 
         <h1 className="hero-title glitch-hint">
           ROBOTICS <br className="mobile-break" /> & WORKSHOPS
@@ -62,19 +57,11 @@ export default function HeroSection() {
         <p className="hero-tagline">
           ENGINEER THE FUTURE. MASTER AUTONOMOUS MACHINES. BUILD THE NEXT GENERATION OF ROBOTICS.
         </p>
-
-        <div className="hero-buttons">
-          <button className="btn-primary">
-            <span className="btn-text">EXPLORE WORKSHOPS</span>
-            <div className="btn-hover-fx"></div>
-          </button>
-          <button className="btn-secondary">REGISTER NOW</button>
-        </div>
       </div>
 
       {/* System Status Decorative */}
       <div className="hero-status">
-        <span className="status-text">System Status: Online</span>
+        <span className="status-text">Scroll Down and Explore Events</span>
         <div className="status-line"></div>
       </div>
     </section>
