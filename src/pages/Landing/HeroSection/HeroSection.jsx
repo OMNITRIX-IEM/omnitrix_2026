@@ -1,8 +1,8 @@
 import React from 'react';
 import iemLogo from '@/assets/logos/iem.webp';
 import uemLogo from '@/assets/logos/uem.webp';
-import omnitrixHero from '@/assets/images/hero_section_2.png';
-import phoneHero from '@/assets/images/phone_hero.png';
+import omnitrixHero from '@/assets/images/hero_section_2.webp';
+import phoneHero from '@/assets/images/phone_hero.webp';
 import './HeroSection.css';
 
 export default function HeroSection() {

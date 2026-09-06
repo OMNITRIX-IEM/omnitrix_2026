@@ -3,10 +3,11 @@ export const sponsorsData = {
     sectionTitle: "TITLE SPONSOR",
     sponsors: [
       {
-        id: "megacorp",
+        /*id: "megacorp",
         name: "MegaCorp Industries",
         tagline: "Powering the autonomous revolution.",
-        logoPlaceholder: "TITLE LOGO"
+        logoPlaceholder: "TITLE LOGO"*/
+        logoPlaceholder: "COMING SOON"
       }
     ]
   },
@@ -14,22 +15,25 @@ export const sponsorsData = {
     sectionTitle: "TECHNICAL PARTNERS",
     sponsors: [
       {
-        id: "neural-dynamics",
+        /*id: "neural-dynamics",
         name: "Neural Dynamics",
         tagline: "Advanced AI Processing",
-        logoPlaceholder: "LOGO"
+        logoPlaceholder: "LOGO"*/
+        logoPlaceholder: "COMING SOON"
       },
       {
-        id: "aerodyne-systems",
+        /*id: "aerodyne-systems",
         name: "AeroDyne Systems",
         tagline: "Flight Control Units",
-        logoPlaceholder: "LOGO"
+        logoPlaceholder: "LOGO"*/
+        logoPlaceholder: "COMING SOON"
       },
       {
-        id: "hyperalloy",
+        /*id: "hyperalloy",
         name: "HyperAlloy",
         tagline: "Combat-grade Materials",
-        logoPlaceholder: "LOGO"
+        logoPlaceholder: "LOGO"*/
+        logoPlaceholder: "COMING SOON"
       }
     ]
   },
@@ -37,46 +41,64 @@ export const sponsorsData = {
     sectionTitle: "ALLIED PARTNERS",
     sponsors: [
       {
-        id: "autonomous-ai",
+        /*id: "autonomous-ai",
         name: "Autonomous AI",
-        logoPlaceholder: "LOGO"
+        logoPlaceholder: "LOGO"*/
+        logoPlaceholder: "COMING SOON"
       },
       {
-        id: "cyber-forge",
+        /*id: "cyber-forge",
         name: "Cyber Forge",
-        logoPlaceholder: "LOGO"
+        logoPlaceholder: "LOGO"*/
+        logoPlaceholder: "COMING SOON"
       },
       {
-        id: "battlefield-labs",
+        /*id: "battlefield-labs",
         name: "Battlefield Labs",
-        logoPlaceholder: "LOGO"
+        logoPlaceholder: "LOGO"*/
+        logoPlaceholder: "COMING SOON"
       },
       {
-        id: "quantum-gear",
+        /*id: "quantum-gear",
         name: "Quantum Gear",
-        logoPlaceholder: "LOGO"
+        logoPlaceholder: "LOGO"*/
+        logoPlaceholder: "COMING SOON"
       },
       {
-        id: "titan-works",
+        /*id: "titan-works",
         name: "Titan Works",
-        logoPlaceholder: "LOGO"
+        logoPlaceholder: "LOGO"*/
+        logoPlaceholder: "COMING SOON"
       },
       {
-        id: "nova-systems",
+        /*id: "nova-systems",
         name: "Nova Systems",
-        logoPlaceholder: "LOGO"
+        logoPlaceholder: "LOGO"*/
+        logoPlaceholder: "COMING SOON"
       }
     ]
   },
   mediaPartners: {
     sectionTitle: "MEDIA PARTNERS",
     sponsors: [
-      { id: "media-1", logoPlaceholder: "LOGO" },
-      { id: "media-2", logoPlaceholder: "LOGO" },
-      { id: "media-3", logoPlaceholder: "LOGO" },
-      { id: "media-4", logoPlaceholder: "LOGO" },
-      { id: "media-5", logoPlaceholder: "LOGO" },
-      { id: "media-6", logoPlaceholder: "LOGO" }
+      { /*id: "media-1", logoPlaceholder: "LOGO" */
+        logoPlaceholder: "COMING SOON"
+      },
+      { /*id: "media-2", logoPlaceholder: "LOGO" */
+        logoPlaceholder: "COMING SOON"
+      },
+      { /*id: "media-3", logoPlaceholder: "LOGO" */
+        logoPlaceholder: "COMING SOON"
+      },
+      { /*id: "media-4", logoPlaceholder: "LOGO" */
+        logoPlaceholder: "COMING SOON"
+      },
+      { /*id: "media-5", logoPlaceholder: "LOGO" */
+        logoPlaceholder: "COMING SOON"
+      },
+      { /*id: "media-6", logoPlaceholder: "LOGO" */
+        logoPlaceholder: "COMING SOON"
+      }
     ]
   }
 };

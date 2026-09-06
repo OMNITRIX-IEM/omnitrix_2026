@@ -2,14 +2,14 @@ import { TOTAL_DRONE_FRAMES } from './constants';
 
 // Load all optimized spaceship frames
 const frameModules = import.meta.glob(
-  '../assets/spaceship_frames/scene*.jpeg',
+  '../assets/spaceship_frames/scene*.webp',
   { eager: true }
 );
 
 // Sort frames numerically by scene number
 const allFrameKeys = Object.keys(frameModules).sort((a, b) => {
-  const matchA = a.match(/scene(\d+)\.jpeg$/);
-  const matchB = b.match(/scene(\d+)\.jpeg$/);
+  const matchA = a.match(/scene(\d+)\.webp$/);
+  const matchB = b.match(/scene(\d+)\.webp$/);
 
   const numA = matchA ? parseInt(matchA[1], 10) : 0;
   const numB = matchB ? parseInt(matchB[1], 10) : 0;

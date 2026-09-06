@@ -45,7 +45,25 @@ export default function useHeroAnimations() {
 
     // Mobile <= 768px: Unpinned hero, section 2 follows naturally in document flow
     mm.add('(max-width: 768px)', () => {
-      gsap.set('#drone-sequence', { opacity: 1 });
+      const droneSequenceTween = gsap.fromTo(
+        '#drone-sequence',
+        { opacity: 0 },
+        {
+          opacity: 1,
+          ease: 'none',
+          scrollTrigger: {
+            trigger: '#phase-01',
+            start: 'top bottom',
+            end: 'top top',
+            scrub: true,
+          },
+        }
+      );
+
+      return () => {
+        droneSequenceTween.scrollTrigger?.kill();
+        droneSequenceTween.kill();
+      };
     });
 
     return () => {

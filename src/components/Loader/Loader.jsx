@@ -1,41 +1,51 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
+import loadingVideo from '@/assets/videos/loading.mp4';
 import './Loader.css';
 
-export default function Loader({ ready, percent }) {
+export default function Loader({ ready }) {
   const [visible, setVisible] = useState(true);
+  const [fadingOut, setFadingOut] = useState(false);
+  const videoRef = useRef(null);
+  const finishTriggered = useRef(false);
+
+  const handleFinish = () => {
+    if (finishTriggered.current) return;
+    finishTriggered.current = true;
+    setFadingOut(true);
+    setTimeout(() => {
+      setVisible(false);
+    }, 600);
+  };
 
   useEffect(() => {
-    if (ready) {
-      // Fade out and hide loader after a small delay
-      const timer1 = setTimeout(() => {
-        const loaderEl = document.getElementById('loader');
-        if (loaderEl) {
-          loaderEl.style.opacity = '0';
-        }
-        const timer2 = setTimeout(() => {
-          setVisible(false);
-        }, 600);
-        return () => clearTimeout(timer2);
-      }, 500);
-
-      return () => clearTimeout(timer1);
+    if (videoRef.current) {
+      videoRef.current.play().catch(() => {});
     }
-  }, [ready]);
+
+    // Safety fallback timer if video fails or stalls
+    const fallbackTimer = setTimeout(() => {
+      handleFinish();
+    }, 4200);
+
+    return () => {
+      clearTimeout(fallbackTimer);
+    };
+  }, []);
 
   if (!visible) return null;
 
   return (
-    <div id="loader">
-      <div className="loader-content">
-        <div className="loader-logo-mark"></div>
-        <div className="loader-text">INITIALIZING BENGAL E-SUMMIT 2026</div>
-        <div className="loader-bar-wrap">
-          <div
-            className="loader-bar"
-            style={{ width: `${percent}%` }}
-          ></div>
-        </div>
-      </div>
+    <div id="loader" className={fadingOut ? 'loader-fade-out' : ''}>
+      <video
+        ref={videoRef}
+        src={loadingVideo}
+        autoPlay
+        muted
+        playsInline
+        preload="auto"
+        className="loader-video"
+        onEnded={handleFinish}
+      />
     </div>
   );
 }
