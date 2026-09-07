@@ -1,6 +1,8 @@
 import React from 'react';
 import iemLogo from '@/assets/logos/iem.webp';
 import uemLogo from '@/assets/logos/uem.webp';
+import casLogo from '@/assets/logos/CAS.png';
+import ieeeLogo from '@/assets/logos/IEEE-Logo.jpg';
 import omnitrixHero from '@/assets/images/hero_section_2.webp';
 import phoneHero from '@/assets/images/phone_hero.webp';
 import './HeroSection.css';
@@ -21,21 +23,44 @@ export default function HeroSection() {
         </picture>
       </div>
 
-      {/* INSTITUTIONAL LOGOS */}
-      <div className="hero-logos">
-        <img
-          src={iemLogo}
-          alt="IEM Kolkata"
-          className="hero-institution-logo"
-        />
+      {/* INSTITUTIONAL BRANDING (LOGOS & TEXT) */}
+      <div className="hero-branding">
+        <div className="hero-logos">
+          <img
+            src={iemLogo}
+            alt="IEM Kolkata"
+            className="hero-institution-logo"
+          />
 
-        <div className="hero-logo-divider"></div>
+          <div className="hero-logo-divider"></div>
 
-        <img
-          src={uemLogo}
-          alt="UEM Kolkata"
-          className="hero-institution-logo"
-        />
+          <img
+            src={uemLogo}
+            alt="UEM Kolkata"
+            className="hero-institution-logo"
+          />
+
+          <div className="hero-logo-divider"></div>
+
+          <img
+            src={casLogo}
+            alt="IEEE CAS"
+            className="hero-institution-logo"
+          />
+
+          <div className="hero-logo-divider"></div>
+
+          <img
+            src={ieeeLogo}
+            alt="IEEE"
+            className="hero-institution-logo"
+          />
+        </div>
+
+        <div className="hero-institution-text">
+          <span className="hero-text-line">INSTITUTE OF ENGINEERING AND MANAGEMENT</span>
+          <span className="hero-text-line">SCHOOL OF UNIVERSITY OF ENGINEERING AND MANAGEMENT</span>
+        </div>
       </div>
 
       {/* HERO TEXT */}
@@ -62,9 +87,6 @@ export default function HeroSection() {
 
       {/* HERO → NEXT SECTION BLACK FADE */}
       <div className="hero-bottom-fade" aria-hidden="true"></div>
-
-
-
 
     </section>
   );

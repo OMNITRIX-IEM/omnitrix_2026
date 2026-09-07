@@ -43,47 +43,69 @@
 
 
 /* =========================================
-   INSTITUTIONAL LOGOS
+   INSTITUTIONAL BRANDING (LOGOS & TEXT)
    ========================================= */
 
-.hero-logos {
+.hero-branding {
   position: absolute;
-
-  /* Position over the black area above OMNITRIX */
-  top: 105px;
-  left: 100px;
+  top: 140px;
+  left: 180px;
 
   display: flex;
-  align-items: center;
-  justify-content: center;
-
-  gap: 30px;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 24px;
 
   z-index: 10;
-
   pointer-events: none;
+  max-width: calc(100vw - 280px);
+}
+
+.hero-logos {
+  display: flex;
+  align-items: center;
+  gap: 20px;
 }
 
 .hero-institution-logo {
   width: auto;
-  height: 72px;
+  height: 58px;
 
   object-fit: contain;
 
-  filter:
-    drop-shadow(0 0 6px rgba(255, 255, 255, 0.12));
+  filter: drop-shadow(0 0 6px rgba(255, 255, 255, 0.15));
 
   user-select: none;
 }
 
 .hero-logo-divider {
   width: 2px;
-  height: 72px;
+  height: 58px;
 
   background: rgba(255, 255, 255, 0.75);
 
   opacity: 0.8;
 }
+
+.hero-institution-text {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.hero-text-line {
+  font-family: 'Inter', sans-serif;
+  font-size: 22.5px;
+  font-weight: 600;
+  letter-spacing: 0.09em;
+  color: #ffffff;
+  text-transform: uppercase;
+  line-height: 1.5;
+  opacity: 0.95;
+  text-shadow: 0 2px 6px rgba(0, 0, 0, 0.9);
+}
+
+
 
 
 /* =========================================
@@ -471,18 +493,29 @@
    ========================================= */
 
 @media (max-width: 1024px) {
-  .hero-logos {
+  .hero-branding {
     top: 84px;
     left: 40px;
-    gap: 20px;
+    gap: 10px;
+    max-width: calc(100vw - 80px);
+  }
+
+  .hero-logos {
+    gap: 14px;
   }
 
   .hero-institution-logo {
-    height: 54px;
+    height: 46px;
   }
 
   .hero-logo-divider {
-    height: 54px;
+    height: 46px;
+    width: 1.5px;
+  }
+
+  .hero-text-line {
+    font-size: 10px;
+    letter-spacing: 0.06em;
   }
 
   .hero-copy {
@@ -504,18 +537,32 @@
     object-position: center top;
   }
 
-  .hero-logos {
-    top: 80px;
+  .hero-branding {
+    top: 76px;
     left: 20px;
-    gap: 16px;
+    right: 20px;
+    max-width: calc(100% - 40px);
+    gap: 8px;
+  }
+
+  .hero-logos {
+    gap: 10px;
   }
 
   .hero-institution-logo {
-    height: 42px;
+    height: 34px;
   }
 
   .hero-logo-divider {
-    height: 42px;
+    height: 34px;
+    width: 1px;
+  }
+
+  .hero-text-line {
+    font-size: 9px;
+    letter-spacing: 0.04em;
+    line-height: 1.25;
+    word-break: break-word;
   }
 
   .hero-copy {
@@ -532,7 +579,7 @@
     border: 1px solid rgba(182, 255, 0, 0.28);
     border-radius: 14px;
     box-shadow: 0 10px 32px rgba(0, 0, 0, 0.85),
-                inset 0 0 20px rgba(182, 255, 0, 0.05);
+      inset 0 0 20px rgba(182, 255, 0, 0.05);
   }
 
   .hero-subtitle {
@@ -559,18 +606,31 @@
     object-position: center top;
   }
 
+  .hero-branding {
+    top: 70px;
+    left: 14px;
+    right: 14px;
+    max-width: calc(100% - 28px);
+    gap: 6px;
+  }
+
   .hero-logos {
-    top: 76px;
-    left: 16px;
-    gap: 12px;
+    gap: 7px;
   }
 
   .hero-institution-logo {
-    height: 36px;
+    height: 26px;
   }
 
   .hero-logo-divider {
-    height: 36px;
+    height: 26px;
+    width: 1px;
+  }
+
+  .hero-text-line {
+    font-size: 8px;
+    letter-spacing: 0.02em;
+    line-height: 1.2;
   }
 
   .hero-copy {
