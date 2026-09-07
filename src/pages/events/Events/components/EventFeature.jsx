@@ -3,13 +3,14 @@ import { Link } from 'react-router-dom';
 import { eventsData } from '../data/events';
 
 const eventPaths = {
-  workshops: '/events/robotics',
+  robotics: '/events/robotics',
+  workshops: '/events/workshops',
   esports: '/events/esports',
   games: '/events/indoor-games',
 };
 
 export default function EventFeature({ currentState }) {
-  const targetEvent = eventsData[currentState];
+  const targetEvent = eventsData[currentState] || eventsData[0];
   const [displayEvent, setDisplayEvent] = useState(targetEvent);
   const [isFading, setIsFading] = useState(false);
 

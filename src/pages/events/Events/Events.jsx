@@ -3,6 +3,7 @@ import Navbar from '@/navbar/Navbar';
 import EventWheel from './components/EventWheel';
 import EventNavigation from './components/EventNavigation';
 import EventFeature from './components/EventFeature';
+import { eventsData } from './data/events';
 import './Events.css';
 
 export default function Events() {
@@ -17,6 +18,8 @@ export default function Events() {
   const isProgrammaticScrollRef = useRef(false);
   const snapTimerRef = useRef(null);
 
+  const totalStates = eventsData.length;
+
   useEffect(() => {
     const handleResize = () => {
       setIsDesktop(window.innerWidth > 1024);
@@ -26,7 +29,7 @@ export default function Events() {
   }, []);
 
   const updateState = (newState) => {
-    if (newState < 0 || newState >= 3 || isAnimatingRef.current) return;
+    if (newState < 0 || newState >= totalStates || isAnimatingRef.current) return;
 
     isAnimatingRef.current = true;
     setCurrentState(newState);
@@ -69,7 +72,7 @@ export default function Events() {
         nextState = currentState - 1;
       }
 
-      if (nextState >= 0 && nextState < 3) {
+      if (nextState >= 0 && nextState < totalStates) {
         updateState(nextState);
       }
 
@@ -87,7 +90,7 @@ export default function Events() {
         clearTimeout(scrollEndTimerRef.current);
       }
     };
-  }, [currentState, isDesktop]);
+  }, [currentState, isDesktop, totalStates]);
 
   useEffect(() => {
     let touchStartY = 0;
@@ -107,7 +110,7 @@ export default function Events() {
 
       if (Math.abs(deltaY) > 35) {
         if (deltaY > 0) {
-          if (currentState < 2) {
+          if (currentState < totalStates - 1) {
             updateState(currentState + 1);
           }
         } else {
@@ -126,7 +129,7 @@ export default function Events() {
       window.removeEventListener('touchstart', handleTouchStart);
       window.removeEventListener('touchmove', handleTouchMove);
     };
-  }, [currentState, isDesktop]);
+  }, [currentState, isDesktop, totalStates]);
 
   const handleScroll = () => {
     if (isProgrammaticScrollRef.current) return;
@@ -140,7 +143,7 @@ export default function Events() {
 
     const targetState = Math.round(scrollTop / clientHeight);
 
-    if (targetState !== currentState && targetState >= 0 && targetState < 3) {
+    if (targetState !== currentState && targetState >= 0 && targetState < totalStates) {
       setCurrentState(targetState);
     }
 
@@ -168,7 +171,7 @@ export default function Events() {
   } : {};
 
   const spacerStyle = isDesktop ? {
-    height: '300vh',
+    height: `${totalStates * 100}vh`,
     position: 'relative'
   } : {};
 

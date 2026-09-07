@@ -1,0 +1,30 @@
+.omni-grid-section {
+  position: relative;
+  z-index: 10;
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: 1rem 1.5rem 3rem 1.5rem;
+}
+
+.omni-grid-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.8rem 1.6rem;
+  justify-content: center;
+}
+
+/* Tablet Layout */
+@media (max-width: 1080px) {
+  .omni-grid-container {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.6rem;
+  }
+}
+
+/* Mobile Layout */
+@media (max-width: 680px) {
+  .omni-grid-container {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+}

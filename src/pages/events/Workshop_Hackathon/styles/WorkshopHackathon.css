@@ -1,0 +1,118 @@
+/* ==========================================================================
+   WORKSHOPS & HACKATHONS PAGE STYLES
+   ========================================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@500;600;700;800;900&family=Rajdhani:wght@500;600;700;800&family=Chakra+Petch:wght@500;600;700&display=swap');
+
+.workshop-hackathon-page {
+  /* Color Palette */
+  --bg-dark: #020703;
+  --bg-card: rgba(5, 16, 8, 0.85);
+  --bg-card-hover: rgba(8, 25, 12, 0.95);
+  --bg-panel: rgba(7, 22, 11, 0.9);
+
+  /* Omnitrix Neon Greens */
+  --omni-green: #39ff14;
+  --omni-green-bright: #48e024;
+  --omni-green-light: #86efac;
+  --omni-green-emerald: #22c55e;
+  --omni-green-dim: #15803d;
+  --omni-green-dark: #0a2f11;
+  --omni-green-border: rgba(57, 255, 20, 0.35);
+  --omni-green-border-glow: rgba(57, 255, 20, 0.8);
+  --omni-green-glow: 0 0 20px rgba(57, 255, 20, 0.45);
+  --omni-green-glow-intense: 0 0 35px rgba(57, 255, 20, 0.75), 0 0 70px rgba(57, 255, 20, 0.3);
+
+  /* Grayscale & Text */
+  --text-white: #ffffff;
+  --text-gray: #a1b8a5;
+  --text-dim: #5c7562;
+  --text-dark: #030a04;
+
+  /* Typography */
+  --font-orbitron: 'Orbitron', -apple-system, sans-serif;
+  --font-rajdhani: 'Rajdhani', sans-serif;
+  --font-chakra: 'Chakra Petch', monospace, sans-serif;
+
+  /* Cyber Chamfer Cuts */
+  --chamfer-card: polygon(26px 0, 100% 0, 100% calc(100% - 26px), calc(100% - 26px) 100%, 0 100%, 0 26px);
+  --chamfer-card-inner: polygon(24px 0, 100% 0, 100% calc(100% - 24px), calc(100% - 24px) 100%, 0 100%, 0 24px);
+  --chamfer-bottom-bar: polygon(0 0, 100% 0, 100% calc(100% - 20px), calc(100% - 20px) 100%, 0 100%);
+  --chamfer-btn: polygon(8px 0, 100% 0, 100% calc(100% - 8px), calc(100% - 8px) 100%, 0 100%, 0 8px);
+  --chamfer-nav-btn: polygon(12px 0, 100% 0, 100% calc(100% - 12px), calc(100% - 12px) 100%, 0 100%, 0 12px);
+
+  /* Transitions */
+  --transition-fast: 0.15s cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-normal: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-slow: 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+
+  position: relative;
+  min-height: 100vh;
+  width: 100%;
+  background-color: #020703;
+  color: var(--text-white);
+  overflow-x: hidden;
+  display: flex;
+  flex-direction: column;
+  font-family: var(--font-rajdhani);
+}
+
+.workshop-hackathon-page .omni-app-container {
+  position: relative;
+  min-height: 100vh;
+  width: 100%;
+  background-color: #020703;
+  color: var(--text-white);
+  overflow-x: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.workshop-hackathon-page .omni-main-content {
+  position: relative;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  width: 100%;
+  padding-top: 5rem; /* Offset for floating universal Navbar */
+}
+
+.workshop-hackathon-page main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Animations */
+@keyframes scanlineAnim {
+  0% { transform: translateY(-100%); }
+  100% { transform: translateY(1000%); }
+}
+
+@keyframes pulseGlow {
+  0%, 100% {
+    opacity: 0.8;
+    filter: drop-shadow(0 0 8px rgba(57, 255, 20, 0.5));
+  }
+  50% {
+    opacity: 1;
+    filter: drop-shadow(0 0 18px rgba(57, 255, 20, 0.85));
+  }
+}
+
+@keyframes scrollBob {
+  0%, 100% {
+    transform: translateY(0);
+    opacity: 0.4;
+  }
+  50% {
+    transform: translateY(8px);
+    opacity: 1;
+  }
+}
+
+@keyframes omniSpin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}

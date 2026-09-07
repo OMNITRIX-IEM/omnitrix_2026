@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" fill="none">
+  <!-- Glow filter -->
+  <defs>
+    <filter id="omni-glow" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur stdDeviation="3" result="blur" />
+      <feMerge>
+        <feMergeNode in="blur" />
+        <feMergeNode in="SourceGraphic" />
+      </feMerge>
+    </filter>
+    <linearGradient id="omni-green-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#48e024" />
+      <stop offset="100%" stop-color="#22c55e" />
+    </linearGradient>
+  </defs>
+
+  <!-- Outer Ring -->
+  <circle cx="50" cy="50" r="44" stroke="#39ff14" stroke-width="4.5" filter="url(#omni-glow)" fill="#061208" />
+  <circle cx="50" cy="50" r="38" stroke="#16381b" stroke-width="1.5" fill="#030804" />
+
+  <!-- Outer Indicator Notches -->
+  <rect x="47.5" y="2" width="5" height="7" rx="1.5" fill="#39ff14" filter="url(#omni-glow)" />
+  <rect x="47.5" y="91" width="5" height="7" rx="1.5" fill="#39ff14" filter="url(#omni-glow)" />
+  <rect x="2" y="47.5" width="7" height="5" rx="1.5" fill="#39ff14" filter="url(#omni-glow)" />
+  <rect x="91" y="47.5" width="7" height="5" rx="1.5" fill="#39ff14" filter="url(#omni-glow)" />
+
+  <!-- Interlocking Hourglass (Green Triangles/Trapezoids) -->
+  <path d="M22 24 L78 24 L56 46 L44 46 Z" fill="url(#omni-green-grad)" filter="url(#omni-glow)" />
+  <path d="M22 76 L78 76 L56 54 L44 54 Z" fill="url(#omni-green-grad)" filter="url(#omni-glow)" />
+
+  <!-- Black Side Hourglass Cavities -->
+  <path d="M22 26 L44 48 L44 52 L22 74 Z" fill="#020603" stroke="#143216" stroke-width="1" />
+  <path d="M78 26 L56 48 L56 52 L78 74 Z" fill="#020603" stroke="#143216" stroke-width="1" />
+
+  <!-- Center Core Accent Line -->
+  <circle cx="50" cy="50" r="2.5" fill="#ffffff" opacity="0.8" />
+</svg>

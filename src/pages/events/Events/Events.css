@@ -223,7 +223,16 @@
 }
 
 /* RESPONSIVENESS */
-@media (max-width: 1400px) {
+@media (max-width: 1500px) {
+    .events-main-page .column-center {
+        padding-left: 240px;
+    }
+    .events-main-page .event-name {
+        font-size: 42px;
+    }
+}
+
+@media (max-width: 1350px) {
     .events-main-page .container {
         grid-template-columns: 0.5fr 2fr 1.5fr;
     }
@@ -232,8 +241,27 @@
         transform: translate(-41%, -50%);
     }
 
+    .events-main-page .column-center {
+        padding-left: 180px;
+    }
+
     .events-main-page .event-name {
-        font-size: 40px;
+        font-size: 34px;
+        letter-spacing: 2px;
+    }
+
+    .events-main-page .event-list {
+        gap: 28px;
+    }
+}
+
+@media (max-width: 1150px) {
+    .events-main-page .column-center {
+        padding-left: 120px;
+    }
+
+    .events-main-page .event-name {
+        font-size: 28px;
     }
 }
 

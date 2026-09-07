@@ -6,6 +6,7 @@ import Events from '@/pages/events/Events/Events';
 import Robotics from '@/pages/events/Robotics/Robotics';
 import Esports from '@/pages/events/Esports/Esports';
 import IndoorGames from '@/pages/events/IndoorGames/IndoorGames';
+import WorkshopHackathon from '@/pages/events/Workshop_Hackathon/WorkshopHackathon';
 import Sponsor from '@/pages/sponsor/Sponsor';
 import ComingSoon from '@/pages/ComingSoon/ComingSoon';
 
@@ -19,6 +20,9 @@ export default function App() {
         <Route path="/events/robotics" element={<Robotics />} />
         <Route path="/events/esports" element={<Esports />} />
         <Route path="/events/indoor-games" element={<IndoorGames />} />
+        <Route path="/events/workshops" element={<WorkshopHackathon />} />
+        <Route path="/events/workshop-hackathon" element={<WorkshopHackathon />} />
+        <Route path="/workshops" element={<WorkshopHackathon />} />
         <Route path="/sponsors" element={<Sponsor />} />
         <Route path="/brochure" element={<ComingSoon />} />
         <Route path="/about-us" element={<ComingSoon />} />

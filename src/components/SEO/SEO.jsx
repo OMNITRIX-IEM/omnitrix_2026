@@ -32,6 +32,24 @@ const ROUTES_SEO = {
       'Take on the indoor games at OMNITRIX 2026, featuring competitive challenges and exciting games at IEM.',
     canonical: 'https://omnitrix-iem.in/events/indoor-games',
   },
+  '/events/workshops': {
+    title: 'Workshops & Hackathons | OMNITRIX 2026 — IEM',
+    description:
+      'Participate in hands-on workshops and hackathons at OMNITRIX 2026, IEM. Learn ML/DL, ROS2, VLSI, Drone Programming, Project Exhibition & Hackathon.',
+    canonical: 'https://omnitrix-iem.in/events/workshops',
+  },
+  '/events/workshop-hackathon': {
+    title: 'Workshops & Hackathons | OMNITRIX 2026 — IEM',
+    description:
+      'Participate in hands-on workshops and hackathons at OMNITRIX 2026, IEM. Learn ML/DL, ROS2, VLSI, Drone Programming, Project Exhibition & Hackathon.',
+    canonical: 'https://omnitrix-iem.in/events/workshops',
+  },
+  '/workshops': {
+    title: 'Workshops & Hackathons | OMNITRIX 2026 — IEM',
+    description:
+      'Participate in hands-on workshops and hackathons at OMNITRIX 2026, IEM. Learn ML/DL, ROS2, VLSI, Drone Programming, Project Exhibition & Hackathon.',
+    canonical: 'https://omnitrix-iem.in/events/workshops',
+  },
   '/sponsors': {
     title: 'Sponsors | OMNITRIX 2026 — IEM',
     description:

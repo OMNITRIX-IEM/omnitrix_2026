@@ -1,0 +1,120 @@
+.omni-footer {
+  position: relative;
+  z-index: 10;
+  padding: 3rem 1.5rem 4rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.6rem;
+  margin-top: auto;
+}
+
+/* Glowing Neon Divider with Core Icon */
+.footer-divider-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  max-width: 650px;
+  gap: 1.2rem;
+}
+
+.footer-neon-line {
+  flex: 1;
+  height: 1.5px;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(57, 255, 20, 0.4) 50%,
+    var(--omni-green) 100%
+  );
+  box-shadow: 0 0 6px rgba(57, 255, 20, 0.5);
+}
+
+.line-right {
+  background: linear-gradient(
+    90deg,
+    var(--omni-green) 0%,
+    rgba(57, 255, 20, 0.4) 50%,
+    transparent 100%
+  );
+}
+
+.footer-omni-core {
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.footer-omni-emblem {
+  width: 26px;
+  height: 26px;
+  filter: drop-shadow(0 0 8px var(--omni-green));
+}
+
+/* Footer Taglines */
+.footer-message-box {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.footer-text-line {
+  font-family: var(--font-rajdhani);
+  font-weight: 700;
+  letter-spacing: 0.35em;
+  text-transform: uppercase;
+}
+
+.footer-text-line.line-1 {
+  font-size: 0.85rem;
+  color: var(--text-gray);
+  opacity: 0.8;
+}
+
+.footer-text-line.line-2 {
+  font-size: 1.15rem;
+  font-weight: 800;
+  color: var(--omni-green);
+  text-shadow: 0 0 12px rgba(57, 255, 20, 0.5);
+}
+
+/* Mouse Scroll Indicator */
+.footer-scroll-indicator {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 1rem;
+  animation: scrollBob 2.4s infinite ease-in-out;
+}
+
+.mouse-icon {
+  width: 20px;
+  height: 32px;
+  border: 1.5px solid rgba(57, 255, 20, 0.5);
+  border-radius: 12px;
+  display: flex;
+  justify-content: center;
+  padding-top: 5px;
+}
+
+.mouse-wheel {
+  width: 3px;
+  height: 6px;
+  background-color: var(--omni-green);
+  border-radius: 2px;
+  box-shadow: 0 0 6px var(--omni-green);
+}
+
+.scroll-caption {
+  font-family: var(--font-rajdhani);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.3em;
+  color: var(--text-dim);
+  text-transform: uppercase;
+}

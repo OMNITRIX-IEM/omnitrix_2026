@@ -4,11 +4,18 @@ import aiSummit from '@/assets/events/main/ai_summit.png';
 
 export const eventsData = [
   {
-    id: "workshops",
+    id: "robotics",
     title: "ROBOTICS",
     date: "OCTOBER 15, 2026",
     desc: "Robot battle event",
     image: robotCombat
+  },
+  {
+    id: "workshops",
+    title: "WORKSHOPS & HACKATHONS",
+    date: "OCTOBER 18, 2026",
+    desc: "Hands-on tech workshops & competitive hackathons covering ML/DL, ROS 2, VLSI, Drones, and AI innovations.",
+    image: "/images/cards/hackathon.jpg"
   },
   {
     id: "esports",
