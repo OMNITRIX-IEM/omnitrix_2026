@@ -1,7 +1,7 @@
 import React from 'react';
 
-export default function GameCard({ game }) {
-  const { tag, title, image, price, icon } = game;
+export default function GameCard({ game, onExplore }) {
+  const { tag, title, image, price, icon, registerLink } = game;
 
   return (
     <div className="esports-card group">
@@ -32,8 +32,31 @@ export default function GameCard({ game }) {
             ))}
           </h3>
           <div className="esports-card-actions">
-            <button>REGISTER</button>
-            <button>EXPLORE</button>
+            {registerLink ? (
+              <a
+                href={registerLink}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn-register-link"
+              >
+                REGISTER
+              </a>
+            ) : (
+              <button
+                type="button"
+                className="btn-disabled"
+                aria-disabled="true"
+                onClick={(e) => e.preventDefault()}
+              >
+                REGISTER
+              </button>
+            )}
+            <button
+              type="button"
+              onClick={() => onExplore && onExplore(game)}
+            >
+              EXPLORE
+            </button>
           </div>
         </div>
         <div className="esports-card-footer">

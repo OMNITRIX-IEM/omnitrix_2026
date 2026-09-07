@@ -5,7 +5,7 @@ import aiSummit from '@/assets/events/main/ai_summit.png';
 export const eventsData = [
   {
     id: "workshops",
-    title: "ROBO-WORKSHOPS",
+    title: "ROBOTICS",
     date: "OCTOBER 15, 2026",
     desc: "Robot battle event",
     image: robotCombat

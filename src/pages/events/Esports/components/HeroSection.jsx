@@ -4,8 +4,6 @@ import callofdutycropped from '@/assets/events/esports/callofdutycropped.webp';
 import eFootballcropped from '@/assets/events/esports/e-footballcropped.webp';
 import fc26 from '@/assets/events/esports/fc26.webp';
 import freefirecropped from '@/assets/events/esports/freefirecropped.webp';
-import valorant1cropped from '@/assets/events/esports/valorant1cropped.webp';
-import valorant2 from '@/assets/events/esports/valorant2.webp';
 import esportstitle from '@/assets/events/esports/esportstitle.webp';
 
 const carouselImages = [
@@ -14,8 +12,6 @@ const carouselImages = [
   eFootballcropped,
   fc26,
   freefirecropped,
-  valorant1cropped,
-  valorant2
 ];
 
 export default function HeroSection() {

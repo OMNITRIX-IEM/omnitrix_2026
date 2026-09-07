@@ -1,8 +1,10 @@
-import React, { useRef } from 'react';
+import React, { useRef, useState } from 'react';
 import WorkshopCard from './WorkshopCard.jsx';
+import ExploreModal from './ExploreModal.jsx';
 import { workshops } from '../data/workshops.js';
 
 export default function WorkshopsSection() {
+  const [selectedEvent, setSelectedEvent] = useState(null);
   const headerRef = useRef(null);
 
   const handleHeaderMouseMove = (e) => {
@@ -18,7 +20,6 @@ export default function WorkshopsSection() {
 
   return (
     <section className="workshops-section">
-
       {/* SVG Mask for Cards */}
       <svg height="0" width="0" style={{ position: 'absolute', pointerEvents: 'none' }}>
         <defs>
@@ -31,14 +32,14 @@ export default function WorkshopsSection() {
       </svg>
 
       <div className="workshop-header fade-up">
-        <div 
-          ref={headerRef} 
+        <div
+          ref={headerRef}
           className="header-panel group"
           onMouseMove={handleHeaderMouseMove}
         >
           <div className="glow-strip left-strip"></div>
           <div className="glow-strip right-strip"></div>
-          <h2 className="workshop-title">ROBOTICS & WORKSHOPS</h2>
+          <h2 className="workshop-title">ROBOTICS</h2>
           <div className="header-gradient"></div>
         </div>
       </div>
@@ -47,16 +48,18 @@ export default function WorkshopsSection() {
         {workshops.map((workshop) => (
           <WorkshopCard
             key={workshop.id}
-            titleLine1={workshop.titleLine1}
-            titleLine2={workshop.titleLine2}
-            image={workshop.image}
-            priceCurrent={workshop.priceCurrent}
-            priceOld={workshop.priceOld}
-            icon={workshop.icon}
-            delay={workshop.delay}
+            workshop={workshop}
+            onExplore={(evt) => setSelectedEvent(evt)}
           />
         ))}
       </div>
+
+      {selectedEvent && (
+        <ExploreModal
+          event={selectedEvent}
+          onClose={() => setSelectedEvent(null)}
+        />
+      )}
     </section>
   );
 }

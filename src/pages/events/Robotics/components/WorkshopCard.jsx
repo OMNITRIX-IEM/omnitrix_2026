@@ -1,7 +1,39 @@
 import React, { useRef } from 'react';
 
-export default function WorkshopCard({ titleLine1, titleLine2, image, priceCurrent, priceOld, icon, delay }) {
+export default function WorkshopCard({
+  titleLine1,
+  titleLine2,
+  image,
+  priceCurrent,
+  priceOld,
+  icon,
+  delay,
+  registerLink,
+  exploreContent,
+  onExplore,
+  workshop
+}) {
   const cardRef = useRef(null);
+
+  const t1 = titleLine1 || workshop?.titleLine1;
+  const t2 = titleLine2 || workshop?.titleLine2;
+  const img = image || workshop?.image;
+  const currPrice = priceCurrent || workshop?.priceCurrent;
+  const oldPrice = priceOld || workshop?.priceOld;
+  const ic = icon || workshop?.icon;
+  const del = delay || workshop?.delay;
+  const regLink = registerLink !== undefined ? registerLink : workshop?.registerLink;
+  const currentWorkshop = workshop || {
+    titleLine1: t1,
+    titleLine2: t2,
+    image: img,
+    priceCurrent: currPrice,
+    priceOld: oldPrice,
+    icon: ic,
+    delay: del,
+    registerLink: regLink,
+    exploreContent: exploreContent !== undefined ? exploreContent : workshop?.exploreContent
+  };
 
   const handleMouseMove = (e) => {
     const card = cardRef.current;
@@ -18,7 +50,7 @@ export default function WorkshopCard({ titleLine1, titleLine2, image, priceCurre
     <div
       ref={cardRef}
       className="workshop-card group fade-up"
-      style={{ transitionDelay: delay }}
+      style={{ transitionDelay: del }}
       onMouseMove={handleMouseMove}
     >
       <div className="card-border">
@@ -34,30 +66,54 @@ export default function WorkshopCard({ titleLine1, titleLine2, image, priceCurre
       <div className="card-mask">
         <div className="vertical-tag">WORKSHOP</div>
         <div className="card-image-wrap">
-          <img 
-            src={image} 
-            alt={`${titleLine1} ${titleLine2}`} 
-            className="card-image" 
+          <img
+            src={img}
+            alt={`${t1 || ''} ${t2 || ''}`}
+            className="card-image"
           />
           <div className="image-gradient"></div>
         </div>
         <div className="card-content-area">
           <h3 className="card-heading">
-            {titleLine1}
-            <br />
-            {titleLine2}
+            {t1}
+            {t2 && <br />}
+            {t2}
           </h3>
           <div className="card-actions">
-            <button className="btn-card">REGISTER</button>
-            <button className="btn-card">EXPLORE</button>
+            {regLink ? (
+              <a
+                href={regLink}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn-card btn-register-link"
+              >
+                REGISTER
+              </a>
+            ) : (
+              <button
+                type="button"
+                className="btn-card btn-disabled"
+                aria-disabled="true"
+                onClick={(e) => e.preventDefault()}
+              >
+                REGISTER
+              </button>
+            )}
+            <button
+              type="button"
+              className="btn-card"
+              onClick={() => onExplore && onExplore(currentWorkshop)}
+            >
+              EXPLORE
+            </button>
           </div>
         </div>
         <div className="card-footer">
           <div className="price-wrap">
-            <span className="price-current">{priceCurrent}</span>
-            <span className="price-old">{priceOld}</span>
+            <span className="price-current">{currPrice}</span>
+            <span className="price-old">{oldPrice}</span>
           </div>
-          <span className="material-symbols-outlined footer-icon">{icon}</span>
+          <span className="material-symbols-outlined footer-icon">{ic}</span>
         </div>
       </div>
     </div>

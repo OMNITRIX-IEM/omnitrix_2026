@@ -51,7 +51,7 @@ export default function HeroSection() {
       <div className="hero-content fade-up">
 
         <h1 className="hero-title glitch-hint">
-          ROBOTICS <br className="mobile-break" /> & WORKSHOPS
+          ROBOTICS <br className="mobile-break" />
         </h1>
 
         <p className="hero-tagline">
