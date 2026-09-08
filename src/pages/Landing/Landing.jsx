@@ -11,7 +11,7 @@ import Section7 from './Section7/Section7';
 import Section8 from './Section8/Section8';
 import DroneSequence from '@/components/DroneSequence/DroneSequence';
 import BlackOverlay from '@/components/BlackOverlay/BlackOverlay';
-import Loader from '@/components/Loader/Loader';
+import Loader from '@/components/loader/loader';
 import { useDroneSequence } from '@/hooks/useDroneSequence';
 import useScrollAnimations from '@/hooks/useScrollAnimations';
 import './Landing.css';
