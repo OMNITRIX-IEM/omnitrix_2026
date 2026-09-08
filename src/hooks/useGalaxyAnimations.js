@@ -118,6 +118,29 @@ export default function useGalaxyAnimations(setPaused) {
         0.88
       );
 
+      // Mobile stage 1: Left text block visible initially, fades out before stage 2
+      tl.fromTo(
+        ".galaxy-text-block-left",
+        { opacity: 1 },
+        { opacity: 0, ease: "power1.inOut", duration: 0.15 },
+        0.35
+      );
+
+      // Mobile stage 2: Right text block hidden initially, fades in after left text block has disappeared
+      tl.fromTo(
+        ".galaxy-text-block-right",
+        { opacity: 0 },
+        { opacity: 1, ease: "power1.inOut", duration: 0.15 },
+        0.45
+      );
+
+      // Mobile exit: Right text block fades out as section exits
+      tl.to(
+        ".galaxy-text-block-right",
+        { opacity: 0, ease: "power1.inOut", duration: 0.15 },
+        0.75
+      );
+
       const pauseTrigger = ScrollTrigger.create({
         trigger: galaxySection,
         start: 'top top',

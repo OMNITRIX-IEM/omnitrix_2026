@@ -100,18 +100,29 @@
   position: relative;
   z-index: 2;
   width: 100%;
-  max-width: 1480px;
+  max-width: 1600px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  gap: 1.5rem;
   margin: 0 auto;
+}
+
+.mission-control-section .console-body-wrapper {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+  justify-content: center;
+  gap: 2.25rem;
 }
 
 .mission-control-section .viewport-frame {
   position: relative;
+  flex: 1;
   width: 100%;
-  max-width: 1400px;
+  max-width: 1260px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -124,6 +135,81 @@
   backdrop-filter: none;
   -webkit-backdrop-filter: none;
   overflow: visible;
+}
+
+/* --------------------------------------------------------------------------
+   CATEGORY SELECTOR SIDEBAR (LEFT SIDE)
+   -------------------------------------------------------------------------- */
+.mission-control-section .category-sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  width: 250px;
+  flex-shrink: 0;
+  z-index: 10;
+  align-self: center;
+}
+
+.mission-control-section .sidebar-header {
+  padding-bottom: 0.75rem;
+  border-bottom: 1px solid var(--border-green);
+}
+
+.mission-control-section .sidebar-tag {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  color: var(--omnitrix-green);
+  text-transform: uppercase;
+}
+
+.mission-control-section .category-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.mission-control-section .category-btn {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  background: rgba(0, 12, 0, 0.7);
+  border: 1px solid var(--border-green);
+  padding: 0.85rem 1.1rem;
+  text-align: left;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  transition: all 0.25s ease;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border-radius: 4px;
+}
+
+.mission-control-section .category-btn:hover {
+  color: var(--text-white);
+  border-color: var(--border-green-bright);
+  background: rgba(182, 255, 0, 0.08);
+  box-shadow: 0 0 14px rgba(182, 255, 0, 0.15);
+  transform: translateX(3px);
+}
+
+.mission-control-section .category-btn.active {
+  color: var(--bg-black);
+  background: var(--omnitrix-green);
+  border-color: var(--omnitrix-green);
+  box-shadow: 0 0 20px rgba(182, 255, 0, 0.45);
+  font-weight: 800;
+}
+
+.mission-control-section .category-indicator {
+  font-size: 0.75rem;
+  opacity: 0.9;
 }
 
 /* --------------------------------------------------------------------------
@@ -391,13 +477,23 @@
 
 /* Progress Tracker Bar */
 .mission-control-section .card-pagination {
-  width: 220px;
+  width: 240px;
   display: flex;
   align-items: center;
+  gap: 0.85rem;
+}
+
+.mission-control-section .readout-counter {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--omnitrix-green);
+  letter-spacing: 0.12em;
+  white-space: nowrap;
 }
 
 .mission-control-section .progress-bar-bg {
-  width: 100%;
+  flex: 1;
   height: 4px;
   background: rgba(255, 255, 255, 0.1);
   position: relative;
@@ -473,6 +569,28 @@
   }
 }
 
+@media (max-width: 1024px) {
+  .mission-control-section .console-body-wrapper {
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  .mission-control-section .category-sidebar {
+    width: 100%;
+    padding-top: 0;
+  }
+
+  .mission-control-section .category-list {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.6rem;
+  }
+
+  .mission-control-section .category-btn:hover {
+    transform: none;
+  }
+}
+
 @media (max-width: 992px) {
   .mission-control-section {
     padding: 2rem 1rem;
@@ -525,4 +643,5 @@
     display: none;
   }
 }
+
 

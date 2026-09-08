@@ -141,7 +141,7 @@
 
 @media (max-width: 768px) {
   .galaxy-text-block {
-    top: 7vh;
+    top: 15vh;
     max-width: 280px;
     gap: 0.45rem;
   }
@@ -152,6 +152,7 @@
 
   .galaxy-text-block-right {
     right: 4vw;
+    opacity: 0;
   }
 
   .galaxy-text-line.size-lg {
@@ -169,7 +170,7 @@
 
 @media (max-width: 480px) {
   .galaxy-text-block {
-    top: 6vh;
+    top: 15vh;
     max-width: 220px;
   }
 

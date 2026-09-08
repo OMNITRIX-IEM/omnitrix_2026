@@ -2,271 +2,252 @@ import React, { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import './Section6.css';
 
-const EVENTS_DATA = [
-  {
-    id: 0,
-    seq: 'EVENT_01',
-    date: '24 AUG // 10:00 AM',
-    title: 'ROBORACE',
-    subtitle: 'High-speed autonomous and semi-autonomous robot racing on a custom tactical obstacle circuit. Engineers push mechanical speed, traction, and obstacle evasion to the absolute limit.',
-    category: 'ADVANCED',
-    categoryRed: true
+const CATEGORIES_DATA = {
+  robotics: {
+    id: 'robotics',
+    name: 'Robotics',
+    events: [
+      {
+        id: 'rob-1',
+        seq: 'EVENT_01',
+        date: '24 AUG // 10:00 AM',
+        title: 'Roborace',
+        subtitle: 'High-speed autonomous and semi-autonomous robot racing on a custom tactical obstacle circuit. Engineers push mechanical speed, traction, and obstacle evasion to the absolute limit.',
+        category: 'ROBOTICS',
+        categoryRed: true
+      },
+      {
+        id: 'rob-2',
+        seq: 'EVENT_02',
+        date: '24 AUG // 02:00 PM',
+        title: 'Robosumo/Roboclash',
+        subtitle: 'Heavyweight mechanical combat where custom-built battlebots enter the arena for high-impact destruction. Features kinetic spinners, flippers, and armored chassis battling for arena dominance.',
+        category: 'ROBOTICS',
+        categoryRed: true
+      },
+      {
+        id: 'rob-3',
+        seq: 'EVENT_03',
+        date: '25 AUG // 11:00 AM',
+        title: 'Robosoccer',
+        subtitle: 'Tactical 3-on-3 robotic football tournament featuring customized wireless drive platforms. Teams coordinate offensive maneuvers, mechanical kicker mechanisms, and defensive blocking.',
+        category: 'ROBOTICS',
+        categoryRed: true
+      },
+      {
+        id: 'rob-4',
+        seq: 'EVENT_04',
+        date: '25 AUG // 09:30 AM',
+        title: 'Line following rover',
+        subtitle: 'Precision speed competition testing infrared sensor calibration and PID algorithms. Autonomous bots navigate sharp turns, intersections, and dynamic track speed traps.',
+        category: 'ROBOTICS',
+        categoryRed: true
+      },
+      {
+        id: 'rob-5',
+        seq: 'EVENT_05',
+        date: '25 AUG // 01:30 PM',
+        title: 'Drone track competition/UAV race',
+        subtitle: 'First-Person View (FPV) drone racing through complex 3D aerial gate courses. Pilots maneuver high-speed quadcopters with extreme precision at speeds exceeding 100 km/h.',
+        category: 'ROBOTICS',
+        categoryRed: true
+      }
+    ]
   },
-  {
-    id: 1,
-    seq: 'EVENT_02',
-    date: '24 AUG // 02:00 PM',
-    title: 'ROBOCLASH',
-    subtitle: 'Heavyweight mechanical combat where custom-built battlebots enter the arena for high-impact destruction. Features kinetic spinners, flippers, and armored chassis battling for arena dominance.',
-    category: 'ADVANCED',
-    categoryRed: true
+  workshops: {
+    id: 'workshops',
+    name: 'Workshops & Hackathons',
+    events: [
+      {
+        id: 'ws-1',
+        seq: 'EVENT_01',
+        date: '24 AUG // 09:00 AM',
+        title: 'WS-ML DL',
+        subtitle: 'Hands-on masterclass covering neural network architectures, computer vision model training, and edge AI deployment on autonomous robotics hardware.',
+        category: 'WORKSHOP',
+        categoryRed: true
+      },
+      {
+        id: 'ws-2',
+        seq: 'EVENT_02',
+        date: '25 AUG // 10:00 AM',
+        title: 'WS-ROS2',
+        subtitle: 'Comprehensive technical session on Robot Operating System 2 core concepts, publisher-subscriber nodes, micro-ROS integration, and real-time robotic hardware control.',
+        category: 'WORKSHOP',
+        categoryRed: true
+      },
+      {
+        id: 'ws-3',
+        seq: 'EVENT_03',
+        date: '25 AUG // 02:00 PM',
+        title: 'WS-VLSI and Embedded systems',
+        subtitle: 'Practical exploration of microcontrollers, RTOS firmware development, hardware sensor interfacing, and motor driver circuit design for combat robotics.',
+        category: 'WORKSHOP',
+        categoryRed: true
+      },
+      {
+        id: 'ws-4',
+        seq: 'EVENT_04',
+        date: '26 AUG // 09:30 AM',
+        title: 'WS Drone Prog.',
+        subtitle: 'From flight dynamics to autonomous swarm navigation: build, program, and calibrate multi-rotor UAV systems with real-world flight testing.',
+        category: 'WORKSHOP',
+        categoryRed: true
+      },
+      {
+        id: 'ws-5',
+        seq: 'EVENT_05',
+        date: '26 AUG // 02:00 PM',
+        title: 'Project Exhibition',
+        subtitle: 'Grand technological showcase displaying innovative engineering projects, hardware prototypes, and research models to expert panels and industrial leaders.',
+        category: 'EXHIBITION',
+        categoryRed: true
+      },
+      {
+        id: 'ws-6',
+        seq: 'EVENT_06',
+        date: '26 AUG // 06:00 PM',
+        title: 'Hackathon',
+        subtitle: '24-hour non-stop rapid prototyping hackathon where developer teams build breakthrough software and hardware solutions under intense time pressure.',
+        category: 'HACKATHON',
+        categoryRed: true
+      }
+    ]
   },
-  {
-    id: 2,
-    seq: 'EVENT_03',
-    date: '25 AUG // 09:30 AM',
-    title: 'LINE FOLLOWING ROBOT (LFR)',
-    subtitle: 'Precision speed competition testing infrared sensor calibration and PID algorithms. Autonomous bots navigate sharp turns, intersections, and dynamic track speed traps.',
-    category: 'INTERMEDIATE',
-    categoryRed: true
+  esports: {
+    id: 'esports',
+    name: 'E-Sports',
+    events: [
+      {
+        id: 'esp-1',
+        seq: 'EVENT_01',
+        date: '25 AUG // 04:00 PM',
+        title: 'BGMI LAN',
+        subtitle: 'High-stakes battle royale LAN tournament bringing top esports rosters together in a fierce tactical showdown across custom room battlegrounds.',
+        category: 'E-SPORTS',
+        categoryRed: true
+      },
+      {
+        id: 'esp-2',
+        seq: 'EVENT_02',
+        date: '24 AUG // 01:00 PM',
+        title: 'E-Football',
+        subtitle: 'Competitive digital football championship testing tactical formation management, skill moves, and clutch decision-making on high-refresh-rate gaming rigs.',
+        category: 'E-SPORTS',
+        categoryRed: true
+      },
+      {
+        id: 'esp-3',
+        seq: 'EVENT_03',
+        date: '24 AUG // 04:00 PM',
+        title: 'Call of Duty(COD)',
+        subtitle: 'Action-packed tactical FPS esports tournament. Squads compete in intense Search & Destroy and Hardpoint matches for the RoboWars Championship trophy.',
+        category: 'E-SPORTS',
+        categoryRed: true
+      },
+      {
+        id: 'esp-4',
+        seq: 'EVENT_04',
+        date: '25 AUG // 06:00 PM',
+        title: 'Free fire clash',
+        subtitle: 'Fast-paced battle royale squad competition demanding quick reflexes, strategic positioning, and intense firefight coordination under pressure.',
+        category: 'E-SPORTS',
+        categoryRed: true
+      }
+    ]
   },
-  {
-    id: 3,
-    seq: 'EVENT_04',
-    date: '25 AUG // 01:30 PM',
-    title: 'UAV RACE',
-    subtitle: 'First-Person View (FPV) drone racing through complex 3D aerial gate courses. Pilots maneuver high-speed quadcopters with extreme precision at speeds exceeding 100 km/h.',
-    category: 'ADVANCED',
-    categoryRed: true
-  },
-  {
-    id: 4,
-    seq: 'EVENT_05',
-    date: '26 AUG // 11:00 AM',
-    title: 'ROBOSOCCER',
-    subtitle: 'Tactical 3-on-3 robotic football tournament featuring customized wireless drive platforms. Teams coordinate offensive maneuvers, mechanical kicker mechanisms, and defensive blocking.',
-    category: 'INTERMEDIATE',
-    categoryRed: true
-  },
-  {
-    id: 5,
-    seq: 'EVENT_06',
-    date: '24 AUG // 09:00 AM',
-    title: 'WORKSHOP: ML & DEEP LEARNING',
-    subtitle: 'Hands-on masterclass covering neural network architectures, computer vision model training, and edge AI deployment on autonomous robotics hardware.',
-    category: 'OPEN CATEGORY',
-    categoryRed: true
-  },
-  {
-    id: 6,
-    seq: 'EVENT_07',
-    date: '25 AUG // 10:00 AM',
-    title: 'WORKSHOP: ROS 2',
-    subtitle: 'Comprehensive technical session on Robot Operating System 2 core concepts, publisher-subscriber nodes, micro-ROS integration, and real-time robotic hardware control.',
-    category: 'INTERMEDIATE',
-    categoryRed: true
-  },
-  {
-    id: 7,
-    seq: 'EVENT_08',
-    date: '25 AUG // 02:00 PM',
-    title: 'WORKSHOP: EMBEDDED SYSTEMS',
-    subtitle: 'Practical exploration of microcontrollers, RTOS firmware development, hardware sensor interfacing, and motor driver circuit design for combat robotics.',
-    category: 'BEGINNER',
-    categoryRed: true
-  },
-  {
-    id: 8,
-    seq: 'EVENT_09',
-    date: '26 AUG // 09:30 AM',
-    title: 'WORKSHOP: DRONE PROGRESSION',
-    subtitle: 'From flight dynamics to autonomous swarm navigation: build, program, and calibrate multi-rotor UAV systems with real-world flight testing.',
-    category: 'OPEN CATEGORY',
-    categoryRed: true
-  },
-  {
-    id: 9,
-    seq: 'EVENT_10',
-    date: '24 AUG // 04:00 PM',
-    title: 'CALL OF DUTY MOBILE (CODM)',
-    subtitle: 'Action-packed tactical FPS esports tournament. Squads compete in intense Search & Destroy and Hardpoint matches for the RoboWars Championship trophy.',
-    category: 'OPEN CATEGORY',
-    categoryRed: true
-  },
-  {
-    id: 10,
-    seq: 'EVENT_11',
-    date: '25 AUG // 04:00 PM',
-    title: 'BGMI LAN TOURNAMENT',
-    subtitle: 'High-stakes battle royale LAN tournament bringing top esports rosters together in a fierce tactical showdown across custom room battlegrounds.',
-    category: 'OPEN CATEGORY',
-    categoryRed: true
-  },
-  {
-    id: 11,
-    seq: 'EVENT_12',
-    date: '24 AUG // 01:00 PM',
-    title: 'EFOOTBALL PES',
-    subtitle: 'Competitive digital football championship testing tactical formation management, skill moves, and clutch decision-making on high-refresh-rate gaming rigs.',
-    category: 'OPEN CATEGORY',
-    categoryRed: true
-  },
-  {
-    id: 12,
-    seq: 'EVENT_13',
-    date: '25 AUG // 06:00 PM',
-    title: 'FREE FIRE',
-    subtitle: 'Fast-paced battle royale squad competition demanding quick reflexes, strategic positioning, and intense firefight coordination under pressure.',
-    category: 'OPEN CATEGORY',
-    categoryRed: true
-  },
-  {
-    id: 13,
-    seq: 'EVENT_14',
-    date: 'ALL DAYS // 10:00 AM',
-    title: 'AR / VR EXPERIENCE',
-    subtitle: 'Immersive virtual reality showcase featuring cutting-edge spatial computing, full-body motion tracking, and interactive robotic simulation environments.',
-    category: 'OPEN CATEGORY',
-    categoryRed: true
-  },
-  {
-    id: 14,
-    seq: 'EVENT_15',
-    date: '24 AUG // 03:00 PM',
-    title: 'STONE PAPER SCISSORS',
-    subtitle: 'High-energy quick-thinking tournament arena with sudden-death elimination rounds and surprising tactical psychological twists.',
-    category: 'BEGINNER',
-    categoryRed: true
-  },
-  {
-    id: 15,
-    seq: 'EVENT_16',
-    date: '25 AUG // 03:00 PM',
-    title: 'HAND CRICKET',
-    subtitle: 'Classic casual sports challenge converted into a fast-paced live gaming bracket where split-second hand signals decide match outcomes.',
-    category: 'BEGINNER',
-    categoryRed: true
-  },
-  {
-    id: 16,
-    seq: 'EVENT_17',
-    date: '24 AUG // 12:00 PM',
-    title: 'BALL IN BASKET',
-    subtitle: 'Precision arcade skill competition testing trajectory estimation, wrist control, and timed target scoring under tight clock pressure.',
-    category: 'BEGINNER',
-    categoryRed: true
-  },
-  {
-    id: 17,
-    seq: 'EVENT_18',
-    date: '26 AUG // 02:00 PM',
-    title: 'PENALTY SHOOT',
-    subtitle: 'Intense 1-on-1 penalty shootout challenge combining physical skill, goalkeeper anticipation, and high-pressure goal scoring.',
-    category: 'OPEN CATEGORY',
-    categoryRed: true
-  },
-  {
-    id: 18,
-    seq: 'EVENT_19',
-    date: '25 AUG // 11:00 AM',
-    title: 'CHESS',
-    subtitle: 'Classical and blitz chess tournament challenging grand strategy, tactical foresight, and deep analytical calculations in silent competition.',
-    category: 'OPEN CATEGORY',
-    categoryRed: true
-  },
-  {
-    id: 19,
-    seq: 'EVENT_20',
-    date: '24 AUG // 02:30 PM',
-    title: 'CARROM',
-    subtitle: 'Traditional striker precision championship featuring singles and doubles tournament brackets on polished tournament-grade carrom boards.',
-    category: 'OPEN CATEGORY',
-    categoryRed: true
-  },
-  {
-    id: 20,
-    seq: 'EVENT_21',
-    date: '26 AUG // 03:30 PM',
-    title: 'ARM WRESTLING',
-    subtitle: 'Raw physical strength and technique competition organized into standard weight classes with certified referee officiating.',
-    category: 'OPEN CATEGORY',
-    categoryRed: true
-  },
-  {
-    id: 21,
-    seq: 'EVENT_22',
-    date: '25 AUG // 01:00 PM',
-    title: 'BEYBLADE',
-    subtitle: 'High-speed spinning top battle arena where custom Beyblades clash for spin velocity, stadium center control, and burst finishes.',
-    category: 'OPEN CATEGORY',
-    categoryRed: true
-  },
-  {
-    id: 22,
-    seq: 'EVENT_23',
-    date: '24 AUG // 09:00 AM',
-    title: 'CULTURAL INAUGURATION',
-    subtitle: 'Grand ceremonial opening of RoboWars 2026 featuring keynote addresses, robotic lighting ceremonies, and live orchestral fanfare.',
-    category: 'OPEN CATEGORY',
-    categoryRed: true
-  },
-  {
-    id: 23,
-    seq: 'EVENT_24',
-    date: '25 AUG // 05:00 PM',
-    title: 'TECH TALK',
-    subtitle: 'Inspiring talks from industry leaders, defense robotics pioneers, and AI researchers breaking down the future of autonomous systems.',
-    category: 'OPEN CATEGORY',
-    categoryRed: true
-  },
-  {
-    id: 24,
-    seq: 'EVENT_25',
-    date: '25 AUG // 03:45 PM',
-    title: 'FLASH MOB',
-    subtitle: 'High-octane synchronized dance performance popping up unannounced at the central concourse to energize festival participants.',
-    category: 'OPEN CATEGORY',
-    categoryRed: true
-  },
-  {
-    id: 25,
-    seq: 'EVENT_26',
-    date: '25 AUG // 07:00 PM',
-    title: 'CULTURAL EVENING',
-    subtitle: 'Spectacular night of live music bands, DJ sets, theatrical performances, and light shows celebrating the intersection of tech & art.',
-    category: 'OPEN CATEGORY',
-    categoryRed: true
-  },
-  {
-    id: 26,
-    seq: 'EVENT_27',
-    date: '26 AUG // 05:00 PM',
-    title: 'PRIZE DISTRIBUTION',
-    subtitle: 'Official victory ceremony honoring champion roboticists, workshop graduates, and tournament winners with trophies & prize cash pools.',
-    category: 'OPEN CATEGORY',
-    categoryRed: true
-  },
-  {
-    id: 27,
-    seq: 'EVENT_28',
-    date: 'ALL DAYS // 09:00 AM',
-    title: 'IEEE MEMBERSHIP DRIVE',
-    subtitle: 'Interactive networking hub to explore IEEE student branch benefits, technical paper publications, global conferences, and career mentorship.',
-    category: 'BEGINNER',
-    categoryRed: true
-  },
-  {
-    id: 28,
-    seq: 'EVENT_29',
-    date: '26 AUG // 04:00 PM',
-    title: 'SPECIAL SURPRISE EVENT',
-    subtitle: 'Unannounced mystery challenge revealed live on the main stage. Expect unexpected obstacles, rapid prototyping, and high stakes!',
-    category: 'OPEN CATEGORY',
-    categoryRed: true
+  indoor: {
+    id: 'indoor',
+    name: 'Indoor Games',
+    events: [
+      {
+        id: 'ind-1',
+        seq: 'EVENT_01',
+        date: '24 AUG // 03:00 PM',
+        title: 'Stone Paper Scissors',
+        subtitle: 'High-energy quick-thinking tournament arena with sudden-death elimination rounds and surprising tactical psychological twists.',
+        category: 'INDOOR GAME',
+        categoryRed: true
+      },
+      {
+        id: 'ind-2',
+        seq: 'EVENT_02',
+        date: '25 AUG // 03:00 PM',
+        title: 'Hand Cricket',
+        subtitle: 'Classic casual sports challenge converted into a fast-paced live gaming bracket where split-second hand signals decide match outcomes.',
+        category: 'INDOOR GAME',
+        categoryRed: true
+      },
+      {
+        id: 'ind-3',
+        seq: 'EVENT_03',
+        date: '24 AUG // 12:00 PM',
+        title: 'Ball in Basket',
+        subtitle: 'Precision arcade skill competition testing trajectory estimation, wrist control, and timed target scoring under tight clock pressure.',
+        category: 'INDOOR GAME',
+        categoryRed: true
+      },
+      {
+        id: 'ind-4',
+        seq: 'EVENT_04',
+        date: '26 AUG // 02:00 PM',
+        title: 'Penalty Shoot',
+        subtitle: 'Intense 1-on-1 penalty shootout challenge combining physical skill, goalkeeper anticipation, and high-pressure goal scoring.',
+        category: 'INDOOR GAME',
+        categoryRed: true
+      },
+      {
+        id: 'ind-5',
+        seq: 'EVENT_05',
+        date: '25 AUG // 11:00 AM',
+        title: 'Chess',
+        subtitle: 'Classical and blitz chess tournament challenging grand strategy, tactical foresight, and deep analytical calculations in silent competition.',
+        category: 'INDOOR GAME',
+        categoryRed: true
+      },
+      {
+        id: 'ind-6',
+        seq: 'EVENT_06',
+        date: '24 AUG // 02:30 PM',
+        title: 'Carrom',
+        subtitle: 'Traditional striker precision championship featuring singles and doubles tournament brackets on polished tournament-grade carrom boards.',
+        category: 'INDOOR GAME',
+        categoryRed: true
+      },
+      {
+        id: 'ind-7',
+        seq: 'EVENT_07',
+        date: '26 AUG // 03:30 PM',
+        title: 'Arm Wrestling',
+        subtitle: 'Raw physical strength and technique competition organized into standard weight classes with certified referee officiating.',
+        category: 'INDOOR GAME',
+        categoryRed: true
+      },
+      {
+        id: 'ind-8',
+        seq: 'EVENT_08',
+        date: '25 AUG // 01:00 PM',
+        title: 'Beyblade',
+        subtitle: 'High-speed spinning top battle arena where custom Beyblades clash for spin velocity, stadium center control, and burst finishes.',
+        category: 'INDOOR GAME',
+        categoryRed: true
+      }
+    ]
   }
+};
+
+const CATEGORIES_LIST = [
+  { key: 'robotics', label: 'Robotics' },
+  { key: 'workshops', label: 'Workshops & Hackathons' },
+  { key: 'esports', label: 'E-Sports' },
+  { key: 'indoor', label: 'Indoor Games' }
 ];
 
 export default function Section6() {
+  // Category State
+  const [activeCategory, setActiveCategory] = useState('robotics');
+  const activeEvents = CATEGORIES_DATA[activeCategory]?.events || CATEGORIES_DATA.robotics.events;
+
   // DOM & State Refs (kept in refs to avoid React re-renders during 60fps loop)
   const sectionRef = useRef(null);
   const consoleRef = useRef(null);
@@ -303,7 +284,16 @@ export default function Section6() {
   const animFrameIdRef = useRef(null);
   const istIntervalIdRef = useRef(null);
 
-  const maxProgress = EVENTS_DATA.length - 1; // 28
+  const maxProgress = activeEvents.length - 1;
+
+  // Category switch handler
+  const handleCategorySelect = (key) => {
+    if (key === activeCategory) return;
+    setActiveCategory(key);
+    targetProgressRef.current = 0;
+    currentProgressRef.current = 0;
+    cardsRef.current = [];
+  };
 
   // ------------------------------------------------------------------------
   // 1. LATENCY-DRIVEN PHYSICS UPDATER
@@ -353,7 +343,10 @@ export default function Section6() {
   // 3. 60 FPS CARD STACK & TILT RENDER LOOP
   // ------------------------------------------------------------------------
   useEffect(() => {
-    const TOTAL_EVENTS = EVENTS_DATA.length;
+    const TOTAL_EVENTS = activeEvents.length;
+    targetProgressRef.current = 0;
+    currentProgressRef.current = 0;
+    cardsRef.current = cardsRef.current.slice(0, TOTAL_EVENTS);
 
     const updateStack = () => {
       // Dynamic physics lerp driven by latency
@@ -367,7 +360,7 @@ export default function Section6() {
         cardCanvasRef.current.style.transform = `rotateY(${currentRotYRef.current.toFixed(2)}deg) rotateX(${currentRotXRef.current.toFixed(2)}deg)`;
       }
 
-      // Smooth circular progress normalization (prevents overflow while maintaining lerp continuity)
+      // Smooth circular progress normalization
       if (currentProgressRef.current >= TOTAL_EVENTS) {
         currentProgressRef.current -= TOTAL_EVENTS;
         targetProgressRef.current -= TOTAL_EVENTS;
@@ -382,7 +375,7 @@ export default function Section6() {
       cardsRef.current.forEach((card, index) => {
         if (!card) return;
 
-        // Circular distance on a 29-element volumetric ring
+        // Circular distance on dynamic volumetric ring
         let relativePos = (index - currentProgressRef.current) % TOTAL_EVENTS;
         if (relativePos > TOTAL_EVENTS / 2) {
           relativePos -= TOTAL_EVENTS;
@@ -395,8 +388,8 @@ export default function Section6() {
         if (relativePos < 0) {
           // Zone 1: Active card zooming forward toward camera as it exits
           const passedRatio = Math.min(1, Math.abs(relativePos));
-          scale = 0.95 + passedRatio * 0.70; // 0.95 -> 1.65 (near full-screen volumetric layer)
-          translateZ = passedRatio * 420;   // 0px -> 420px (zooming past camera)
+          scale = 0.95 + passedRatio * 0.70;
+          translateZ = passedRatio * 420;
           translateY = relativePos * 40;
           opacity = Math.max(0, 1 - Math.pow(passedRatio, 1.8) * 1.5);
           blurValue = passedRatio * 6;
@@ -405,14 +398,12 @@ export default function Section6() {
           // Zone 2 & 3: Card in focus or waiting behind in depth stack
           const distance = relativePos;
           if (distance <= 1) {
-            // Smooth zoom-in as card approaches focus inside the frame
-            scale = 0.95 - distance * 0.30;     // 0.65 -> 0.95
-            translateZ = -distance * 220;      // -220px -> 0px
+            scale = 0.95 - distance * 0.30;
+            translateZ = -distance * 220;
             translateY = distance * 36;
-            opacity = 1 - distance * 0.55;       // 0.45 -> 1.0
-            blurValue = distance * 4;           // 4px -> 0px (depth of field blur)
+            opacity = 1 - distance * 0.55;
+            blurValue = distance * 4;
           } else {
-            // Cards deeper in stack
             scale = Math.max(0.40, 0.65 - (distance - 1) * 0.15);
             translateZ = -220 - (distance - 1) * 180;
             translateY = 36 + (distance - 1) * 24;
@@ -435,15 +426,15 @@ export default function Section6() {
         }
       });
 
-      // Update readout counter (e.g. "01 / 29")
+      // Update readout counter (e.g. "01 / 05")
       if (readoutCounterRef.current) {
         const formattedNum = String(activeIndex + 1).padStart(2, '0');
-        readoutCounterRef.current.textContent = `${formattedNum} / ${TOTAL_EVENTS}`;
+        readoutCounterRef.current.textContent = `${formattedNum} / ${String(TOTAL_EVENTS).padStart(2, '0')}`;
       }
 
       // Update progress bar fill
       if (progressFillRef.current) {
-        const progressPercent = (activeIndex / (TOTAL_EVENTS - 1)) * 100;
+        const progressPercent = TOTAL_EVENTS > 1 ? (activeIndex / (TOTAL_EVENTS - 1)) * 100 : 100;
         progressFillRef.current.style.width = `${Math.min(100, Math.max(0, progressPercent)).toFixed(1)}%`;
       }
 
@@ -457,7 +448,7 @@ export default function Section6() {
         cancelAnimationFrame(animFrameIdRef.current);
       }
     };
-  }, []);
+  }, [activeCategory]);
 
   // ------------------------------------------------------------------------
   // 4. NON-TRAPPING WHEEL SCROLL CONTROLLER
@@ -467,6 +458,9 @@ export default function Section6() {
     if (!consoleEl) return;
 
     const handleWheel = (e) => {
+      // Disable wheel-based event scrolling on mobile view (<= 1024px)
+      if (window.innerWidth <= 1024 || window.matchMedia('(max-width: 1024px)').matches) return;
+
       const delta = e.deltaY;
       if (!delta) return;
 
@@ -496,6 +490,9 @@ export default function Section6() {
     if (!sectionEl) return;
 
     const handleTouchStart = (e) => {
+      // Disable touch swipe event transitions on mobile view (<= 1024px) so native page scrolling is uninterrupted
+      if (window.innerWidth <= 1024 || window.matchMedia('(max-width: 1024px)').matches) return;
+
       if (e.touches.length === 1) {
         touchStartYRef.current = e.touches[0].clientY;
         isTouchingRef.current = true;
@@ -503,6 +500,8 @@ export default function Section6() {
     };
 
     const handleTouchMove = (e) => {
+      if (window.innerWidth <= 1024 || window.matchMedia('(max-width: 1024px)').matches) return;
+
       if (!isTouchingRef.current || e.touches.length !== 1) return;
       const currentY = e.touches[0].clientY;
       const deltaY = touchStartYRef.current - currentY;
@@ -607,24 +606,49 @@ export default function Section6() {
 
       {/* Central Event Command Console Container */}
       <div className="mission-control-container">
-        {/* CENTRAL VIEWPORT FRAME */}
-        <div className="viewport-frame" id="viewport-frame" ref={consoleRef}>
-          {/* Viewport Header Telemetry Bar */}
-          <header className="viewport-header">
-            <div className="viewport-title-group">
-              <span className="hud-badge">EVENT COMMAND</span>
-              <h1 className="viewport-title">OMNITRIX 2026 // EVENT CONSOLE</h1>
-            </div>
-            <div className="viewport-meta">
-              <span className="meta-tag">TOTAL_EVENTS // 29</span>
-              <span className="meta-tag text-red">LIVE_SCHEDULE</span>
-            </div>
-          </header>
+        {/* Viewport Header Telemetry Bar - Full Width Across Top */}
+        <header className="viewport-header">
+          <div className="viewport-title-group">
+            <span className="hud-badge">EVENT COMMAND</span>
+            <h1 className="viewport-title">OMNITRIX 2026 // EVENT CONSOLE</h1>
+          </div>
+          <div className="viewport-meta">
+            <span className="meta-tag">TOTAL_EVENTS // {String(activeEvents.length).padStart(2, '0')}</span>
+            <span className="meta-tag text-red">LIVE_SCHEDULE</span>
+          </div>
+        </header>
 
-          {/* 3D CARD CANVAS (29 EVENT CARDS) */}
-          <div className="card-stack-container" id="card-stack-container">
+        {/* Console Main Body Layout Wrapper */}
+        <div className="console-body-wrapper">
+          {/* EVENT CATEGORIES SELECTOR (LEFT SIDE) */}
+          <aside className="category-sidebar" aria-label="Event Categories">
+            <div className="sidebar-header">
+              <span className="sidebar-tag">SYSTEM // CATEGORIES</span>
+            </div>
+            <div className="category-list">
+              {CATEGORIES_LIST.map((cat) => {
+                const isActive = activeCategory === cat.key;
+                return (
+                  <button
+                    key={cat.key}
+                    type="button"
+                    className={`category-btn ${isActive ? 'active' : ''}`}
+                    onClick={() => handleCategorySelect(cat.key)}
+                  >
+                    <span className="category-label">{cat.label}</span>
+                    <span className="category-indicator">{isActive ? '◄' : '◇'}</span>
+                  </button>
+                );
+              })}
+            </div>
+          </aside>
+
+          {/* CENTRAL VIEWPORT FRAME */}
+          <div className="viewport-frame" id="viewport-frame" ref={consoleRef}>
+            {/* 3D CARD CANVAS */}
+            <div className="card-stack-container" id="card-stack-container">
             <div className="card-canvas" id="card-canvas" ref={cardCanvasRef}>
-              {EVENTS_DATA.map((event, index) => (
+              {activeEvents.map((event, index) => (
                 <article
                   key={event.id}
                   className={`hud-card ${index === 0 ? 'active' : ''}`}
@@ -664,6 +688,9 @@ export default function Section6() {
 
             {/* Step Progress Tracker */}
             <div className="card-pagination" id="card-pagination">
+              <span className="readout-counter" ref={readoutCounterRef}>
+                01 / {String(activeEvents.length).padStart(2, '0')}
+              </span>
               <span className="progress-bar-bg">
                 <span className="progress-bar-fill" id="progress-fill" ref={progressFillRef}></span>
               </span>
@@ -693,6 +720,8 @@ export default function Section6() {
           </footer>
         </div>
       </div>
-    </section>
+    </div>
+  </section>
   );
 }
+

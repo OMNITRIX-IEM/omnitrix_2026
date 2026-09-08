@@ -1,4 +1,5 @@
 import React, { useEffect, useState, useRef } from 'react';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import loadingVideo from '@/assets/videos/loading.mp4';
 import './Loader.css';
 
@@ -14,12 +15,15 @@ export default function Loader({ ready }) {
     setFadingOut(true);
     setTimeout(() => {
       setVisible(false);
+      if (typeof ScrollTrigger !== 'undefined' && ScrollTrigger.refresh) {
+        ScrollTrigger.refresh();
+      }
     }, 600);
   };
 
   useEffect(() => {
     if (videoRef.current) {
-      videoRef.current.play().catch(() => {});
+      videoRef.current.play().catch(() => { });
     }
 
     // Safety fallback timer if video fails or stalls

@@ -6,6 +6,11 @@ gsap.registerPlugin(ScrollTrigger);
 
 export default function useHeroAnimations() {
   useEffect(() => {
+    // Ensure initial scroll starts at top on fresh load
+    if ('scrollRestoration' in window.history) {
+      window.history.scrollRestoration = 'manual';
+    }
+
     const mm = gsap.matchMedia();
 
     // Desktop > 768px: Pin hero section and fade in drone sequence on scroll
@@ -65,6 +70,9 @@ export default function useHeroAnimations() {
         droneSequenceTween.kill();
       };
     });
+
+    // Immediate ScrollTrigger refresh to lock positions on initial mount
+    ScrollTrigger.refresh();
 
     return () => {
       mm.revert();
