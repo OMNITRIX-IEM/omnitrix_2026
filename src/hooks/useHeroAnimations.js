@@ -11,6 +11,10 @@ export default function useHeroAnimations() {
       window.history.scrollRestoration = 'manual';
     }
 
+    if (window.scrollY !== 0) {
+      window.scrollTo(0, 0);
+    }
+
     const mm = gsap.matchMedia();
 
     // Desktop > 768px: Pin hero section and fade in drone sequence on scroll
@@ -71,10 +75,47 @@ export default function useHeroAnimations() {
       };
     });
 
-    // Immediate ScrollTrigger refresh to lock positions on initial mount
-    ScrollTrigger.refresh();
+    // Refresh ScrollTrigger and listen for initial layout stabilization (loader finish, asset loads, page restoration)
+    const refreshPositions = () => {
+      if ('scrollRestoration' in window.history) {
+        window.history.scrollRestoration = 'manual';
+      }
+      if (window.scrollY !== 0) {
+        window.scrollTo(0, 0);
+      }
+      ScrollTrigger.refresh();
+    };
+
+    refreshPositions();
+
+    const rafId = requestAnimationFrame(() => {
+      refreshPositions();
+    });
+
+    window.addEventListener('hero-layout-ready', refreshPositions);
+    window.addEventListener('load', refreshPositions);
+    window.addEventListener('pageshow', refreshPositions);
+
+    let resizeObserver = null;
+    const heroEl = document.getElementById('hero-section');
+    if (heroEl && typeof ResizeObserver !== 'undefined') {
+      resizeObserver = new ResizeObserver(() => {
+        ScrollTrigger.refresh();
+      });
+      resizeObserver.observe(heroEl);
+      if (document.body) {
+        resizeObserver.observe(document.body);
+      }
+    }
 
     return () => {
+      cancelAnimationFrame(rafId);
+      window.removeEventListener('hero-layout-ready', refreshPositions);
+      window.removeEventListener('load', refreshPositions);
+      window.removeEventListener('pageshow', refreshPositions);
+      if (resizeObserver) {
+        resizeObserver.disconnect();
+      }
       mm.revert();
     };
   }, []);

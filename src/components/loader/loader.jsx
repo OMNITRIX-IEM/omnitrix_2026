@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import omnitrixImage from '@/assets/loader/images/omnitrix_loader.png';
+import { markAppLoaded } from '@/utils/appLifecycle';
 import './loader.css';
 
 // 24 static background stars
@@ -102,6 +103,11 @@ export default function Loader({ ready = false, percent }) {
   // Trigger fade-out and unmount when progress reaches 100%
   useEffect(() => {
     if (progress === 100) {
+      markAppLoaded();
+      if (typeof window !== 'undefined') {
+        window.dispatchEvent(new Event('hero-layout-ready'));
+      }
+
       const timer = setTimeout(() => {
         setIsFadingOut(true);
       }, 850);

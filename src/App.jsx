@@ -1,5 +1,5 @@
-import React from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import React, { useEffect, useLayoutEffect } from 'react';
+import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
 import SEO from '@/components/SEO/SEO';
 import Landing from '@/pages/Landing';
 import Events from '@/pages/events/Events/Events';
@@ -9,10 +9,31 @@ import IndoorGames from '@/pages/events/IndoorGames/IndoorGames';
 import WorkshopHackathon from '@/pages/events/Workshop_Hackathon/WorkshopHackathon';
 import Sponsor from '@/pages/sponsor/Sponsor';
 import ComingSoon from '@/pages/ComingSoon/ComingSoon';
+import { markAppLoaded } from '@/utils/appLifecycle';
+
+function ScrollToTop() {
+  const { pathname } = useLocation();
+
+  useLayoutEffect(() => {
+    if ('scrollRestoration' in window.history) {
+      window.history.scrollRestoration = 'manual';
+    }
+    window.scrollTo(0, 0);
+  }, [pathname]);
+
+  return null;
+}
 
 export default function App() {
+  useEffect(() => {
+    if (typeof window !== 'undefined' && window.location.pathname !== '/') {
+      markAppLoaded();
+    }
+  }, []);
+
   return (
     <Router>
+      <ScrollToTop />
       <SEO />
       <Routes>
         <Route path="/" element={<Landing />} />

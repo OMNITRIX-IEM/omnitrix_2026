@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import SmoothScrollProvider from '@/components/SmoothScrollProvider/SmoothScrollProvider';
 import { Navbar } from '@/navbar';
 import HeroSection from './HeroSection/HeroSection';
@@ -14,6 +14,8 @@ import BlackOverlay from '@/components/BlackOverlay/BlackOverlay';
 import Loader from '@/components/loader/loader';
 import { useDroneSequence } from '@/hooks/useDroneSequence';
 import useScrollAnimations from '@/hooks/useScrollAnimations';
+import { preloadHeroAssets } from '@/utils/heroPreloader';
+import { isInitialAppLoad } from '@/utils/appLifecycle';
 import './Landing.css';
 
 export default function Landing() {
@@ -25,11 +27,22 @@ export default function Landing() {
     initialFrameUrl,
   } = useDroneSequence();
 
+  const [heroAssetsReady, setHeroAssetsReady] = useState(false);
+  const [showLoader] = useState(() => isInitialAppLoad());
+
+  useEffect(() => {
+    preloadHeroAssets().then(() => {
+      setHeroAssetsReady(true);
+    });
+  }, []);
+
   useScrollAnimations(setTargetFrame, setPaused);
+
+  const isAppReady = firstStageReady && heroAssetsReady;
 
   return (
     <SmoothScrollProvider>
-      <Loader ready={firstStageReady} percent={loadedPercent} />
+      {showLoader && <Loader ready={isAppReady} percent={loadedPercent} />}
       <Navbar />
       <DroneSequence currentFrameUrl={initialFrameUrl} />
       <BlackOverlay />

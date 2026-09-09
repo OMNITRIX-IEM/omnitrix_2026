@@ -93,9 +93,8 @@ export default function useGalaxyAnimations(setPaused) {
         0
       );
 
-      tl.fromTo(
+      tl.to(
         "#drone-sequence",
-        { opacity: 1 },
         { opacity: 0, ease: "none", duration: 0.25 },
         0
       );
