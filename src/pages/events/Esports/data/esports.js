@@ -9,7 +9,7 @@ export const esportsGames = [
     tag: 'BATTLE',
     title: 'BGMI\nCHAMPIONSHIP',
     image: bgmicropped,
-    price: '₹50,000',
+    price: '₹99 / ₹799',
     icon: 'emoji_events',
     registerLink: "https://forms.gle/ESmLEmDPf2U1Fxh18",
     exploreContent: [
@@ -38,7 +38,7 @@ export const esportsGames = [
     tag: 'BATTLE',
     title: 'E-FOOTBALL',
     image: eFootballcropped,
-    price: '₹75,000',
+    price: '₹99',
     icon: 'swords',
     registerLink: "https://forms.gle/ESmLEmDPf2U1Fxh18",
     exploreContent: [
@@ -67,7 +67,7 @@ export const esportsGames = [
     tag: 'BATTLE',
     title: 'COD: MOBILE',
     image: callofdutycropped,
-    price: '₹40,000',
+    price: '₹99 / ₹299',
     icon: 'my_location',
     registerLink: "https://forms.gle/ESmLEmDPf2U1Fxh18",
     exploreContent: [
@@ -96,7 +96,7 @@ export const esportsGames = [
     tag: 'BATTLE',
     title: 'FREE FIRE\nCLASH',
     image: freefirecropped,
-    price: '₹30,000',
+    price: '₹399',
     icon: 'local_fire_department',
     registerLink: "https://forms.gle/ESmLEmDPf2U1Fxh18",
     exploreContent: [
