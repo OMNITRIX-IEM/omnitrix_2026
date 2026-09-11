@@ -8,6 +8,7 @@ import Esports from '@/pages/events/Esports/Esports';
 import IndoorGames from '@/pages/events/IndoorGames/IndoorGames';
 import WorkshopHackathon from '@/pages/events/Workshop_Hackathon/WorkshopHackathon';
 import Sponsor from '@/pages/sponsor/Sponsor';
+import Brochure from '@/pages/Brochure/Brochure';
 import ComingSoon from '@/pages/ComingSoon/ComingSoon';
 import { markAppLoaded } from '@/utils/appLifecycle';
 
@@ -45,7 +46,7 @@ export default function App() {
         <Route path="/events/workshop-hackathon" element={<WorkshopHackathon />} />
         <Route path="/workshops" element={<WorkshopHackathon />} />
         <Route path="/sponsors" element={<Sponsor />} />
-        <Route path="/brochure" element={<ComingSoon />} />
+        <Route path="/brochure" element={<Brochure />} />
         <Route path="/about-us" element={<ComingSoon />} />
         <Route path="/register" element={<ComingSoon />} />
       </Routes>

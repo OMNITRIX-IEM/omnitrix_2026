@@ -93,6 +93,21 @@ export default function Events() {
   }, [currentState, isDesktop, totalStates]);
 
   useEffect(() => {
+    if (!isDesktop) {
+      document.body.style.overflow = 'hidden';
+      document.body.style.touchAction = 'none';
+    } else {
+      document.body.style.overflow = '';
+      document.body.style.touchAction = '';
+    }
+
+    return () => {
+      document.body.style.overflow = '';
+      document.body.style.touchAction = '';
+    };
+  }, [isDesktop]);
+
+  useEffect(() => {
     let touchStartY = 0;
 
     const handleTouchStart = (e) => {
@@ -102,6 +117,9 @@ export default function Events() {
     };
 
     const handleTouchMove = (e) => {
+      if (!isDesktop && e.cancelable) {
+        e.preventDefault();
+      }
       if (isAnimatingRef.current) return;
 
       if (!e.touches || e.touches.length === 0) return;
@@ -123,7 +141,7 @@ export default function Events() {
     };
 
     window.addEventListener('touchstart', handleTouchStart, { passive: true });
-    window.addEventListener('touchmove', handleTouchMove, { passive: true });
+    window.addEventListener('touchmove', handleTouchMove, { passive: false });
 
     return () => {
       window.removeEventListener('touchstart', handleTouchStart);
@@ -185,7 +203,9 @@ export default function Events() {
   } : {
     display: 'flex',
     flexDirection: 'column',
-    minHeight: '100vh'
+    height: '100dvh',
+    maxHeight: '100dvh',
+    overflow: 'hidden'
   };
 
   return (
