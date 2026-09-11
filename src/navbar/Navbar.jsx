@@ -116,7 +116,7 @@ export default function Navbar() {
               </Link>
             </li>
             <li className={`robowars-navbar-item ${isAboutActive ? 'is-active' : ''}`}>
-              <Link to="/about-us" className="robowars-navbar-link">
+              <Link to="/about_us" className="robowars-navbar-link">
                 ABOUT US
               </Link>
             </li>
@@ -124,7 +124,12 @@ export default function Navbar() {
         </nav>
 
         {/* RIGHT: DESKTOP REGISTER NOW CTA */}
-        <Link to="/register" className="robowars-navbar-cta desktop-only-cta">
+        <a
+          href="https://linktr.ee/iemomnitrix"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="robowars-navbar-cta desktop-only-cta"
+        >
           <span>REGISTER NOW</span>
           <svg
             className="robowars-cta-arrow"
@@ -141,7 +146,7 @@ export default function Navbar() {
               strokeLinejoin="round"
             />
           </svg>
-        </Link>
+        </a>
 
         {/* MOBILE HAMBURGER BUTTON (Visible <= 768px) */}
         <button
@@ -184,13 +189,19 @@ export default function Navbar() {
                 </Link>
               </li>
               <li className={`robowars-mobile-item ${isAboutActive ? 'is-active' : ''}`}>
-                <Link to="/about-us" className="robowars-mobile-link" onClick={closeMobileMenu}>
+                <Link to="/about_us" className="robowars-mobile-link" onClick={closeMobileMenu}>
                   ABOUT US
                 </Link>
               </li>
             </ul>
 
-            <Link to="/register" className="robowars-mobile-cta" onClick={closeMobileMenu}>
+            <a
+              href="https://linktr.ee/iemomnitrix"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="robowars-mobile-cta"
+              onClick={closeMobileMenu}
+            >
               <span>REGISTER NOW</span>
               <svg
                 className="robowars-cta-arrow"
@@ -207,7 +218,7 @@ export default function Navbar() {
                   strokeLinejoin="round"
                 />
               </svg>
-            </Link>
+            </a>
           </nav>
         </>
       )}

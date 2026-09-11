@@ -70,9 +70,10 @@ export default function HeroSection() {
         </h2>
 
         <p className="hero-description">
-          Enter the ultimate battlefield where elite combat machines, gaming zones
-          and engineering mastery collide in a spectacle
-          of power, precision and destruction.
+          Enter the ultimate battlefield and JOIN US AT
+          <span className="hero-text-line">
+            Gurukul Building, INSTITUTE OF ENGINEERING AND MANAGEMENT, Salt Lake, Sector 5, Kolkata 700091
+          </span>
         </p>
       </div>
 

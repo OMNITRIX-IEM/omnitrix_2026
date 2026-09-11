@@ -1,0 +1,634 @@
+/* ==========================================================================
+   OMNITRIX 2026 ABOUT US PAGE STYLES
+   ========================================================================== */
+
+.about-us-page {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  color: #FFFFFF;
+  font-family: 'Inter', sans-serif;
+  overflow-x: hidden;
+  background-color: #030603;
+}
+
+/* --------------------------------------------------------------------------
+   FIXED VIEWPORT BACKGROUND LAYER
+   -------------------------------------------------------------------------- */
+.about-bg-fixed {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 0;
+  pointer-events: none;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.about-bg-overlay {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 50% 30%, rgba(5, 18, 5, 0.65) 0%, rgba(2, 6, 2, 0.92) 85%),
+              linear-gradient(180deg, rgba(0, 0, 0, 0.85) 0%, rgba(4, 10, 4, 0.5) 40%, rgba(0, 0, 0, 0.95) 100%);
+}
+
+/* --------------------------------------------------------------------------
+   MAIN CONTAINER & CONTENT WRAPPER
+   -------------------------------------------------------------------------- */
+.about-content-container {
+  position: relative;
+  z-index: 10;
+  width: 100%;
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 130px 24px 100px 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 110px;
+}
+
+/* --------------------------------------------------------------------------
+   COMMON SECTION HEADINGS & HUD TAGS
+   -------------------------------------------------------------------------- */
+.about-section {
+  position: relative;
+  width: 100%;
+}
+
+.hud-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 0.88rem;
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  color: #B6FF00;
+  text-transform: uppercase;
+  margin-bottom: 12px;
+  padding: 4px 12px;
+  background: rgba(182, 255, 0, 0.08);
+  border: 1px solid rgba(182, 255, 0, 0.3);
+  clip-path: polygon(0 0, calc(100% - 8px) 0, 100% 8px, 100% 100%, 8px 100%, 0 calc(100% - 8px));
+  box-shadow: 0 0 12px rgba(182, 255, 0, 0.15);
+}
+
+.hud-tag::before {
+  content: '';
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  background-color: #B6FF00;
+  box-shadow: 0 0 8px #B6FF00;
+}
+
+.section-title {
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 3rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #FFFFFF;
+  line-height: 1.1;
+  margin-bottom: 12px;
+  text-shadow: 0 0 20px rgba(0, 0, 0, 0.8);
+}
+
+.section-subtitle {
+  font-family: 'Inter', sans-serif;
+  font-size: 1.05rem;
+  color: rgba(255, 255, 255, 0.7);
+  max-width: 680px;
+  margin-bottom: 40px;
+  line-height: 1.6;
+}
+
+/* --------------------------------------------------------------------------
+   SECTION 1: ABOUT OMNITRIX HERO INTRO
+   -------------------------------------------------------------------------- */
+.hero-about-card {
+  position: relative;
+  background: rgba(8, 16, 8, 0.72);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(182, 255, 0, 0.3);
+  padding: 48px;
+  clip-path: polygon(0 0, calc(100% - 24px) 0, 100% 24px, 100% 100%, 24px 100%, 0 calc(100% - 24px));
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.7), inset 0 0 25px rgba(182, 255, 0, 0.04);
+}
+
+/* Corner HUD crosshairs */
+.hero-about-card::after {
+  content: '';
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  width: 14px;
+  height: 14px;
+  border-top: 2px solid #B6FF00;
+  border-right: 2px solid #B6FF00;
+  opacity: 0.8;
+}
+
+.hero-main-title {
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 4rem;
+  font-weight: 800;
+  letter-spacing: 0.05em;
+  line-height: 1.05;
+  color: #FFFFFF;
+  margin-bottom: 16px;
+  text-transform: uppercase;
+}
+
+.text-neon {
+  color: #B6FF00;
+  text-shadow: 0 0 16px rgba(182, 255, 0, 0.5), 0 0 30px rgba(182, 255, 0, 0.25);
+}
+
+.hero-tagline {
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 1.15rem;
+  font-weight: 600;
+  letter-spacing: 0.25em;
+  color: rgba(255, 255, 255, 0.75);
+  margin-bottom: 36px;
+  padding-bottom: 24px;
+  border-bottom: 1px solid rgba(182, 255, 0, 0.2);
+}
+
+.hero-subheading {
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 1.8rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: #B6FF00;
+  margin-bottom: 16px;
+  text-transform: uppercase;
+}
+
+.hero-description {
+  font-family: 'Inter', sans-serif;
+  font-size: 1.12rem;
+  line-height: 1.8;
+  color: rgba(255, 255, 255, 0.88);
+  margin-bottom: 36px;
+  max-width: 960px;
+}
+
+.hero-highlight-box {
+  position: relative;
+  background: rgba(182, 255, 0, 0.06);
+  border-left: 4px solid #B6FF00;
+  padding: 20px 24px;
+  border-radius: 0 8px 8px 0;
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 1.35rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  color: #FFFFFF;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+}
+
+.hero-highlight-box p {
+  margin: 0;
+  text-shadow: 0 0 10px rgba(182, 255, 0, 0.2);
+}
+
+/* --------------------------------------------------------------------------
+   SECTION 2: EVENT HEADS (DIRECTOR & FACULTY)
+   -------------------------------------------------------------------------- */
+.director-featured-card {
+  position: relative;
+  display: grid;
+  grid-template-columns: 340px 1fr;
+  gap: 40px;
+  background: rgba(8, 16, 8, 0.75);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(182, 255, 0, 0.35);
+  padding: 36px;
+  clip-path: polygon(0 0, calc(100% - 24px) 0, 100% 24px, 100% 100%, 24px 100%, 0 calc(100% - 24px));
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.7), inset 0 0 25px rgba(182, 255, 0, 0.05);
+  margin-bottom: 60px;
+}
+
+.director-image-wrapper {
+  position: relative;
+  width: 100%;
+  height: 380px;
+  overflow: hidden;
+  border: 1px solid rgba(182, 255, 0, 0.4);
+  clip-path: polygon(0 0, calc(100% - 16px) 0, 100% 16px, 100% 100%, 16px 100%, 0 calc(100% - 16px));
+}
+
+.director-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: contrast(1.08) brightness(0.95);
+  transition: transform 0.4s ease;
+}
+
+.director-featured-card:hover .director-image {
+  transform: scale(1.04);
+}
+
+.director-details {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.director-badge {
+  display: inline-block;
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  color: #B6FF00;
+  text-transform: uppercase;
+  margin-bottom: 12px;
+}
+
+.director-name {
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 2.5rem;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  color: #FFFFFF;
+  line-height: 1.1;
+  margin-bottom: 8px;
+}
+
+.director-role {
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: #B6FF00;
+  margin-bottom: 6px;
+}
+
+.director-title {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.95rem;
+  color: rgba(255, 255, 255, 0.6);
+  margin-bottom: 24px;
+}
+
+.director-desc {
+  font-family: 'Inter', sans-serif;
+  font-size: 1.05rem;
+  line-height: 1.7;
+  color: rgba(255, 255, 255, 0.85);
+  margin-bottom: 32px;
+}
+
+.director-socials {
+  display: flex;
+  gap: 16px;
+}
+
+/* Faculty Grid */
+.faculty-subheading {
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 1.8rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: #FFFFFF;
+  margin-bottom: 24px;
+  text-transform: uppercase;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.faculty-subheading::before {
+  content: '';
+  display: inline-block;
+  width: 4px;
+  height: 24px;
+  background-color: #B6FF00;
+  box-shadow: 0 0 10px #B6FF00;
+}
+
+.faculty-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 28px;
+}
+
+/* --------------------------------------------------------------------------
+   SECTION 3 & 4 GRIDS: STUDENT CHAPTER & DEVELOPER'S ZONE
+   -------------------------------------------------------------------------- */
+.student-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 20px;
+}
+
+.developer-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+}
+
+/* --------------------------------------------------------------------------
+   HUD PROFILE CARD COMPONENT
+   -------------------------------------------------------------------------- */
+.hud-profile-card {
+  position: relative;
+  background: rgba(8, 16, 8, 0.72);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(182, 255, 0, 0.25);
+  padding: 24px 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  clip-path: polygon(0 0, calc(100% - 14px) 0, 100% 14px, 100% 100%, 14px 100%, 0 calc(100% - 14px));
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6), inset 0 0 15px rgba(182, 255, 0, 0.03);
+  transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.hud-profile-card:hover {
+  transform: translateY(-6px);
+  border-color: rgba(182, 255, 0, 0.6);
+  box-shadow: 0 14px 40px rgba(0, 0, 0, 0.8), 0 0 20px rgba(182, 255, 0, 0.2);
+}
+
+.card-hud-bracket {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  width: 10px;
+  height: 10px;
+  border-top: 1.5px solid #B6FF00;
+  border-right: 1.5px solid #B6FF00;
+  opacity: 0.7;
+}
+
+.card-avatar-wrapper {
+  position: relative;
+  width: 110px;
+  height: 110px;
+  border-radius: 50%;
+  margin-bottom: 20px;
+  padding: 3px;
+  background: linear-gradient(135deg, #B6FF00 0%, rgba(182, 255, 0, 0.2) 100%);
+  box-shadow: 0 0 15px rgba(182, 255, 0, 0.2);
+}
+
+.card-avatar {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+  background-color: #0d160d;
+}
+
+.card-name {
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 1.3rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  color: #FFFFFF;
+  line-height: 1.25;
+  margin-bottom: 6px;
+  text-transform: uppercase;
+}
+
+.card-role {
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 0.95rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  color: #B6FF00;
+  margin-bottom: 8px;
+  text-transform: uppercase;
+}
+
+.card-dept {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.82rem;
+  color: rgba(255, 255, 255, 0.65);
+  margin-bottom: 16px;
+  line-height: 1.4;
+  min-height: 36px;
+}
+
+.social-links-row {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  align-items: center;
+  margin-top: auto;
+  padding-top: 12px;
+  width: 100%;
+  border-top: 1px solid rgba(182, 255, 0, 0.12);
+}
+
+.social-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: rgba(182, 255, 0, 0.08);
+  border: 1px solid rgba(182, 255, 0, 0.3);
+  color: #FFFFFF;
+  transition: background 0.25s ease, color 0.25s ease, border-color 0.25s ease, transform 0.25s ease;
+  text-decoration: none;
+}
+
+.social-btn:hover {
+  background: #B6FF00;
+  color: #000000;
+  border-color: #B6FF00;
+  transform: scale(1.1);
+  box-shadow: 0 0 12px rgba(182, 255, 0, 0.6);
+}
+
+/* --------------------------------------------------------------------------
+   RESPONSIVE LAYOUT BREAKPOINTS
+   -------------------------------------------------------------------------- */
+@media (max-width: 1200px) {
+  .student-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .developer-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 992px) {
+  .director-featured-card {
+    grid-template-columns: 1fr;
+    gap: 28px;
+    padding: 28px;
+  }
+
+  .director-image-wrapper {
+    height: 300px;
+  }
+
+  .faculty-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .about-content-container {
+    padding: 100px 16px 80px 16px;
+    gap: 80px;
+  }
+
+  .hero-about-card {
+    padding: 28px 20px;
+  }
+
+  .hero-main-title {
+    font-size: 2.8rem;
+  }
+
+  .hero-tagline {
+    font-size: 0.95rem;
+    letter-spacing: 0.15em;
+  }
+
+  .hero-subheading {
+    font-size: 1.4rem;
+  }
+
+  .hero-description {
+    font-size: 1rem;
+  }
+
+  .hero-highlight-box {
+    font-size: 1.1rem;
+    padding: 16px;
+  }
+
+  .section-title {
+    font-size: 2.2rem;
+  }
+
+  .faculty-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .student-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .developer-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 480px) {
+  .student-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .hero-main-title {
+    font-size: 2.2rem;
+  }
+
+  .director-name {
+    font-size: 2rem;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   FUTURISTIC COMING SOON PLACEHOLDER STYLES
+   -------------------------------------------------------------------------- */
+.about-coming-soon-box {
+  position: relative;
+  width: 100%;
+  min-height: 220px;
+  background: rgba(8, 16, 8, 0.72);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(182, 255, 0, 0.35);
+  padding: 44px 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  clip-path: polygon(0 0, calc(100% - 20px) 0, 100% 20px, 100% 100%, 20px 100%, 0 calc(100% - 20px));
+  box-shadow: 0 12px 36px rgba(0, 0, 0, 0.7), inset 0 0 25px rgba(182, 255, 0, 0.05);
+  margin-bottom: 30px;
+  overflow: hidden;
+}
+
+.about-coming-soon-box::before {
+  content: '';
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  width: 12px;
+  height: 12px;
+  border-top: 2px solid #B6FF00;
+  border-left: 2px solid #B6FF00;
+  opacity: 0.8;
+}
+
+.about-coming-soon-box::after {
+  content: '';
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  width: 12px;
+  height: 12px;
+  border-bottom: 2px solid #B6FF00;
+  border-right: 2px solid #B6FF00;
+  opacity: 0.8;
+}
+
+.cs-status-tag {
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 0.25em;
+  color: #B6FF00;
+  text-transform: uppercase;
+  margin-bottom: 12px;
+  padding: 4px 12px;
+  background: rgba(182, 255, 0, 0.08);
+  border: 1px solid rgba(182, 255, 0, 0.25);
+}
+
+.cs-title {
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 2.8rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  color: #FFFFFF;
+  text-transform: uppercase;
+  margin: 0 0 8px 0;
+  text-shadow: 0 0 20px rgba(182, 255, 0, 0.4), 0 0 35px rgba(182, 255, 0, 0.2);
+}
+
+.cs-subtext {
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 1rem;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  color: rgba(255, 255, 255, 0.65);
+  text-transform: uppercase;
+  margin: 0;
+}
+
+@media (max-width: 768px) {
+  .cs-title {
+    font-size: 2.1rem;
+  }
+  .cs-subtext {
+    font-size: 0.85rem;
+  }
+}
+

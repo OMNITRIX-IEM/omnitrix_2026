@@ -160,6 +160,23 @@
     0 2px 8px rgba(0, 0, 0, 0.8);
 }
 
+.hero-description .hero-text-line {
+  display: block;
+  margin-top: 6px;
+
+  font-family: inherit;
+  font-size: inherit;
+  font-weight: 600;
+  line-height: 1.45;
+  letter-spacing: 0.03em;
+
+  color: #b6ff00;
+  text-transform: uppercase;
+  opacity: 1;
+
+  text-shadow: 0 0 10px rgba(182, 255, 0, 0.35);
+}
+
 
 /* =========================================
    ATMOSPHERIC FALLING PARTICLES

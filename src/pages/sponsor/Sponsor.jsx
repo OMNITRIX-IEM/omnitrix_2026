@@ -2,7 +2,6 @@ import React, { useRef, useEffect } from 'react';
 import Navbar from '@/navbar/Navbar';
 import HeroSection from './components/HeroSection';
 import SponsorSection from './components/SponsorSection';
-import Footer from './components/Footer';
 import { sponsorsData } from './data/sponsors';
 import './Sponsor.css';
 
@@ -90,8 +89,6 @@ export default function Sponsor() {
           sponsors={sponsorsData.mediaPartners.sponsors}
         />
       </main>
-
-      <Footer />
     </div>
   );
 }

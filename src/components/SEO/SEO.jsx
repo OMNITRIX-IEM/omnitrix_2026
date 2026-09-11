@@ -56,6 +56,18 @@ const ROUTES_SEO = {
       'Meet the organizations and brands supporting OMNITRIX 2026 at IEM and helping bring the festival to life.',
     canonical: 'https://omnitrix-iem.in/sponsors',
   },
+  '/about_us': {
+    title: 'About Us | OMNITRIX 2026 — IEM',
+    description:
+      "Learn about OMNITRIX 2026, the people, student teams, faculty and developers behind IEM's robotics, gaming and innovation festival.",
+    canonical: 'https://omnitrix-iem.in/about_us',
+  },
+  '/about-us': {
+    title: 'About Us | OMNITRIX 2026 — IEM',
+    description:
+      "Learn about OMNITRIX 2026, the people, student teams, faculty and developers behind IEM's robotics, gaming and innovation festival.",
+    canonical: 'https://omnitrix-iem.in/about_us',
+  },
 };
 
 function updateMetaTag(selector, attrName, attrValue, content) {

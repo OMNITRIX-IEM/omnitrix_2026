@@ -8,6 +8,19 @@ const APPROACH = 0;
 const CAPTURE = 1;
 const PROJECT = 2;
 
+// Pre-computed color constants (Omnitrix particle palette)
+const COLOR_APPROACH_R = 209 / 255;
+const COLOR_APPROACH_G = 79 / 255;
+const COLOR_APPROACH_B = 255 / 255;
+
+const COLOR_CAPTURE_R = 255 / 255;
+const COLOR_CAPTURE_G = 167 / 255;
+const COLOR_CAPTURE_B = 255 / 255;
+
+const COLOR_PROJECT_R = 242 / 255;
+const COLOR_PROJECT_G = 240 / 255;
+const COLOR_PROJECT_B = 239 / 255;
+
 export default function LifecycleParticles({
   particleSize = 0.08,
   particleCount = 550,
@@ -55,6 +68,8 @@ export default function LifecycleParticles({
     ];
 
     for (let i = 0; i < count; i++) {
+      const i3 = i * 3;
+
       // Assign ~20% of particles to Omnitrix green energy signatures
       if (Math.random() < 0.20) {
         isGreen[i] = 1;
@@ -63,6 +78,10 @@ export default function LifecycleParticles({
         greenR[i] = Math.max(0, Math.min(1, pal[0] + variation));
         greenG[i] = Math.max(0, Math.min(1, pal[1] + variation));
         greenB[i] = Math.max(0, Math.min(1, pal[2]));
+
+        colors[i3] = greenR[i];
+        colors[i3 + 1] = greenG[i];
+        colors[i3 + 2] = greenB[i];
       } else {
         isGreen[i] = 0;
       }
@@ -71,10 +90,25 @@ export default function LifecycleParticles({
 
       if (r < 0.25) {
         state[i] = APPROACH;
+        if (!isGreen[i]) {
+          colors[i3] = COLOR_APPROACH_R;
+          colors[i3 + 1] = COLOR_APPROACH_G;
+          colors[i3 + 2] = COLOR_APPROACH_B;
+        }
       } else if (r < 0.45) {
         state[i] = CAPTURE;
+        if (!isGreen[i]) {
+          colors[i3] = COLOR_CAPTURE_R;
+          colors[i3 + 1] = COLOR_CAPTURE_G;
+          colors[i3 + 2] = COLOR_CAPTURE_B;
+        }
       } else {
         state[i] = PROJECT;
+        if (!isGreen[i]) {
+          colors[i3] = COLOR_PROJECT_R;
+          colors[i3 + 1] = COLOR_PROJECT_G;
+          colors[i3 + 2] = COLOR_PROJECT_B;
+        }
       }
       
       radius[i] = 2.8 + Math.pow(Math.random(), 0.8) * 9;
@@ -138,109 +172,141 @@ export default function LifecycleParticles({
     if (!pointsRef.current) return;
 
     const pos = pointsRef.current.geometry.attributes.position;
+    const colorAttr = pointsRef.current.geometry.attributes.color;
+    const posArray = pos.array;
     const time = stateClock.clock.elapsedTime;
+    let colorNeedsUpdate = false;
+
+    const {
+      isGreen,
+      state,
+      radius,
+      angle,
+      speed,
+      phase,
+      waitTimer,
+      captureRadius,
+      captureY,
+      progress,
+      projectSpeed,
+      rotation,
+      hemisphere,
+      maxProgress,
+      startX,
+      startY,
+      startZ,
+      colors,
+    } = particles;
 
     for (let i = 0; i < count; i++) {
       const i3 = i * 3;
 
-      // Color assignment (Omnitrix green override for ~20% of particles)
-      if (particles.isGreen[i] === 1) {
-        particles.colors[i3] = particles.greenR[i];
-        particles.colors[i3 + 1] = particles.greenG[i];
-        particles.colors[i3 + 2] = particles.greenB[i];
-      } else if (particles.state[i] === APPROACH) {
-        particles.colors[i3] = 209 / 255;
-        particles.colors[i3 + 1] = 79 / 255;
-        particles.colors[i3 + 2] = 255 / 255;
-      } else if (particles.state[i] === CAPTURE) {
-        particles.colors[i3] = 255 / 255;
-        particles.colors[i3 + 1] = 167 / 255;
-        particles.colors[i3 + 2] = 255 / 255;
-      } else if (particles.state[i] === PROJECT) {
-        particles.colors[i3] = 242 / 255;
-        particles.colors[i3 + 1] = 240 / 255;
-        particles.colors[i3 + 2] = 239 / 255;
-      }
-
       // =====================
       // APPROACH
       // =====================
-      if (particles.state[i] === APPROACH) {
-        particles.radius[i] -= particles.speed[i];
+      if (state[i] === APPROACH) {
+        radius[i] -= speed[i];
 
-        const orbitalSpeed = 0.002 + 0.025 / Math.max(particles.radius[i], 2);
-        particles.angle[i] += orbitalSpeed;
+        const orbitalSpeed = 0.002 + 0.025 / Math.max(radius[i], 2);
+        angle[i] += orbitalSpeed;
 
-        pos.array[i3] = Math.cos(particles.angle[i]) * particles.radius[i];
-        pos.array[i3 + 2] = Math.sin(particles.angle[i]) * particles.radius[i];
+        posArray[i3] = Math.cos(angle[i]) * radius[i];
+        posArray[i3 + 2] = Math.sin(angle[i]) * radius[i];
 
-        const normalizedRadius = particles.radius[i] / 12;
-        const wellDepth = Math.pow(normalizedRadius, 2) * 0.8;
+        const normalizedRadius = radius[i] / 12;
+        const wellDepth = normalizedRadius * normalizedRadius * 0.8;
 
-        pos.array[i3 + 1] = Math.sin(time + particles.phase[i]) * 0.15 + wellDepth - 0.4;
+        posArray[i3 + 1] = Math.sin(time + phase[i]) * 0.15 + wellDepth - 0.4;
 
-        if (particles.radius[i] < 2.75) {
-          particles.state[i] = CAPTURE;
-          particles.waitTimer[i] = 4.0 + Math.random() * 5.0;
-          particles.captureRadius[i] = 2.7 + (Math.random() - 0.5) * 1.6;
-          particles.captureY[i] = (Math.random() - 0.5) * 0.8;
+        if (radius[i] < 2.75) {
+          state[i] = CAPTURE;
+          waitTimer[i] = 4.0 + Math.random() * 5.0;
+          captureRadius[i] = 2.7 + (Math.random() - 0.5) * 1.6;
+          captureY[i] = (Math.random() - 0.5) * 0.8;
+
+          if (!isGreen[i]) {
+            colors[i3] = COLOR_CAPTURE_R;
+            colors[i3 + 1] = COLOR_CAPTURE_G;
+            colors[i3 + 2] = COLOR_CAPTURE_B;
+            colorNeedsUpdate = true;
+          }
         }
       }
       // =====================
       // CAPTURE
       // =====================
-      else if (particles.state[i] === CAPTURE) {
-        particles.waitTimer[i] -= delta;
+      else if (state[i] === CAPTURE) {
+        waitTimer[i] -= delta;
 
-        particles.angle[i] += 0.002 + Math.random() * 0.003;
+        angle[i] += 0.002 + Math.random() * 0.003;
 
-        pos.array[i3] = Math.cos(particles.angle[i]) * particles.captureRadius[i];
-        pos.array[i3 + 2] = Math.sin(particles.angle[i]) * particles.captureRadius[i];
-        pos.array[i3 + 1] = particles.captureY[i];
+        posArray[i3] = Math.cos(angle[i]) * captureRadius[i];
+        posArray[i3 + 2] = Math.sin(angle[i]) * captureRadius[i];
+        posArray[i3 + 1] = captureY[i];
 
-        if (particles.waitTimer[i] <= 0) {
-          particles.startX[i] = Math.cos(particles.angle[i]) * particles.captureRadius[i];
-          particles.startY[i] = particles.captureY[i];
-          particles.startZ[i] = Math.sin(particles.angle[i]) * particles.captureRadius[i];
-          particles.state[i] = PROJECT;
-          particles.progress[i] = 0;
-          particles.projectSpeed[i] = 0.005 + Math.random() * 0.004;
-          particles.rotation[i] = particles.angle[i];
-          particles.hemisphere[i] = Math.random() > 0.5 ? 1 : -1;
-          particles.maxProgress[i] = 0.85 + Math.pow(Math.random(), 1.2) * 0.15;
+        if (waitTimer[i] <= 0) {
+          startX[i] = Math.cos(angle[i]) * captureRadius[i];
+          startY[i] = captureY[i];
+          startZ[i] = Math.sin(angle[i]) * captureRadius[i];
+          state[i] = PROJECT;
+          progress[i] = 0;
+          projectSpeed[i] = 0.005 + Math.random() * 0.004;
+          rotation[i] = angle[i];
+          hemisphere[i] = Math.random() > 0.5 ? 1 : -1;
+          maxProgress[i] = 0.85 + Math.pow(Math.random(), 1.2) * 0.15;
+
+          if (!isGreen[i]) {
+            colors[i3] = COLOR_PROJECT_R;
+            colors[i3 + 1] = COLOR_PROJECT_G;
+            colors[i3 + 2] = COLOR_PROJECT_B;
+            colorNeedsUpdate = true;
+          }
         }
       }
       // =====================
       // PROJECT
       // =====================
-      else if (particles.state[i] === PROJECT) {
-        particles.progress[i] += particles.projectSpeed[i];
+      else if (state[i] === PROJECT) {
+        progress[i] += projectSpeed[i];
 
-        const t = particles.progress[i] * Math.PI;
+        const t = progress[i] * Math.PI;
         const localX = Math.cos(t) * 2.6;
-        const localY = Math.sign(Math.sin(t)) * Math.pow(Math.abs(Math.sin(t)), 0.65) * 2.6 * particles.hemisphere[i];
-        const rot = particles.rotation[i];
+        const localY = Math.sign(Math.sin(t)) * Math.pow(Math.abs(Math.sin(t)), 0.65) * 2.6 * hemisphere[i];
+        const rot = rotation[i];
 
         const sphereX = localX * Math.cos(rot);
         const sphereY = localY;
         const sphereZ = localX * Math.sin(rot);
 
-        const blend = Math.min(particles.progress[i] * 5, 1);
+        const blend = Math.min(progress[i] * 5, 1);
 
-        pos.array[i3] = THREE.MathUtils.lerp(particles.startX[i], sphereX, blend);
-        pos.array[i3 + 1] = THREE.MathUtils.lerp(particles.startY[i], sphereY, blend);
-        pos.array[i3 + 2] = THREE.MathUtils.lerp(particles.startZ[i], sphereZ, blend);
+        const sX = startX[i];
+        const sY = startY[i];
+        const sZ = startZ[i];
 
-        if (particles.progress[i] > particles.maxProgress[i]) {
-          particles.state[i] = APPROACH;
-          particles.radius[i] = 4 + Math.random() * 8;
-          particles.angle[i] = Math.random() * Math.PI * 2;
-          particles.phase[i] = Math.random() * Math.PI * 2;
+        posArray[i3] = sX + (sphereX - sX) * blend;
+        posArray[i3 + 1] = sY + (sphereY - sY) * blend;
+        posArray[i3 + 2] = sZ + (sphereZ - sZ) * blend;
+
+        if (progress[i] > maxProgress[i]) {
+          state[i] = APPROACH;
+          radius[i] = 4 + Math.random() * 8;
+          angle[i] = Math.random() * Math.PI * 2;
+          phase[i] = Math.random() * Math.PI * 2;
+
+          if (!isGreen[i]) {
+            colors[i3] = COLOR_APPROACH_R;
+            colors[i3 + 1] = COLOR_APPROACH_G;
+            colors[i3 + 2] = COLOR_APPROACH_B;
+            colorNeedsUpdate = true;
+          }
         }
       }
     }
 
-    pointsRef.current.geometry.attributes.color.needsUpdate = true;
+    if (colorNeedsUpdate && colorAttr) {
+      colorAttr.needsUpdate = true;
+    }
     pos.needsUpdate = true;
   });
 
@@ -270,3 +336,4 @@ export default function LifecycleParticles({
     </points>
   );
 }
+

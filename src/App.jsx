@@ -9,7 +9,9 @@ import IndoorGames from '@/pages/events/IndoorGames/IndoorGames';
 import WorkshopHackathon from '@/pages/events/Workshop_Hackathon/WorkshopHackathon';
 import Sponsor from '@/pages/sponsor/Sponsor';
 import Brochure from '@/pages/Brochure/Brochure';
+import AboutUs from '@/pages/about_us/AboutUs';
 import ComingSoon from '@/pages/ComingSoon/ComingSoon';
+import Footer from '@/components/Footer/Footer';
 import { markAppLoaded } from '@/utils/appLifecycle';
 
 function ScrollToTop() {
@@ -47,9 +49,11 @@ export default function App() {
         <Route path="/workshops" element={<WorkshopHackathon />} />
         <Route path="/sponsors" element={<Sponsor />} />
         <Route path="/brochure" element={<Brochure />} />
-        <Route path="/about-us" element={<ComingSoon />} />
+        <Route path="/about_us" element={<AboutUs />} />
+        <Route path="/about-us" element={<AboutUs />} />
         <Route path="/register" element={<ComingSoon />} />
       </Routes>
+      <Footer />
     </Router>
   );
 }
