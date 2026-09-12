@@ -1,6 +1,6 @@
 import robotCombat from '@/assets/events/main/robot_combat.png';
-import droneWarfare from '@/assets/events/main/drone_warfare.png';
-import aiSummit from '@/assets/events/main/ai_summit.png';
+import droneWarfare from '@/assets/events/main/events_esports.jpg';
+import aiSummit from '@/assets/events/main/events_indoor.webp';
 
 export const eventsData = [
   {

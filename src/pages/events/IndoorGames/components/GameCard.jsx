@@ -19,7 +19,12 @@ export default function GameCard({ game }) {
           </div>
 
           <div className="card-buttons">
-            <a href="#register" className="btn-card btn-register">
+            <a
+              href="https://forms.gle/ESmLEmDPf2U1Fxh18"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn-card btn-register"
+            >
               REGISTER
             </a>
             <a href="#" className="btn-card btn-explore">

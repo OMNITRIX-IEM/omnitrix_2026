@@ -86,7 +86,7 @@ export default function Footer() {
               href="tel:+919876543211"
               className="footer-contact-link"
             >
-              +91-9876543211
+              +91-8101144074 / +91-7980355490
             </a>
           </div>
           <div className="footer-contact-item">
