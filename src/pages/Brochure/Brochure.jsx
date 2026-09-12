@@ -2,6 +2,8 @@ import React from 'react';
 import Navbar from '@/navbar/Navbar';
 import bg2 from '@/assets/images/bg2.webp';
 import sponsorPdf from '@/assets/brochures/sponsor_brochure.pdf';
+import eventPdf from '@/assets/brochures/event_brochure.pdf';
+import esportsPdf from '@/assets/brochures/esports_brochure.pdf';
 import './Brochure.css';
 
 export default function Brochure() {
@@ -118,13 +120,13 @@ export default function Brochure() {
             </a>
 
             {/* EVENT BROCHURE CARD (Placeholder for future link) */}
-            <div
+            <a
+              href={eventPdf}
+              target="_blank"
+              rel="noopener noreferrer"
               className="brochure-card event-card"
-              onClick={handleEventBrochureClick}
-              role="button"
-              tabIndex={0}
-              aria-label="Event Brochure"
-            >
+              aria-label="Open Event Brochure in a new tab">
+
               <div className="card-ambient-glow" />
               <div className="card-body">
                 <div className="card-icon-wrapper">
@@ -166,7 +168,63 @@ export default function Brochure() {
                   </svg>
                 </div>
               </div>
-            </div>
+            </a>
+
+            {/* ESPORTS BROCHURE CARD (Placeholder for future link) */}
+            <a
+              href={esportsPdf}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="brochure-card esports-card"
+              aria-label="Open Esports Brochure in a new tab">
+
+              <div className="card-ambient-glow" />
+              <div className="card-body">
+                <div className="card-icon-wrapper">
+                  <svg
+                    className="card-icon"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="1.8"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  >
+                    <circle cx="12" cy="12" r="9" />
+                    <polygon points="12,7.8 16,10.7 14.5,15.4 9.5,15.4 8,10.7" />
+                    <path d="M12 7.8V3" />
+                    <path d="M16 10.7L20.5 9.2" />
+                    <path d="M14.5 15.4L17.3 19.3" />
+                    <path d="M9.5 15.4L6.7 19.3" />
+                    <path d="M8 10.7L3.5 9.2" />
+                  </svg>
+                </div>
+
+                <div className="card-text-wrapper">
+                  <h2 className="card-title">ESPORTS BROCHURE</h2>
+                  <span className="card-subtitle">Schedule, Competitions & Guidelines</span>
+                </div>
+
+                <div className="card-cta-badge">
+                  <span>VIEW PDF</span>
+                  <svg
+                    className="cta-arrow"
+                    width="14"
+                    height="12"
+                    viewBox="0 0 14 12"
+                    fill="none"
+                  >
+                    <path
+                      d="M8 1L13 6M13 6L8 11M13 6H1"
+                      stroke="currentColor"
+                      strokeWidth="1.8"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    />
+                  </svg>
+                </div>
+              </div>
+            </a>
           </div>
         </div>
       </main>

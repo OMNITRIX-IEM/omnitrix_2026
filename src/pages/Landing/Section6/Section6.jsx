@@ -10,7 +10,7 @@ const CATEGORIES_DATA = {
       {
         id: 'rob-1',
         seq: 'EVENT_01',
-        date: '24 AUG // 10:00 AM',
+        date: '18-20 SEP',
         title: 'Roborace',
         subtitle: 'High-speed autonomous and semi-autonomous robot racing on a custom tactical obstacle circuit. Engineers push mechanical speed, traction, and obstacle evasion to the absolute limit.',
         category: 'ROBOTICS',
@@ -19,7 +19,7 @@ const CATEGORIES_DATA = {
       {
         id: 'rob-2',
         seq: 'EVENT_02',
-        date: '24 AUG // 02:00 PM',
+        date: '18-20 SEP',
         title: 'Robosumo/Roboclash',
         subtitle: 'Heavyweight mechanical combat where custom-built battlebots enter the arena for high-impact destruction. Features kinetic spinners, flippers, and armored chassis battling for arena dominance.',
         category: 'ROBOTICS',
@@ -28,7 +28,7 @@ const CATEGORIES_DATA = {
       {
         id: 'rob-3',
         seq: 'EVENT_03',
-        date: '25 AUG // 11:00 AM',
+        date: '18-20 SEP',
         title: 'Robosoccer',
         subtitle: 'Tactical 3-on-3 robotic football tournament featuring customized wireless drive platforms. Teams coordinate offensive maneuvers, mechanical kicker mechanisms, and defensive blocking.',
         category: 'ROBOTICS',
@@ -37,7 +37,7 @@ const CATEGORIES_DATA = {
       {
         id: 'rob-4',
         seq: 'EVENT_04',
-        date: '25 AUG // 09:30 AM',
+        date: '18-20 SEP',
         title: 'Line following rover',
         subtitle: 'Precision speed competition testing infrared sensor calibration and PID algorithms. Autonomous bots navigate sharp turns, intersections, and dynamic track speed traps.',
         category: 'ROBOTICS',
@@ -46,7 +46,7 @@ const CATEGORIES_DATA = {
       {
         id: 'rob-5',
         seq: 'EVENT_05',
-        date: '25 AUG // 01:30 PM',
+        date: '18-20 SEP',
         title: 'Drone track competition/UAV race',
         subtitle: 'First-Person View (FPV) drone racing through complex 3D aerial gate courses. Pilots maneuver high-speed quadcopters with extreme precision at speeds exceeding 100 km/h.',
         category: 'ROBOTICS',
@@ -61,7 +61,7 @@ const CATEGORIES_DATA = {
       {
         id: 'ws-1',
         seq: 'EVENT_01',
-        date: '24 AUG // 09:00 AM',
+        date: '18-20 SEP',
         title: 'WS-ML DL',
         subtitle: 'Hands-on masterclass covering neural network architectures, computer vision model training, and edge AI deployment on autonomous robotics hardware.',
         category: 'WORKSHOP',
@@ -70,7 +70,7 @@ const CATEGORIES_DATA = {
       {
         id: 'ws-2',
         seq: 'EVENT_02',
-        date: '25 AUG // 10:00 AM',
+        date: '18-20 SEP',
         title: 'WS-ROS2',
         subtitle: 'Comprehensive technical session on Robot Operating System 2 core concepts, publisher-subscriber nodes, micro-ROS integration, and real-time robotic hardware control.',
         category: 'WORKSHOP',
@@ -79,7 +79,7 @@ const CATEGORIES_DATA = {
       {
         id: 'ws-3',
         seq: 'EVENT_03',
-        date: '25 AUG // 02:00 PM',
+        date: '18-20 SEP',
         title: 'WS-VLSI and Embedded systems',
         subtitle: 'Practical exploration of microcontrollers, RTOS firmware development, hardware sensor interfacing, and motor driver circuit design for combat robotics.',
         category: 'WORKSHOP',
@@ -88,7 +88,7 @@ const CATEGORIES_DATA = {
       {
         id: 'ws-4',
         seq: 'EVENT_04',
-        date: '26 AUG // 09:30 AM',
+        date: '18-20 SEP',
         title: 'WS Drone Prog.',
         subtitle: 'From flight dynamics to autonomous swarm navigation: build, program, and calibrate multi-rotor UAV systems with real-world flight testing.',
         category: 'WORKSHOP',
@@ -97,7 +97,7 @@ const CATEGORIES_DATA = {
       {
         id: 'ws-5',
         seq: 'EVENT_05',
-        date: '26 AUG // 02:00 PM',
+        date: '18-20 SEP',
         title: 'Project Exhibition',
         subtitle: 'Grand technological showcase displaying innovative engineering projects, hardware prototypes, and research models to expert panels and industrial leaders.',
         category: 'EXHIBITION',
@@ -106,7 +106,7 @@ const CATEGORIES_DATA = {
       {
         id: 'ws-6',
         seq: 'EVENT_06',
-        date: '26 AUG // 06:00 PM',
+        date: '18-20 SEP',
         title: 'Hackathon',
         subtitle: '24-hour non-stop rapid prototyping hackathon where developer teams build breakthrough software and hardware solutions under intense time pressure.',
         category: 'HACKATHON',
@@ -121,7 +121,7 @@ const CATEGORIES_DATA = {
       {
         id: 'esp-1',
         seq: 'EVENT_01',
-        date: '25 AUG // 04:00 PM',
+        date: '18-20 SEP',
         title: 'BGMI LAN',
         subtitle: 'High-stakes battle royale LAN tournament bringing top esports rosters together in a fierce tactical showdown across custom room battlegrounds.',
         category: 'E-SPORTS',
@@ -130,7 +130,7 @@ const CATEGORIES_DATA = {
       {
         id: 'esp-2',
         seq: 'EVENT_02',
-        date: '24 AUG // 01:00 PM',
+        date: '18-20 SEP',
         title: 'E-Football',
         subtitle: 'Competitive digital football championship testing tactical formation management, skill moves, and clutch decision-making on high-refresh-rate gaming rigs.',
         category: 'E-SPORTS',
@@ -139,7 +139,7 @@ const CATEGORIES_DATA = {
       {
         id: 'esp-3',
         seq: 'EVENT_03',
-        date: '24 AUG // 04:00 PM',
+        date: '18-20 SEP',
         title: 'Call of Duty(COD)',
         subtitle: 'Action-packed tactical FPS esports tournament. Squads compete in intense Search & Destroy and Hardpoint matches for the RoboWars Championship trophy.',
         category: 'E-SPORTS',
@@ -148,7 +148,7 @@ const CATEGORIES_DATA = {
       {
         id: 'esp-4',
         seq: 'EVENT_04',
-        date: '25 AUG // 06:00 PM',
+        date: '18-20 SEP',
         title: 'Free fire clash',
         subtitle: 'Fast-paced battle royale squad competition demanding quick reflexes, strategic positioning, and intense firefight coordination under pressure.',
         category: 'E-SPORTS',
@@ -163,7 +163,7 @@ const CATEGORIES_DATA = {
       {
         id: 'ind-1',
         seq: 'EVENT_01',
-        date: '24 AUG // 03:00 PM',
+        date: '18-20 SEP',
         title: 'Stone Paper Scissors',
         subtitle: 'High-energy quick-thinking tournament arena with sudden-death elimination rounds and surprising tactical psychological twists.',
         category: 'INDOOR GAME',
@@ -172,7 +172,7 @@ const CATEGORIES_DATA = {
       {
         id: 'ind-2',
         seq: 'EVENT_02',
-        date: '25 AUG // 03:00 PM',
+        date: '18-20 SEP',
         title: 'Hand Cricket',
         subtitle: 'Classic casual sports challenge converted into a fast-paced live gaming bracket where split-second hand signals decide match outcomes.',
         category: 'INDOOR GAME',
@@ -181,7 +181,7 @@ const CATEGORIES_DATA = {
       {
         id: 'ind-3',
         seq: 'EVENT_03',
-        date: '24 AUG // 12:00 PM',
+        date: '18-20 SEP',
         title: 'Ball in Basket',
         subtitle: 'Precision arcade skill competition testing trajectory estimation, wrist control, and timed target scoring under tight clock pressure.',
         category: 'INDOOR GAME',
@@ -190,7 +190,7 @@ const CATEGORIES_DATA = {
       {
         id: 'ind-4',
         seq: 'EVENT_04',
-        date: '26 AUG // 02:00 PM',
+        date: '18-20 SEP',
         title: 'Penalty Shoot',
         subtitle: 'Intense 1-on-1 penalty shootout challenge combining physical skill, goalkeeper anticipation, and high-pressure goal scoring.',
         category: 'INDOOR GAME',
@@ -199,7 +199,7 @@ const CATEGORIES_DATA = {
       {
         id: 'ind-5',
         seq: 'EVENT_05',
-        date: '25 AUG // 11:00 AM',
+        date: '18-20 SEP',
         title: 'Chess',
         subtitle: 'Classical and blitz chess tournament challenging grand strategy, tactical foresight, and deep analytical calculations in silent competition.',
         category: 'INDOOR GAME',
@@ -208,7 +208,7 @@ const CATEGORIES_DATA = {
       {
         id: 'ind-6',
         seq: 'EVENT_06',
-        date: '24 AUG // 02:30 PM',
+        date: '18-20 SEP',
         title: 'Carrom',
         subtitle: 'Traditional striker precision championship featuring singles and doubles tournament brackets on polished tournament-grade carrom boards.',
         category: 'INDOOR GAME',
@@ -217,7 +217,7 @@ const CATEGORIES_DATA = {
       {
         id: 'ind-7',
         seq: 'EVENT_07',
-        date: '26 AUG // 03:30 PM',
+        date: '18-20 SEP',
         title: 'Arm Wrestling',
         subtitle: 'Raw physical strength and technique competition organized into standard weight classes with certified referee officiating.',
         category: 'INDOOR GAME',
@@ -226,7 +226,7 @@ const CATEGORIES_DATA = {
       {
         id: 'ind-8',
         seq: 'EVENT_08',
-        date: '25 AUG // 01:00 PM',
+        date: '18-20 SEP',
         title: 'Beyblade',
         subtitle: 'High-speed spinning top battle arena where custom Beyblades clash for spin velocity, stadium center control, and burst finishes.',
         category: 'INDOOR GAME',
@@ -647,81 +647,81 @@ export default function Section6() {
           <div className="viewport-frame" id="viewport-frame" ref={consoleRef}>
             {/* 3D CARD CANVAS */}
             <div className="card-stack-container" id="card-stack-container">
-            <div className="card-canvas" id="card-canvas" ref={cardCanvasRef}>
-              {activeEvents.map((event, index) => (
-                <article
-                  key={event.id}
-                  className={`hud-card ${index === 0 ? 'active' : ''}`}
-                  data-index={index}
-                  ref={(el) => (cardsRef.current[index] = el)}
-                >
-                  <div className="card-header">
-                    <span className="seq-tag">{event.seq}</span>
-                    <span className="card-id">{event.date}</span>
-                  </div>
-                  <div className="card-main">
-                    <h2 className="card-title">{event.title}</h2>
-                    <div className="card-line"></div>
-                    <p className="card-subtitle">{event.subtitle}</p>
-                  </div>
-                  <div className="card-footer-group">
-                    <div className="card-meta-chips">
-                      <span className={`hud-tag ${event.categoryRed ? 'text-red' : ''}`}>
-                        {event.category}
-                      </span>
+              <div className="card-canvas" id="card-canvas" ref={cardCanvasRef}>
+                {activeEvents.map((event, index) => (
+                  <article
+                    key={event.id}
+                    className={`hud-card ${index === 0 ? 'active' : ''}`}
+                    data-index={index}
+                    ref={(el) => (cardsRef.current[index] = el)}
+                  >
+                    <div className="card-header">
+                      <span className="seq-tag">{event.seq}</span>
+                      <span className="card-id">{event.date}</span>
                     </div>
-                    <Link to="/events" className="event-cta-btn">
-                      GO TO EVENT →
-                    </Link>
-                  </div>
-                </article>
-              ))}
+                    <div className="card-main">
+                      <h2 className="card-title">{event.title}</h2>
+                      <div className="card-line"></div>
+                      <p className="card-subtitle">{event.subtitle}</p>
+                    </div>
+                    <div className="card-footer-group">
+                      <div className="card-meta-chips">
+                        <span className={`hud-tag ${event.categoryRed ? 'text-red' : ''}`}>
+                          {event.category}
+                        </span>
+                      </div>
+                      <Link to="/events" className="event-cta-btn">
+                        GO TO EVENT →
+                      </Link>
+                    </div>
+                  </article>
+                ))}
+              </div>
             </div>
+
+            {/* Viewport Footer HUD Toolbar */}
+            <footer className="viewport-footer">
+              <div className="nav-hint">
+                <span className="hint-icon">◆</span>
+                <span className="hint-text">SCROLL OR ARROWS TO EXPLORE EVENTS</span>
+              </div>
+
+              {/* Step Progress Tracker */}
+              <div className="card-pagination" id="card-pagination">
+                <span className="readout-counter" ref={readoutCounterRef}>
+                  01 / {String(activeEvents.length).padStart(2, '0')}
+                </span>
+                <span className="progress-bar-bg">
+                  <span className="progress-bar-fill" id="progress-fill" ref={progressFillRef}></span>
+                </span>
+              </div>
+
+              {/* Prev/Next Tactical Buttons */}
+              <div className="hud-nav-controls">
+                <button
+                  className="hud-btn"
+                  id="btn-prev"
+                  onClick={handlePrev}
+                  aria-label="Previous Event Card"
+                  type="button"
+                >
+                  <span className="btn-arrow">◄</span> PREV
+                </button>
+                <button
+                  className="hud-btn"
+                  id="btn-next"
+                  onClick={handleNext}
+                  aria-label="Next Event Card"
+                  type="button"
+                >
+                  NEXT <span className="btn-arrow">►</span>
+                </button>
+              </div>
+            </footer>
           </div>
-
-          {/* Viewport Footer HUD Toolbar */}
-          <footer className="viewport-footer">
-            <div className="nav-hint">
-              <span className="hint-icon">◆</span>
-              <span className="hint-text">SCROLL OR ARROWS TO EXPLORE EVENTS</span>
-            </div>
-
-            {/* Step Progress Tracker */}
-            <div className="card-pagination" id="card-pagination">
-              <span className="readout-counter" ref={readoutCounterRef}>
-                01 / {String(activeEvents.length).padStart(2, '0')}
-              </span>
-              <span className="progress-bar-bg">
-                <span className="progress-bar-fill" id="progress-fill" ref={progressFillRef}></span>
-              </span>
-            </div>
-
-            {/* Prev/Next Tactical Buttons */}
-            <div className="hud-nav-controls">
-              <button
-                className="hud-btn"
-                id="btn-prev"
-                onClick={handlePrev}
-                aria-label="Previous Event Card"
-                type="button"
-              >
-                <span className="btn-arrow">◄</span> PREV
-              </button>
-              <button
-                className="hud-btn"
-                id="btn-next"
-                onClick={handleNext}
-                aria-label="Next Event Card"
-                type="button"
-              >
-                NEXT <span className="btn-arrow">►</span>
-              </button>
-            </div>
-          </footer>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
   );
 }
 
