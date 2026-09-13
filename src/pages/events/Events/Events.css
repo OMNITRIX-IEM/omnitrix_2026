@@ -360,7 +360,7 @@
     .events-main-page .column-center {
         order: 2;
         position: relative;
-        left: 18px;
+        left: -10px;
         padding-left: 0;
         width: 100%;
         display: flex;
@@ -421,12 +421,12 @@
     .events-main-page .wheel-container {
         position: relative;
         top: auto;
-        left: auto;
+        left: 12px;
         transform: translateY(125px);
         width: clamp(440px, 130vw, 750px);
         height: clamp(440px, 130vw, 750px);
         aspect-ratio: 1 / 1;
-        margin-bottom: -40%;
+        margin-bottom: -43%;
         pointer-events: auto;
         flex-shrink: 0;
     }
