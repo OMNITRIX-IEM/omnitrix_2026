@@ -9,6 +9,8 @@ export default function WorkshopCard({
   icon,
   delay,
   registerLink,
+  rulebook,
+  rulebookUrl,
   exploreContent,
   onExplore,
   workshop
@@ -23,6 +25,7 @@ export default function WorkshopCard({
   const ic = icon || workshop?.icon;
   const del = delay || workshop?.delay;
   const regLink = registerLink !== undefined ? registerLink : workshop?.registerLink;
+  const rbLink = rulebook || rulebookUrl || workshop?.rulebook || workshop?.rulebookUrl;
   const currentWorkshop = workshop || {
     titleLine1: t1,
     titleLine2: t2,
@@ -32,6 +35,7 @@ export default function WorkshopCard({
     icon: ic,
     delay: del,
     registerLink: regLink,
+    rulebook: rbLink,
     exploreContent: exploreContent !== undefined ? exploreContent : workshop?.exploreContent
   };
 
@@ -107,6 +111,18 @@ export default function WorkshopCard({
               EXPLORE
             </button>
           </div>
+          {rbLink && (
+            <div className="card-rulebook-actions">
+              <a
+                href={rbLink}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn-card btn-rulebook-link"
+              >
+                RULEBOOK
+              </a>
+            </div>
+          )}
         </div>
         <div className="card-footer">
           <div className="price-wrap">

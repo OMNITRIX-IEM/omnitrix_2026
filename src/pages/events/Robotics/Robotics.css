@@ -718,9 +718,42 @@
 .robotics-page .card-actions {
     display: flex;
     gap: 8px;
+    margin-bottom: 8px;
+    position: relative;
+    z-index: 20;
+}
+
+.robotics-page .card-actions:last-child {
+    margin-bottom: 80px;
+}
+
+.robotics-page .card-rulebook-actions {
+    display: flex;
+    justify-content: center;
     margin-bottom: 80px;
     position: relative;
     z-index: 20;
+}
+
+.robotics-page .btn-card.btn-rulebook-link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    width: 100%;
+}
+
+.robotics-page .btn-card.btn-register-link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+}
+
+.robotics-page .btn-card.btn-disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    background-color: rgba(255, 255, 255, 0.02);
 }
 
 .robotics-page .btn-card {
@@ -836,23 +869,6 @@
 }
 
 /* Card Button Helper Styles */
-.robotics-page .btn-card.btn-register-link {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    text-decoration: none;
-}
-
-.robotics-page .btn-card.btn-disabled {
-    opacity: 0.5;
-    cursor: not-allowed;
-    background-color: rgba(255, 255, 255, 0.02);
-}
-
-/* ==================================================
-   EXPLORE MODAL / OVERLAY STYLES
-   ================================================== */
-
 .explore-modal-backdrop {
     position: fixed;
     inset: 0;

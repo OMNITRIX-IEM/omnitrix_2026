@@ -3,6 +3,11 @@ import roborace from '@/assets/events/robotics/roborace.webp';
 import robosumo from '@/assets/events/robotics/robosumo.webp';
 import uavr from '@/assets/events/robotics/UAV_race.webp';
 import lfr from '@/assets/events/robotics/LFR.webp';
+import robosoccerPdf from '@/assets/events/robotics/Robosoccer.pdf';
+import roboracePdf from '@/assets/events/robotics/Roborace_rulebook.pdf';
+import lfrPdf from '@/assets/events/robotics/LFR.pdf';
+import roboclashPdf from '@/assets/events/robotics/Roboclash.pdf';
+import droneracePdf from '@/assets/events/robotics/Dronerace.pdf';
 
 
 export const workshops = [
@@ -14,6 +19,7 @@ export const workshops = [
     icon: "bolt",
     delay: "100ms",
     registerLink: "https://forms.gle/vNMQB8nwRFTdbSt47",
+    rulebook: robosoccerPdf,
     exploreContent: [
       { type: "heading", text: "ROBOSOCCER" },
       {
@@ -39,6 +45,7 @@ export const workshops = [
     icon: "psychology",
     delay: "200ms",
     registerLink: "https://forms.gle/kSyXCWQbz99KSgNRA",
+    rulebook: roboracePdf,
     exploreContent: [
       { type: "heading", text: "ROBO RACE" },
       {
@@ -62,6 +69,7 @@ export const workshops = [
     icon: "hub",
     delay: "300ms",
     registerLink: "https://forms.gle/4BZdfh14shuBG3aEA",
+    rulebook: lfrPdf,
     exploreContent: [
       {
         type: "list",
@@ -84,6 +92,7 @@ export const workshops = [
     icon: "group_work",
     delay: "400ms",
     registerLink: "https://forms.gle/75SPqxvbZT53L6hV8",
+    rulebook: roboclashPdf,
     exploreContent: [
       { type: "paragraph", text: "Two autonomous robots compete to push the opponent outside the designated arena." },
       { type: "paragraph", text: "Robots must comply with the specified size, weight, and power limits." },
@@ -126,6 +135,7 @@ export const workshops = [
     icon: "group_work",
     delay: "400ms",
     registerLink: "https://forms.gle/eBpFeMwSKNzCqkwe7",
+    rulebook: droneracePdf,
     exploreContent: [
       {
         type: "list",

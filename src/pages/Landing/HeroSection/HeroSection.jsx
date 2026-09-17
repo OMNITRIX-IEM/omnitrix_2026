@@ -5,6 +5,7 @@ import casLogo from '@/assets/logos/CAS.png';
 import ieeeLogo from '@/assets/logos/IEEE-Logo.jpg';
 import omnitrixHero from '@/assets/images/hero_section_2.webp';
 import phoneHero from '@/assets/images/phone_hero.webp';
+import schedulePdf from '@/assets/images/OMNITRIX_SCHEDULE.pdf';
 import './HeroSection.css';
 
 export default function HeroSection() {
@@ -60,14 +61,33 @@ export default function HeroSection() {
         <div className="hero-institution-text">
           <span className="hero-text-line">INSTITUTE OF ENGINEERING AND MANAGEMENT</span>
           <span className="hero-text-line">SCHOOL OF UNIVERSITY OF ENGINEERING AND MANAGEMENT</span>
+          <a
+            href={schedulePdf}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="hero-schedule-btn hero-schedule-mobile"
+          >
+            EVENT SCHEDULE
+          </a>
         </div>
       </div>
 
       {/* HERO TEXT */}
       <div className="hero-copy">
-        <h2 className="hero-subtitle">
-          ELITE <span>GAMING</span> BATTLEFIELD
-        </h2>
+        <div className="hero-subtitle-row">
+          <h2 className="hero-subtitle">
+            ELITE <span>GAMING</span> BATTLEFIELD
+          </h2>
+
+          <a
+            href={schedulePdf}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="hero-schedule-btn hero-schedule-desktop"
+          >
+            EVENT SCHEDULE
+          </a>
+        </div>
 
         <p className="hero-description">
           Enter the ultimate battlefield and JOIN US AT
