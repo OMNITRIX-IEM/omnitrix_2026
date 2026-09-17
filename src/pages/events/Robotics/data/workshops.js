@@ -3,11 +3,11 @@ import roborace from '@/assets/events/robotics/roborace.webp';
 import robosumo from '@/assets/events/robotics/robosumo.webp';
 import uavr from '@/assets/events/robotics/UAV_race.webp';
 import lfr from '@/assets/events/robotics/LFR.webp';
-import robosoccerPdf from '@/assets/events/robotics/Robosoccer.pdf';
-import roboracePdf from '@/assets/events/robotics/Roborace_rulebook.pdf';
+import robosoccerPdf from '@/assets/events/robotics/ROBOSOCCER.pdf';
+import roboracePdf from '@/assets/events/robotics/ROBORACE_RULEBOOK.pdf';
 import lfrPdf from '@/assets/events/robotics/LFR.pdf';
-import roboclashPdf from '@/assets/events/robotics/Roboclash.pdf';
-import droneracePdf from '@/assets/events/robotics/Dronerace.pdf';
+import roboclashPdf from '@/assets/events/robotics/ROBOCLASH.pdf';
+import droneracePdf from '@/assets/events/robotics/DRONERACE.pdf';
 
 
 export const workshops = [
